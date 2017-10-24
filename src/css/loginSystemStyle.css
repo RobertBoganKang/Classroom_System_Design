@@ -1,0 +1,162 @@
+/*universal setting*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+
+html, html * {
+    font-family: 'Open Sans', sans-serif;
+}
+
+::selection {
+    background: lightgray;
+    color: dimgray;
+}
+
+body {
+    font-size: 18px;
+}
+
+form {
+    max-width: 800px;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 34px;
+    line-height: 150%;
+}
+
+p {
+    line-height: 150%;
+}
+
+input[type=text], input[type=submit], input[type=password], textarea {
+    width: 100%;
+    background-color: white;
+    margin: 3px 0;
+    alignment: center;
+    color: black;
+    padding: 2px 4px;
+    border: 2px gray solid;
+    round-clip: 2px;
+    font-size: 16px;
+}
+
+input[type=submit] {
+    color: gray;
+}
+
+input:hover, textarea:hover {
+    border: 2px black solid;
+    color: black;
+}
+
+input:focus, textarea:focus {
+    border: 2px darkorange solid;
+    outline: none;
+    color: darkblue;
+}
+
+/*checkbox*/
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + .remember-text:before {
+    content: "* Remember?";
+}
+
+input[type=checkbox]:checked + .remember-text:before {
+    content: "*";
+    color: green;
+}
+
+/*panel borders*/
+.panel {
+    margin: 20px;
+    padding: 1em;
+    border: 3px dimgray solid;
+}
+
+.panel:hover {
+    border: 3px black solid;
+}
+
+.nav {
+    float: right;
+    display: inline-block;
+}
+
+/*error message*/
+.error, .remember, .secretdot {
+    color: red;
+    position: relative;
+    top: 12%;
+}
+
+/*remember me*/
+.remember {
+    width: 0;
+    color: Gray;
+}
+
+/*information success*/
+.success:hover {
+    border: 2px darkgreen solid;
+}
+
+.success:focus {
+    color: darkgreen;
+    border: 2px green solid;
+}
+
+/*unvisited link*/
+a {
+    color: green;
+    text-decoration: none;
+}
+
+/*visited link*/
+a:visited {
+    color: dimgray;
+}
+
+/*link on hover*/
+a:hover {
+    color: gray;
+    text-decoration: none;
+}
+
+/*buttons*/
+.submit {
+    text-align: center;
+    color: dimgray;
+    cursor: pointer;
+}
+
+.submit:focus {
+    border: 2px darkgreen solid;
+    color: darkgreen;
+}
+
+.submit:hover {
+    border: 2px green solid;
+    color: green;
+}
+
+.secretdot, .secretdot:visited, .secretdot:hover {
+    color: white;
+    cursor: default;
+}
+
+.secretdot:hover {
+    color: yellow;
+}
+
+/*contact me*/
+.contactPerson {
+    border: 1px white solid;
+}
+
+.contactPerson:hover {
+    border: 1px dimgray solid;
+    background: lightgray;
+}

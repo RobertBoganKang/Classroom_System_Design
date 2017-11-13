@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/loginSystemStyle.css">
+    <link rel="stylesheet" href="../css/overall.css">
 </head>
 <body>
 <?php

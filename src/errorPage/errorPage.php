@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Error Page</title>
     <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/overall.css">
     <link rel="stylesheet" href="../css/loginSystemStyle.css">
 </head>
 <body>

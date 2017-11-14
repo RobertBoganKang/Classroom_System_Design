@@ -64,6 +64,20 @@ if ($emailErr != '') {
     array_push($errorArr, 'email');
 }
 
+/*check office*/
+if (isset($office)) {
+    /*add dimensions*/
+    $office = $strcls->trimText(mysqli_real_escape_string($db, $_POST["office"]));
+
+    /*check office*/
+    if (empty($office)) {
+        $officeErr = "Office location is required";
+    }
+    if ($officeErr != '') {
+        array_push($errorArr, 'office');
+    }
+}
+
 /*check password*/
 if (empty($pswd)) {
     $pswdErr = "Password is required";

@@ -45,7 +45,8 @@
             <!--office-->
             <div class="row">
                 <div class="col-sm-7"><input type="text" name="office" id="office" placeholder="Office"
-                                             value="<?= $office ?>">
+                                             value="<?= $office ?>"
+                        <?php if ($errorFirstLocation == "office") { ?> autofocus <?php } ?>>
                 </div>
                 <div class="col-sm-5"><span class="error" id="officeX">* <?php echo $officeErr; ?></span></div>
             </div>

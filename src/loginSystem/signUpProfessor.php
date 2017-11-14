@@ -20,7 +20,7 @@
     <!--title-->
     <h1>Teacher Sign Up</h1>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="container-fluid">
+        <div class="container-fluid align-left">
             <!--username-->
             <div class="row">
                 <div class="col-sm-7"><input type="text" name="userName" id="username" placeholder="User's Name"

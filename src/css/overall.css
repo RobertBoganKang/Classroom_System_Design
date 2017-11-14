@@ -14,8 +14,9 @@ body {
     font-size: 18px;
 }
 
-form {
+.form {
     max-width: 800px;
+    text-align: left;
 }
 
 h1 {
@@ -60,4 +61,14 @@ a:visited {
 a:hover {
     color: gray;
     text-decoration: none;
+}
+
+/*horizontal line*/
+hr {
+    margin: 5px;
+}
+
+textarea {
+    overflow-y: hidden;
+    overflow-x: hidden;
 }

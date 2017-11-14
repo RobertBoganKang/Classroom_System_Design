@@ -9,6 +9,7 @@ input[type=text], input[type=submit], input[type=password], textarea {
     border: 2px gray solid;
     round-clip: 2px;
     font-size: 16px;
+    outline: none;
 }
 
 input[type=submit] {
@@ -22,7 +23,6 @@ input:hover, textarea:hover {
 
 input:focus, textarea:focus {
     border: 2px darkorange solid;
-    outline: none;
     color: darkblue;
 }
 

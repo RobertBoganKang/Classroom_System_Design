@@ -7,7 +7,6 @@ if ($nameErr == '' && $emailErr == '' && $pswdErr == '' && $pswdErr2 == '' && $f
         throw new Exception($db->error);
     }
     setcookie('username', $username, null, '/');
-    setcookie('type', 1, null, '/');
     setcookie('fname', $fname, null, '/');
     setcookie('lname', $lname, null, '/');
     setcookie('password', $password, null, '/');

@@ -21,7 +21,7 @@
     <h1>Student Sign Up</h1>
     <!--form-->
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="container-fluid">
+        <div class="container-fluid align-left">
             <!--username-->
             <div class="row">
                 <div class="col-sm-7"><input type="text" name="userName" id="username" placeholder="User's Name"

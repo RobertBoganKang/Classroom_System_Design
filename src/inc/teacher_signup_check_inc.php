@@ -12,7 +12,6 @@ $strcls = new stringUtils();
 try {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include "signUpCodeAssemble/sameCheckCode.php";
-        include "signUpCodeAssemble/checkFirstErr.php";
         include "signUpCodeAssemble/postCode4Teacher.php";
     }
 } catch (Exception $e) {

@@ -33,6 +33,8 @@ try {
     $cls = new errorPageFunc();
     $cls->sendErrMsg($e->getMessage());
 }
+/*type true: student, false: teacher*/
+$type = 1;
 ?>
 <div class="panel">
     <div class="nav">

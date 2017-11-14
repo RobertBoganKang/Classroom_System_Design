@@ -15,14 +15,12 @@
 <div class="container-fluid align-left">
     <!--UserName-->
     <div class="row">
-        <div class="col-sm-8">
-            <div class="row">
-                <div class="col-sm-4 title"><span>Username:</span></div>
-                <div class="col-sm-8">
-                    <input type="text" value="<?php echo $pq['username'] ?>"
-                           disabled>
-                </div>
-            </div>
+        <div class="col-sm-3 title">
+            <span>Username:</span>
+        </div>
+        <div class="col-sm-5">
+            <input type="text" value="<?php echo $pq['username'] ?>"
+                   disabled>
         </div>
         <div class="col-sm-4">
         </div>
@@ -30,14 +28,11 @@
     <hr>
     <!--full name-->
     <div class="row">
-        <div class="col-sm-8">
-            <div class="row">
-                <div class="col-sm-4 title"><span>Fullname:</span></div>
-                <div class="col-sm-8">
-                    <input type="text" value="<?php echo $pq['fname'] . ' ' . $pq['lname'] ?>"
-                           disabled>
-                </div>
-            </div>
+        <div class="col-sm-3 title">
+            <span>Fullname:</span></div>
+        <div class="col-sm-5">
+            <input type="text" value="<?php echo $pq['fname'] . ' ' . $pq['lname'] ?>"
+                   disabled>
         </div>
         <div class="col-sm-4">
         </div>
@@ -45,14 +40,12 @@
     <hr>
     <!--email-->
     <div class="row">
-        <div class="col-sm-8">
-            <div class="row">
-                <div class="col-sm-4 title"><span>Email:</span></div>
-                <div class="col-sm-8"><input type="text" value="<?php echo $pq['email'] ?>"
-                                             disabled>
-                </div>
-            </div>
+        <div class="col-sm-3 title">
+            <span>Email:</span></div>
+        <div class="col-sm-5"><input type="text" value="<?php echo $pq['email'] ?>"
+                                     disabled>
         </div>
+
         <div class="col-sm-4">
             <a class="update" href="https://www.google.com">* Update</a>
         </div>
@@ -62,16 +55,13 @@
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="form" method="post">
         <!--phone-->
         <div class="row">
-            <div class="col-sm-8">
-                <div class="row">
-                    <div class="col-sm-4 title"><span>Phone:</span></div>
-                    <div class="col-sm-8">
-                        <input type="text" name="phone" id="phone" value="<?php echo $phone ?>"
-                               placeholder="Type your phone number here"
-                               onkeyup='keyUpEvent(<?php echo json_encode($pq["phone"]) ?>,"phone","phoneX","form",30)'
-                               onblur='submitForm(<?php echo json_encode($pq["phone"]) ?>,"phone","form", <?php echo json_encode($phoneErr) ?>)'>
-                    </div>
-                </div>
+            <div class="col-sm-3 title">
+                <span>Phone:</span></div>
+            <div class="col-sm-5">
+                <input type="text" name="phone" id="phone" value="<?php echo $phone ?>"
+                       placeholder="Type your phone number here"
+                       onkeyup='keyUpEvent(<?php echo json_encode($pq["phone"]) ?>,"phone","phoneX","form",30)'
+                       onblur='submitForm(<?php echo json_encode($pq["phone"]) ?>,"phone","form", <?php echo json_encode($phoneErr) ?>)'>
             </div>
             <div class="col-sm-4">
                 <span class="correct" id="phoneX">* <?php echo $phoneErr ?></span>
@@ -80,17 +70,13 @@
         <hr>
         <!--address-->
         <div class="row">
-            <div class="col-sm-8">
-                <div class="row">
-                    <div class="col-sm-4 title"><span>Address:</span></div>
-                    <div class="col-sm-8">
+            <div class="col-sm-3 title">
+                <span>Address:</span></div>
+            <div class="col-sm-5">
                         <textarea placeholder="Please type address here" name="address"
                                   id="address"
                                   onkeyup='keyUpEvent(<?php echo json_encode($pq["address"]) ?>,"address","addressX","form",70)'
-                                  onblur='submitForm(<?php echo json_encode($pq["address"]) ?>,"address","form","")'>
-<?php echo $address ?></textarea>
-                    </div>
-                </div>
+                                  onblur='submitForm(<?php echo json_encode($pq["address"]) ?>,"address","form","")'><?php echo $address ?></textarea>
             </div>
             <div class="col-sm-4">
                 <span class="correct" id="addressX">*</span>

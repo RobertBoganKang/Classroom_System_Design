@@ -6,9 +6,14 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/overall.css">
     <link rel="stylesheet" href="../css/loginSystemStyle.css">
     <script src="../js/overall.js"></script>
+    <script>
+        /*textarea enter to submit*/
+        textareaEnterSubmit("#address", "form");
+    </script>
 </head>
 <body>
 <?php include "../inc/student_signup_check_inc.php" ?>
@@ -20,7 +25,7 @@
     <!--title-->
     <h1>Student Sign Up</h1>
     <!--form-->
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form">
         <div class="container-fluid align-left">
             <!--username-->
             <div class="row">
@@ -73,7 +78,7 @@
             </div>
             <!--address-->
             <div class="row">
-                <div class="col-sm-7"><textarea name="address" rows="3" placeholder="Address"></textarea>
+                <div class="col-sm-7"><textarea name="address" id="address" rows="3" placeholder="Address"></textarea>
                 </div>
                 <div class="col-sm-5"></div>
             </div>

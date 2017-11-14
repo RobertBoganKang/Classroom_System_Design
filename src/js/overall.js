@@ -91,3 +91,14 @@ function redWhenErr(x, y) {
         document.getElementById(y).style.color = "red"
     }
 }
+
+function textareaEnterSubmit(id, form) {
+    $(function () {
+        $(id).keypress(function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code == 13) {
+                document.getElementById(form).submit();
+            }
+        });
+    });
+}

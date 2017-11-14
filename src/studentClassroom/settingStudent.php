@@ -7,6 +7,7 @@
     refresh(120, function () {
         location.reload();
     });
+    textareaEnterSubmit("#address", "form");
 </script>
 <h1>Settings</h1>
 <hr>
@@ -101,6 +102,7 @@
     //    /*double click to edit*/
     //    dbclkedit("#phone");
     //    dbclkedit("#address");
-    redWhenErr(<?php echo json_encode($phoneErr) ?>, 'phoneX')
+    redWhenErr(<?php echo json_encode($phoneErr) ?>, 'phoneX');
+    changeBorderErr(<?php echo json_encode($phoneErr)?>, 'phone');
 </script>
 <?php include "studentFooter.php"; ?>

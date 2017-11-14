@@ -1,7 +1,7 @@
 <?php
 $nameErr = "";
 $pswdErr = " ";
-$username = $password = $pswd = "";
+$username = $password = $pswd = $remember = "";
 /*type true: student, false: teacher*/
 $type = 1;
 $result = "";
@@ -26,7 +26,7 @@ try {
             $username = $strcls->trimText(mysqli_real_escape_string($db, $_POST["userName"]));
             $pswd = mysqli_real_escape_string($db, $_POST["password"]);
             $password = md5($_POST["password"]);
-            $remember = isset($_POST['remember']) ? "yes" : "no";
+            $remember = ($_POST['remember'] == 'yes') ? "yes" : "no";
         }
 
         /*check name*/
@@ -82,19 +82,26 @@ try {
                         setcookie('type', $type, null, '/');
                         /*find name*/
                         $persontype = $type ? 'student' : 'teacher';
-                        $pq = mysqli_fetch_assoc(mysqli_query($db,
-                            "SELECT * FROM $persontype WHERE BINARY username ='$username';"));
+                        if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+                            $pq = mysqli_fetch_assoc(mysqli_query($db,
+                                "SELECT * FROM $persontype WHERE BINARY email ='$username';"));
+                        } else {
+                            $pq = mysqli_fetch_assoc(mysqli_query($db,
+                                "SELECT * FROM $persontype WHERE BINARY username ='$username';"));
+                        }
                         if (!$pq) {
                             throw new Exception($db->error);
                         }
-                        setcookie('fname', $pq['fname'], null, '/');
-                        setcookie('lname', $pq['lname'], null, '/');
-                        if ($remember = "yes") {
-                            setcookie('username', $row['username'], time() + (60 * 12 * $memtime), '/');
-                            setcookie('password', $row['password'], time() + (60 * 12 * $memtime), '/');
+                        if ($remember == "yes") {
+                            setcookie('username', $row['username'], time() + 43200 * $memtime, '/');
+                            setcookie('password', $row['password'], time() + 43200 * $memtime, '/');
+                            setcookie('fname', $pq['fname'], time() + 43200 * $memtime, '/');
+                            setcookie('lname', $pq['lname'], time() + 43200 * $memtime, '/');
                         } else {
                             setcookie('username', $row['username'], null, '/');
                             setcookie('password', $row['password'], null, '/');
+                            setcookie('fname', $pq['fname'], null, '/');
+                            setcookie('lname', $pq['lname'], null, '/');
                         }
                         if ($type)
                             header("Location: " . "../studentClassroom/studentMain.php");

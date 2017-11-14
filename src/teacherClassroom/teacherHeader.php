@@ -7,10 +7,28 @@
 </head>
 <body>
 <?php
-/*if session not work, redirect to sign-in*/
-if (!isset($_COOKIE['username']) || $_COOKIE['type']) {
-    include_once "../loginSystem/logout.php";
-    exit();
+try {
+    /*check username and password now*/
+    include "../inc/connect_inc.php";
+    $username = $_COOKIE['username'];
+    $password = $_COOKIE['password'];
+    $q = mysqli_query($db, "SELECT * FROM teacher WHERE username ='$username';");
+    if (!$q) {
+        throw new Exception($db->error);
+    }
+    $pq = mysqli_fetch_assoc(mysqli_query($db,
+        "SELECT * FROM teacher WHERE BINARY username ='$username';"));
+    if (!$pq) {
+        throw new Exception($db->error);
+    }
+    if ($pq['password'] != $password) {
+        include_once "../loginSystem/logout.php";
+        exit();
+    }
+} catch (Exception $e) {
+    require_once "../errorPage/errorPageFunc.php";
+    $cls = new errorPageFunc();
+    $cls->sendErrMsg($e->getMessage());
 }
 ?>
 <div class="panel">

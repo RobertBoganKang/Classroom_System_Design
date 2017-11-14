@@ -9,7 +9,7 @@ $result = "";
 $errorArr = array('');
 $errorFirstLocation = 'username';
 /*remember time*/
-$memtime = 20;
+$memtime = 7;
 /*text trim*/
 include "stringUtils.php";
 $strcls = new stringUtils();
@@ -90,8 +90,8 @@ try {
                         setcookie('fname', $pq['fname'], null, '/');
                         setcookie('lname', $pq['lname'], null, '/');
                         if ($remember = "yes") {
-                            setcookie('username', $row['username'], time() + (60 * $memtime), '/');
-                            setcookie('password', $row['password'], time() + (60 * $memtime), '/');
+                            setcookie('username', $row['username'], time() + (60 * 12 * $memtime), '/');
+                            setcookie('password', $row['password'], time() + (60 * 12 * $memtime), '/');
                         } else {
                             setcookie('username', $row['username'], null, '/');
                             setcookie('password', $row['password'], null, '/');

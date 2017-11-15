@@ -26,7 +26,7 @@ try {
             $username = $strcls->trimText(mysqli_real_escape_string($db, $_POST["userName"]));
             $pswd = mysqli_real_escape_string($db, $_POST["password"]);
             $password = md5($_POST["password"]);
-            $remember = ($_POST['remember'] == 'yes') ? "yes" : "no";
+            $remember = (isset($_POST['remember']) && $_POST['remember'] == 'yes') ? "yes" : "no";
         }
 
         /*check name*/

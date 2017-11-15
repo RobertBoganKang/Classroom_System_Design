@@ -1,3 +1,4 @@
+/*error change red border*/
 function changeBorderErr(phpAttr, id) {
     if (phpAttr.length > 1) {
         document.getElementById(id).style.border = "2px red solid";
@@ -6,6 +7,7 @@ function changeBorderErr(phpAttr, id) {
     }
 }
 
+/*if pass test change to green border*/
 function changeBorderPass(phpAttr, pass, id) {
     if (phpAttr.length < 1 && pass) {
         document.getElementById(id).className += "success";
@@ -18,6 +20,7 @@ function changeBorderPassX(phpAttr, pass, id) {
     }
 }
 
+/*double click to edit*/
 // function dbclkedit(x) {
 //     $(x).on({
 //         focus: function () {
@@ -33,7 +36,7 @@ function changeBorderPassX(phpAttr, pass, id) {
 //     });
 // }
 
-/*refresh page when no action*/
+/*refresh page when no action for some time*/
 function refresh(IDLE_TIMEOUT, dosomething) {
     var _idleSecondsCounter = 0;
     document.onclick = function () {
@@ -55,11 +58,7 @@ function refresh(IDLE_TIMEOUT, dosomething) {
     }
 }
 
-function submitForm(x, y, z, err) {
-    if (document.getElementById(y).value !== x || err.length > 1)
-        document.getElementById(z).submit();
-}
-
+/*key up event for submit after certain time, and change color*/
 function keyUpEvent(x, y, z, form, IDLE_TIMEOUT) {
     var _idleSecondsCounter = 0;
     document.onclick = function () {
@@ -86,12 +85,14 @@ function keyUpEvent(x, y, z, form, IDLE_TIMEOUT) {
         document.getElementById(z).style.color = "red"
 }
 
+/*change red when meet error message*/
 function redWhenErr(x, y) {
     if (x.length > 1) {
         document.getElementById(y).style.color = "red"
     }
 }
 
+/*press enter to submit form*/
 function textareaEnterSubmit(id, form) {
     $(function () {
         $(id).keypress(function (e) {
@@ -101,4 +102,10 @@ function textareaEnterSubmit(id, form) {
             }
         });
     });
+}
+
+/*submit form function using on-blur of input fields*/
+function submitForm(databaseval, inputtext, form, err) {
+    if (document.getElementById(inputtext).value !== databaseval || err.length > 1)
+        document.getElementById(form).submit();
 }

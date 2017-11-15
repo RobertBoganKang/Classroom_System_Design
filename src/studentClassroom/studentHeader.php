@@ -11,21 +11,15 @@
 <body>
 <?php
 try {
+    /*connect database*/
+    include "../inc/connect_inc.php";
     /*check username and password now*/
     $username = $_COOKIE['username'];
     $password = $_COOKIE['password'];
-    /*connect database*/
-    include "../inc/connect_inc.php";
-    /*if has variable, do not query*/
-    if (!isset($pq)) {
-        $q = mysqli_query($db, "SELECT * FROM student WHERE BINARY username ='$username';");
-        if (!$q) {
-            throw new Exception($db->error);
-        }
-        $pq = mysqli_fetch_assoc($q);
-        if (!$pq) {
-            throw new Exception($db->error);
-        }
+    /*get student info*/
+    $pq = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM student WHERE BINARY username ='$username';"));
+    if (!$pq) {
+        throw new Exception($db->error);
     }
     if ($pq['password'] != $password) {
         include_once "../loginSystem/logout.php";

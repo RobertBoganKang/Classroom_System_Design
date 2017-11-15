@@ -11,17 +11,23 @@
 <body>
 <?php
 try {
-    /*connect database*/
-    include "../inc/connect_inc.php";
-    /*check username and password now*/
-    $username = $_COOKIE['username'];
-    $password = $_COOKIE['password'];
-    /*get teacher info*/
-    $pq = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM teacher WHERE BINARY username ='$username';"));
-    if (!$pq) {
-        throw new Exception($db->error);
+    session_start();
+    if (!isset($_SESSION['pq'])) {
+        /*connect database*/
+        include "../inc/connect_inc.php";
+        /*get info*/
+        $username = $_COOKIE['username'];
+        $p = mysqli_query($db, "SELECT * FROM teacher WHERE BINARY username ='$username';");
+        $pq = mysqli_fetch_assoc($p);
+        if (!$pq) {
+            throw new Exception($db->error);
+        }
+        /*session pq just used for check status, no need to refresh all the time*/
+        $_SESSION['pq'] = $pq;
+    } else {
+        $pq = $_SESSION['pq'];
     }
-    if ($pq['password'] != $password) {
+    if ($pq['password'] != $_COOKIE['password']) {
         include_once "../loginSystem/logout.php";
         exit();
     }

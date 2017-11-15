@@ -1,10 +1,13 @@
 <?php
-session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "classroom";
 
+/*start session*/
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include "../errorPage/errorPageFunc.php";
 $cls = new errorPageFunc();
 

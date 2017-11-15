@@ -6,6 +6,23 @@ include "stringUtils.php";
 $strcls = new stringUtils();
 
 try {
+    /*if using the session, do query again*/
+    if (!isset($q)) {
+        /*connect database*/
+        include "../inc/connect_inc.php";
+        /*get info*/
+        $username = $_COOKIE['username'];
+        if ($type == 1) {
+            $p = mysqli_query($db, "SELECT * FROM student WHERE BINARY username ='$username';");
+        } else {
+            $p = mysqli_query($db, "SELECT * FROM teacher WHERE BINARY username ='$username';");
+
+        }
+        $pq = mysqli_fetch_assoc($p);
+        if (!$pq) {
+            throw new Exception($db->error);
+        }
+    }
     $phone = $pq['phone'];
     $address = $pq['address'];
     if ($type == 0) $office = $pq['office'];

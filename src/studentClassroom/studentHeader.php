@@ -42,6 +42,6 @@ $type = 1;
 <div class="panel">
     <div class="nav">
         <a href="studentMain.php">Home</a>
-        / <a href="settingStudent.php">Setting</a>
+        / <a href="settingStudent.php?content=0">Setting</a>
         / <a href="../loginSystem/logout.php">Logout</a>
     </div>

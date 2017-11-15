@@ -30,3 +30,13 @@ input:focus, textarea:focus {
 .correct {
     color: green;
 }
+
+input[type = submit] {
+    border: white 0 solid;
+    font-style: italic;
+    font-weight: 100;
+    font-size: 36px;
+    line-height: 100%;
+    color: #ddd;
+    text-align: right;
+}

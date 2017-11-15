@@ -25,7 +25,7 @@
     <!--title-->
     <h1>Student Sign Up</h1>
     <!--form-->
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id="form" class="form">
         <div class="container-fluid align-left">
             <!--username-->
             <div class="row">

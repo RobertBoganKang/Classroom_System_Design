@@ -15,7 +15,7 @@
 <div class="panel">
     <div class="nav"><a href="signUp.php">new user?</a></div>
     <h1>Sign In</h1>
-    <form action=" <?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+    <form action=" <?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" class="form">
         <div class="container-fluid align-left">
             <!--username-->
             <div class="row">

@@ -16,7 +16,6 @@ try {
             $p = mysqli_query($db, "SELECT * FROM student WHERE BINARY username ='$username';");
         } else {
             $p = mysqli_query($db, "SELECT * FROM teacher WHERE BINARY username ='$username';");
-
         }
         $pq = mysqli_fetch_assoc($p);
         if (!$pq) {

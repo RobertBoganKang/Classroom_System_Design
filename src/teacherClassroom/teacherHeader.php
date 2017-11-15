@@ -22,7 +22,7 @@ try {
         if (!$pq) {
             throw new Exception($db->error);
         }
-        /*session pq just used for check status, no need to refresh all the time*/
+        /*session pq just used for check status, no need to query all the time*/
         $_SESSION['pq'] = $pq;
     } else {
         $pq = $_SESSION['pq'];

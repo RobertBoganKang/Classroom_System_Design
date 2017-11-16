@@ -23,8 +23,15 @@ input:focus, textarea:focus {
     color: gray;
 }
 
-.update:hover {
+/*update dot*/
+.update:after {
+    color: green;
+    content: '*';
+}
+
+.update:hover:after {
     color: red;
+    content: '* Update';
 }
 
 .correct {

@@ -45,19 +45,6 @@
             </div>
         </div>
         <hr>
-        <!--email-->
-        <div class="row">
-            <div class="col-sm-3 title">
-                <span>Email:</span></div>
-            <div class="col-sm-5"><input type="text" value="<?php echo $pq['email'] ?>"
-                                         disabled>
-            </div>
-
-            <div class="col-sm-4">
-                <a class="update" href="https://www.google.com">* Update</a>
-            </div>
-        </div>
-        <hr>
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="form" method="post">
             <!--office-->
@@ -116,6 +103,18 @@
 <hr>
 <?php if ($_GET['content'] == 1) { ?>
     <div class="container-fluid align-left">
+        <!--email-->
+        <div class="row">
+            <div class="col-sm-3 title">
+                <span>Email:</span></div>
+            <div class="col-sm-5"><input type="text" value="<?php echo $pq['email'] ?>"
+                                         disabled>
+            </div>
+            <div class="col-sm-4">
+                <a class="update" href="https://www.google.com"></a>
+            </div>
+        </div>
+        <hr>
         <!--Password-->
         <div class="row">
             <div class="col-sm-3 title">
@@ -126,15 +125,12 @@
                        disabled style="color:lightgray; font-style: italic;">
             </div>
             <div class="col-sm-4">
-                <a class="update" href="https://www.google.com">* Change</a>
+                <a class="update" href="https://www.google.com"></a>
             </div>
         </div>
     </div>
 <?php } ?>
 <script>
-    //    /*double click to edit*/
-    //    dbclkedit("#phone");
-    //    dbclkedit("#address");
     redWhenErr(<?php echo json_encode($phoneErr) ?>, 'phoneX');
     redWhenErr(<?php echo json_encode($officeErr) ?>, 'officeX');
     changeBorderErr(<?php echo json_encode($phoneErr)?>, 'phone');

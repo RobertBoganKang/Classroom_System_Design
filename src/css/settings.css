@@ -1,11 +1,10 @@
-/*Login System Styles*/
+/*Settings Styles*/
 input[type=text], input[type=submit], input[type=password], textarea {
     width: 100%;
     background-color: white;
     alignment: center;
     color: black;
     border: white 2px solid;
-    font-size: 16px;
     outline: none;
     display: inline-block;
 }
@@ -42,7 +41,6 @@ input[type = submit] {
     border: white 0 solid;
     font-style: italic;
     font-weight: 100;
-    font-size: 36px;
     line-height: 100%;
     color: #ddd;
     text-align: right;

@@ -11,11 +11,12 @@
 </script>
 <?php include "../inc/updateInfo_inc.php" ?>
 <h1 style="float:left">Settings</h1>
-<br>
+<br><br>
 <!--Information-->
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?content=' . $_GET['content']) ?>" method="GET">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?content=' . $_GET['content']) ?>" method="GET"
+      id="form0">
     <input type="hidden" name="content" value="0">
-    <input type="submit" value="Information" class="h2">
+    <h2 onclick="document.getElementById('form0').submit()"">Information</h2>
 </form>
 <hr>
 <?php if ($_GET['content'] == 0) { ?>
@@ -26,8 +27,7 @@
                 <span>Username:</span>
             </div>
             <div class="col-sm-5">
-                <input type="text" value="<?php echo $pq['username'] ?>"
-                       disabled>
+                <?php echo $pq['username'] ?>
             </div>
             <div class="col-sm-4">
             </div>
@@ -38,8 +38,7 @@
             <div class="col-sm-3 title">
                 <span>Fullname:</span></div>
             <div class="col-sm-5">
-                <input type="text" value="<?php echo $pq['fname'] . ' ' . $pq['lname'] ?>"
-                       disabled>
+                <?php echo $pq['fname'] . ' ' . $pq['lname'] ?>
             </div>
             <div class="col-sm-4">
             </div>
@@ -97,9 +96,9 @@
 <?php } ?>
 
 <!--privacy-->
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" id="form1">
     <input type="hidden" name="content" value="1">
-    <input type="submit" value="Privacy">
+    <h2 onclick="document.getElementById('form1').submit()">Privacy</h2>
 </form>
 <hr>
 <?php if ($_GET['content'] == 1) { ?>
@@ -108,8 +107,8 @@
         <div class="row">
             <div class="col-sm-3 title">
                 <span>Email:</span></div>
-            <div class="col-sm-5"><input type="text" value="<?php echo $pq['email'] ?>"
-                                         disabled>
+            <div class="col-sm-5">
+                <?php echo $pq['email'] ?>
             </div>
             <div class="col-sm-4">
                 <a class="update" href="../errorPage/featureConstruction.html"></a>

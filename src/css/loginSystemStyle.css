@@ -8,7 +8,6 @@ input[type=text], input[type=submit], input[type=password], textarea {
     padding: 2px 4px;
     border: 2px gray solid;
     round-clip: 2px;
-    font-size: 16px;
     outline: none;
 }
 
@@ -38,6 +37,12 @@ input[type=checkbox] + .remember-text:before {
 input[type=checkbox]:checked + .remember-text:before {
     content: "*";
     color: green;
+}
+
+/*form style*/
+.form {
+    max-width: 800px;
+    text-align: left;
 }
 
 /*error message*/

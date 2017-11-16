@@ -18,6 +18,9 @@ try {
         /*get info*/
         $username = $_COOKIE['username'];
         $p = mysqli_query($db, "SELECT * FROM teacher WHERE BINARY username ='$username';");
+        if (!$p) {
+            throw new Exception($db->error);
+        }
         $pq = mysqli_fetch_assoc($p);
         if (!$pq) {
             throw new Exception($db->error);

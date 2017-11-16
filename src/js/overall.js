@@ -106,6 +106,6 @@ function textareaEnterSubmit(id, form) {
 
 /*submit form function using on-blur of input fields*/
 function submitForm(databaseval, inputtext, form, err) {
-    if (document.getElementById(inputtext).value !== databaseval || err.length > 1)
+    if (document.getElementById(inputtext).value.toString() !== databaseval.toString() || err.length > 1)
         document.getElementById(form).submit();
 }

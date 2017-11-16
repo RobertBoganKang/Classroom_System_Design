@@ -13,7 +13,7 @@
 <h1 style="float:left">Settings</h1>
 <br>
 <!--Information-->
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET">
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?content=' . $_GET['content']) ?>" method="GET">
     <input type="hidden" name="content" value="0">
     <input type="submit" value="Information" class="h2">
 </form>
@@ -46,7 +46,8 @@
         </div>
         <hr>
 
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="form" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?content=' . $_GET['content']) ?>" id="form"
+              method="post">
             <!--office-->
             <div class="row">
                 <div class="col-sm-3 title">

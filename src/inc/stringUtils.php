@@ -2,7 +2,7 @@
 
 class stringUtils
 {
-    function trimText($data)
+    public function trimText($data)
     {
         $data = trim($data);
         /*$data = stripslashes($data);*/

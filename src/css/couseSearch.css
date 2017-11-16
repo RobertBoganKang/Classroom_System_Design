@@ -1,0 +1,53 @@
+input {
+    outline: none;
+}
+
+.jump {
+    width: 3em;
+    border: 0;
+    text-align: center;
+}
+
+.jumpPage {
+
+}
+
+.jumpNav {
+
+}
+
+.form {
+    float: right;
+    display: inline-block;
+}
+
+/*class left border effect*/
+.csdetail {
+    padding: 10px;
+    border-left: 4px white solid;
+}
+
+.csdetail:hover {
+    border-left: 4px lightgray solid;
+}
+
+/*star colors*/
+.stars1 {
+    color: red;
+}
+
+.stars2 {
+    color: orangered;
+}
+
+.stars3 {
+    color: darkorange;
+}
+
+.stars4 {
+    color: yellowgreen;
+}
+
+.stars5 {
+    color: green;
+}

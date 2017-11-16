@@ -58,7 +58,7 @@
         }
         $offset = ($page - 1) * $limit;
 
-        $semclsq = mysqli_query($db, "SELECT * FROM semcourse WHERE semester_id =$semester LIMIT $limit OFFSET $offset;");
+        $semclsq = mysqli_query($db, "SELECT * FROM semcourse WHERE semester_id =$semester ORDER BY id DESC LIMIT $limit OFFSET $offset;");
         if (!$semclsq) {
             throw new Exception($db->error);
         }
@@ -83,7 +83,7 @@
                                     <?php
                                     /*print course week and time*/
                                     echo $coursecls->str2week($row['week']) . "|";
-                                    echo $row['start'] . " ~ " . $row['end'] . "|";
+                                    echo $coursecls->shortenTime($row['start']) . " ~ " . $coursecls->shortenTime($row['end']) . "|";
                                     /*print teacher name*/
                                     echo $assocteacher['fname'] . ' ' . $assocteacher['lname'];
                                     echo '<br>';
@@ -105,24 +105,28 @@
                 <input type="number" name="page" id="page" value="<?= $page; ?>" min="1" max="<?= $maxpage ?>"
                        onblur="submitForm(<?= $_GET['page'] ?>, 'page', 'form', 0)" class="jump">
             </form>
-            <!--first page-->
-            <?php if ($page != 1) { ?>
-                <a class="jumpPage" href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1') ?>">First</a>
-            <?php } ?>
-            <!--previous page-->
-            <?php if ($page != 1) { ?>
-                | <a class="jumpPage"
-                     href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1)) ?>">Previous</a>
-            <?php } ?>
-            <!--next page-->
-            <?php
-            if ($page != 1 && $page != $maxpage) {
-                echo "|";
-            }
-            if ($page != $maxpage) { ?>
-                <a class="jumpPage"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1)) ?>">Next</a>
-            <?php } ?>
+            <span style="color: lightgray">
+                [
+                <!--first page-->
+                <?php if ($page != 1) { ?>
+                    <a class="jumpPage" href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1') ?>">#</a>
+                <?php } ?>
+                <!--previous page-->
+                <?php if ($page != 1) { ?>
+                    | <a class="jumpPage"
+                         href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1)) ?>">&lt&lt</a>
+                <?php } ?>
+                <!--next page-->
+                <?php
+                if ($page != 1 && $page != $maxpage) {
+                    echo "|";
+                }
+                if ($page != $maxpage) { ?>
+                    <a class="jumpPage"
+                       href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1)) ?>">&gt&gt</a>
+                <?php } ?>
+                ]
+            </span style="color: lightgray">
         </span>
         <?php
     } catch (Exception $e) {

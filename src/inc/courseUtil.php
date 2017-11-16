@@ -40,7 +40,7 @@ class courseUtil
         $strarr = str_split($str);
         $strbuilder = "";
         for ($i = 0; $i < count($strarr); $i++) {
-            $strbuilder = $strbuilder . $this->weekText($strarr[$i] - '0');
+            $strbuilder .= $this->weekText($strarr[$i] - '0');
             if ($i != count($strarr) - 1) {
                 $strbuilder = $strbuilder . ", ";
             }
@@ -60,5 +60,24 @@ class courseUtil
             default:
                 return "";
         }
+    }
+
+    public function shortenTime($time)
+    {
+        $stringbuilder = "";
+        $arr = explode(":", $time);
+        if ((int)$arr[0] > 12) {
+            $stringbuilder .= (string)((int)$arr[0] - 12);
+        } else {
+            $stringbuilder .= (string)((int)$arr[0]);
+        }
+        $stringbuilder .= ":";
+        $stringbuilder .= $arr[1];
+        if ((int)$arr[0] >= 12) {
+            $stringbuilder .= "AM";
+        } else {
+            $stringbuilder .= "PM";
+        }
+        return $stringbuilder;
     }
 }

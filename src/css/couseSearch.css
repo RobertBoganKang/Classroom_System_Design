@@ -6,14 +6,32 @@ input {
     width: 3em;
     border: 0;
     text-align: center;
+    color: dimgray;
 }
 
-.jumpPage {
-
+.jumpPage:visited {
+    color: dimgray;
 }
 
-.jumpNav {
+.jumpPage:hover {
+    color: gray;
+}
 
+.course {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.course:visited, .course:link {
+    color: #444;
+}
+
+.course:hover {
+    color: black;
+}
+
+.coursedetail {
+    color: dimgray;
 }
 
 .form {

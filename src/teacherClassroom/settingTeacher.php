@@ -112,7 +112,7 @@
                                          disabled>
             </div>
             <div class="col-sm-4">
-                <a class="update" href="https://www.google.com"></a>
+                <a class="update" href="../errorPage/featureConstruction.html"></a>
             </div>
         </div>
         <hr>
@@ -126,7 +126,7 @@
                        disabled style="color:lightgray; font-style: italic;">
             </div>
             <div class="col-sm-4">
-                <a class="update" href="https://www.google.com"></a>
+                <a class="update" href="../errorPage/featureConstruction.html"></a>
             </div>
         </div>
     </div>

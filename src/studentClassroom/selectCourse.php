@@ -72,14 +72,14 @@
             <div class="container-fluid align-left csdetail">
                 <div class="row">
                     <div class="col-sm-10">
-                        <a href="https://www.google.com">
+                        <a class="course" href="../errorPage/featureConstruction.html">
                             <?php
                             /*print course name*/
                             echo $assocourse['name'];
                             ?>
                         </a>
                         <br>
-                        <span>
+                        <span class="coursedetail">
                                     <?php
                                     /*print course week and time*/
                                     echo $coursecls->str2week($row['week']) . "|";
@@ -91,14 +91,14 @@
                                 </span>
                     </div>
                     <!--stars ranking feature is currently unavailable-->
-                    <div class="col-sm-2 stars3">*</div>
+                    <div class="col-sm-2 stars4">*</div>
                 </div>
             </div>
             <?php
         }
         ?>
         <hr>
-        <span class="jumpNav">
+        <span>
             <!--jump page-->
             <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET"
                   id="form" class="form">

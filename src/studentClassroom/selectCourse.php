@@ -10,7 +10,9 @@
     try {
         /*load php functions*/
         require_once "../inc/courseUtil.php";
+        require_once "../inc/stringUtils.php";
         $coursecls = new courseUtil();
+        $stringcls = new stringUtils();
 
         /*if not connect in the header file, connect database*/
         if (!isset($p)) {
@@ -26,28 +28,53 @@
         if (!$seminfo) {
             throw new Exception($db->error);
         }
+        /*set get values*/
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+        if (isset($_GET['search'])) {
+            $search = $_GET['search'];
+            /*trim search input*/
+            $search = $stringcls->trimText($search);
+        } else {
+            $search = "";
+        }
         ?>
         <br>
+        <!--search engine-->
         <div class="container-fluid searchrow">
             <div class="row">
                 <div class="col-sm-7">
-                    <form action="#">
-                        <input type="text" placeholder="Type to search..." class="searchinput" autofocus>
+                    <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="formsearch" method="GET">
+                        <input type="hidden" name="page" value="<?= $page ?>">
+                        <input type="text" name="search" id="search" placeholder="Type to search..." class="searchinput"
+                               value="<?= $search ?>" autofocus
+                               onblur='submitForm0(<?= json_encode($search) ?>, "search", "formsearch")'>
                     </form>
                 </div>
                 <div class="col-sm-5">
-                    <h2>
-                        <?= $seminfo['year'] . ' ' . $coursecls->semester2str($seminfo['type']) ?>
-                    </h2>
+                    <h2><?= $seminfo['year'] . ' ' . $coursecls->semester2str($seminfo['type']) ?></h2>
                 </div>
             </div>
         </div>
         <hr class="hr">
 
         <?php
+        /*search engine sql builder*/
+        $searchSQLbuilder = '';
+        $searcharr = array_unique(preg_split('/\s+/', $search));
+        if ($search != '') {
+            $searchSQLbuilder .= " ";
+            for ($i = 0; $i < count($searcharr); $i++) {
+                $searchSQLbuilder .= " AND (cname LIKE '%$searcharr[$i]%' OR cdetail LIKE '%$searcharr[$i]%' OR tfname LIKE '%$searcharr[$i]%' OR tlname LIKE '%$searcharr[$i]%')";
+            }
+            $searchSQLbuilder .= " ";
+        }
+
         /*count how many course available*/
-        /** wrong*/
-        $count = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester;"));
+        $count = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester" . $searchSQLbuilder . ";"));
         if (!$count) {
             throw new Exception($db->error);
         }
@@ -55,12 +82,6 @@
         if ($count['count'] > 0) {
             /*how many result on one page*/
             $limit = 3;
-            /*get page number*/
-            if (!isset($_GET['page'])) {
-                $page = 1;
-            } else {
-                $page = $_GET['page'];
-            }
             /*maximum page*/
             $maxpage = intdiv((int)$count['count'] + $limit - 1, $limit);
             if ($page < 1) {
@@ -71,7 +92,7 @@
             }
             $offset = ($page - 1) * $limit;
 
-            $semclsq = mysqli_query($db, "SELECT * FROM addcourse WHERE semester_id =$semester ORDER BY id DESC LIMIT $limit OFFSET $offset;");
+            $semclsq = mysqli_query($db, "SELECT * FROM addcourse WHERE semester_id =$semester " . $searchSQLbuilder . " ORDER BY id DESC LIMIT $limit OFFSET $offset;");
             if (!$semclsq) {
                 throw new Exception($db->error);
             }
@@ -115,7 +136,7 @@
                                 <?= $coursecls->starStr(5 - (int)$row['rating']) ?>
                             </span>
                             <!--popularity-->
-                            <span class="popularity"><?= $row['nrating'] ?></span>
+                            <span class="popularity">(<?= $row['nrating'] ?>)</span>
                         </div>
                     </div>
                 </div>
@@ -131,19 +152,21 @@
             <!--jump page by number-->
             <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET"
                   id="form" class="form">
+                <input type="hidden" name="search" value="<?= $search ?>">
         <input type="number" name="page" id="page" value="<?= $page; ?>" min="1" max="<?= $maxpage ?>"
-               onblur="submitForm(<?= $_GET['page'] ?>, 'page', 'form', 0)" class="jump">
+               onblur="submitForm0(<?= $page ?>, 'page', 'form')" class="jump">
         </form>
         <span class="navbar">
                 [
             <!--first page-->
             <?php if ($page != 1) { ?>
-                <a class="jumpPage" href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1') ?>">#</a>
+                <a class="jumpPage"
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1' . '&search=' . $search) ?>">#</a>
             <?php } ?>
             <!--previous page-->
             <?php if ($page != 1) { ?>
                 | <a class="jumpPage"
-                     href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1)) ?>">&lt&lt</a>
+                     href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1) . '&search=' . $search) ?>">&lt&lt</a>
             <?php } ?>
             <!--next page-->
             <?php
@@ -152,7 +175,7 @@
             }
             if ($page != $maxpage) { ?>
                 <a class="jumpPage"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1)) ?>">&gt&gt</a>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1) . '&search=' . $search) ?>">&gt&gt</a>
             <?php } ?>
             ]
             </span>

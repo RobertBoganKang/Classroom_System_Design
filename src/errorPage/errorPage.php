@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../css/loginSystemStyle.css">
 </head>
 <body>
+<!--hello error message-->
+<?php if (isset($_SESSION['errMst'])) {
+    echo '<!--' . $_SESSION['errMsg'] . '-->';
+} ?>
 <div class="panel">
     <?php
     session_start();

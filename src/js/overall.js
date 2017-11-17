@@ -109,3 +109,14 @@ function submitForm(databaseval, inputtext, form, err) {
     if (document.getElementById(inputtext).value.toString() !== databaseval.toString() || err.length > 1)
         document.getElementById(form).submit();
 }
+
+function submitForm0(databaseval, inputtext, form) {
+    if (document.getElementById(inputtext).value.toString() !== databaseval.toString())
+        document.getElementById(form).submit();
+}
+
+/*trim string*/
+function strTrim(str) {
+    return str.replace(/^\s+|\s+$/gm, '');
+
+}

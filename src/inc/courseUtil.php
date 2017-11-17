@@ -80,4 +80,17 @@ class courseUtil
         }
         return $stringbuilder;
     }
+
+    /*print star*/
+    public function starStr($star)
+    {
+        $starbuilder = '';
+        for ($i = 0; $i < $star; $i++) {
+            $starbuilder .= '*';
+            if ($i != $star - 1) {
+                $starbuilder .= ' ';
+            }
+        }
+        return $starbuilder;
+    }
 }

@@ -41,8 +41,10 @@ input {
 
 /*class left border effect*/
 .csdetail {
-    padding: 10px;
+    padding: 15px;
     border-left: 4px white solid;
+    max-width: 800px;
+    display: inline-block;
 }
 
 .csdetail:hover {
@@ -50,6 +52,10 @@ input {
 }
 
 /*star colors*/
+.stars0 {
+    color: lightgray;
+}
+
 .stars1 {
     color: red;
 }
@@ -68,4 +74,58 @@ input {
 
 .stars5 {
     color: green;
+}
+
+/*result indicator*/
+.results {
+    font-size: 14px;
+    font-style: italic;
+    text-align: right;
+    color: lightgray;
+    line-height: 100%;
+}
+
+.noresult {
+    color: pink;
+}
+
+.navbar {
+    color: lightgray;
+    display: inline;
+}
+
+.navbar:hover {
+    color: #bbb;
+}
+
+/*search input*/
+.searchinput {
+    color: darkblue;
+    font-style: italic;
+    width: 100%;
+    line-height: 2em;
+    border: white 1px solid;
+}
+
+.searchinput:hover {
+    border-bottom: dimgray 1px solid;
+}
+
+.searchinput:focus {
+    border-bottom: dimgray 1px solid;
+    border-top: #eee 1px dashed;
+}
+
+.searchinput::placeholder {
+    color: lightgray;
+    font-style: italic;
+}
+
+.searchrow {
+    display: inline-block;
+}
+
+.hr {
+    margin-top: -4px;
+    margin-bottom: 0;
 }

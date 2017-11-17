@@ -13,6 +13,7 @@
     <?php
     session_start();
     if (isset($_SESSION['errMsg'])) { ?>
+        <?= '<!--' . $_SESSION['errMsg'] . '-->' ?>
         <div class="nav"><a href="help.php" target="_blank">Help</a></div>
         <div style="display: inline-block">
             <h1 style="font-size: 60px">Error :(</h1>

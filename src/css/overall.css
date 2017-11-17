@@ -1,10 +1,14 @@
 /*universal setting*/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
-@import url(http://fonts.googleapis.com/css?family=Homemade+Apple:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 
 html, html * {
     font-family: 'Open Sans', sans-serif;
 }
+
+/*@import url(http://fonts.googleapis.com/css?family=Homemade+Apple:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);*/
+/*html, html * {*/
+    /*font-family: 'Homemade Apple', sans-serif;*/
+/*}*/
 
 ::selection {
     background: lightgray;
@@ -54,7 +58,7 @@ p {
 
 /*unvisited link*/
 a {
-    color: green;
+    color: dimgray;
     text-decoration: none;
 }
 

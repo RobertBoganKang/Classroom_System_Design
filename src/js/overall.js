@@ -21,20 +21,20 @@ function changeBorderPassX(phpAttr, pass, id) {
 }
 
 /*double click to edit*/
-// function dbclkedit(x) {
-//     $(x).on({
-//         focus: function () {
-//             if (!$(this).data('disabled')) this.blur();
-//         },
-//         dblclick: function () {
-//             $(this).data('disabled', true);
-//             this.focus()
-//         },
-//         blur: function () {
-//             $(this).data('disabled', false);
-//         }
-//     });
-// }
+function dbclkedit(x) {
+    $(x).on({
+        focus: function () {
+            if (!$(this).data('disabled')) this.blur();
+        },
+        dblclick: function () {
+            $(this).data('disabled', true);
+            this.focus()
+        },
+        blur: function () {
+            $(this).data('disabled', false);
+        }
+    });
+}
 
 /*refresh page when no action for some time*/
 function refresh(IDLE_TIMEOUT, dosomething) {

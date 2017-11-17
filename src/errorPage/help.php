@@ -18,7 +18,7 @@
             <h1 style="font-size: 40px">Contact Info :-D</h1>
         </div>
         <div class="row" style="padding: 10px">
-            <div class="col-sm-7 contactPerson"><p>Email: zuheng.kang@marquette.edu</p>
+            <div class="col-sm-7 contactPerson"><p>Email: zuheng.kang@mu.edu</p>
                 <p>Phone: 414-204-3668</p>
             </div>
             <div class="col-sm-5 contactPerson"><p>Email: tao.yan@mu.edu</p>

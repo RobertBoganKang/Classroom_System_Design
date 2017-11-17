@@ -45,9 +45,3 @@ input[type = submit] {
     color: #ddd;
     text-align: right;
 }
-
-/*page handle bar style*/
-.navbar:hover {
-    color: white;
-    display: inline;
-}

@@ -76,12 +76,13 @@
             if (!$semclsq) {
                 throw new Exception($db->error);
             }
+            /**test area*/
             echo mysqli_num_rows($semclsq);
             /*UI continue*/
             while ($row = mysqli_fetch_assoc($semclsq)) {
                 /*find course details*/
                 $id = $row['course_id'];
-                $assocourse = mysqli_fetch_assoc(mysqli_query($db, "SELECT name, teacher_id FROM course WHERE id='$id';"));
+                $assocourse = mysqli_fetch_assoc(mysqli_query($db, "SELECT cname, teacher_id FROM course WHERE id='$id';"));
                 $id = $assocourse['teacher_id'];
                 $assocteacher = mysqli_fetch_assoc(mysqli_query($db, "SELECT fname, lname FROM teacher WHERE id='$id';"));
                 ?>
@@ -91,7 +92,7 @@
                             <a class="course" href="../errorPage/featureConstruction.html">
                                 <?php
                                 /*print course name*/
-                                echo $assocourse['name'];
+                                echo $assocourse['cname'];
                                 ?>
                             </a>
                             <br>
@@ -99,14 +100,14 @@
                                     <?php
                                     /*print course week and time*/
                                     echo $coursecls->str2week($row['week']) . "|";
-                                    echo $coursecls->shortenTime($row['start']) . " ~ " . $coursecls->shortenTime($row['end']) . "|";
+                                    echo $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "|";
                                     /*print teacher name*/
                                     echo $assocteacher['fname'] . ' ' . $assocteacher['lname'];
                                     echo '<br>';
                                     ?>
                                 </span>
                         </div>
-                        <!--stars ranking feature is currently unavailable-->
+                        <!--stars ranking-->
                         <div class="col-sm-3">
                             <span class="stars<?= round((int)$row['rating']) ?>">
                                 <?= $coursecls->starStr((int)$row['rating']) ?>

@@ -85,6 +85,23 @@ input {
     line-height: 100%;
 }
 
+/*popularity*/
+.popularity {
+    font-size: 8px;
+    font-style: italic;
+    text-align: right;
+    color: #eee;
+    line-height: 100%;
+}
+
+/*rating details*/
+.ratingdetails {
+    font-size: 10px;
+    font-style: italic;
+    text-align: right;
+    line-height: 100%;
+}
+
 .noresult {
     color: pink;
 }

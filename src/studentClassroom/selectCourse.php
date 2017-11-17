@@ -47,7 +47,7 @@
         <?php
         /*count how many course available*/
         /** wrong*/
-        $count = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM semcourse WHERE semester_id = $semester;"));
+        $count = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester;"));
         if (!$count) {
             throw new Exception($db->error);
         }
@@ -71,20 +71,13 @@
             }
             $offset = ($page - 1) * $limit;
 
-
-            $semclsq = mysqli_query($db, "SELECT * FROM semcourse WHERE semester_id =$semester ORDER BY id DESC LIMIT $limit OFFSET $offset;");
+            $semclsq = mysqli_query($db, "SELECT * FROM addcourse WHERE semester_id =$semester ORDER BY id DESC LIMIT $limit OFFSET $offset;");
             if (!$semclsq) {
                 throw new Exception($db->error);
             }
             /**test area*/
-            echo mysqli_num_rows($semclsq);
             /*UI continue*/
             while ($row = mysqli_fetch_assoc($semclsq)) {
-                /*find course details*/
-                $id = $row['course_id'];
-                $assocourse = mysqli_fetch_assoc(mysqli_query($db, "SELECT cname, teacher_id FROM course WHERE id='$id';"));
-                $id = $assocourse['teacher_id'];
-                $assocteacher = mysqli_fetch_assoc(mysqli_query($db, "SELECT fname, lname FROM teacher WHERE id='$id';"));
                 ?>
                 <div class="container-fluid csdetail">
                     <div class="row">
@@ -92,7 +85,7 @@
                             <a class="course" href="../errorPage/featureConstruction.html">
                                 <?php
                                 /*print course name*/
-                                echo $assocourse['cname'];
+                                echo $row['cname'];
                                 ?>
                             </a>
                             <br>
@@ -102,19 +95,27 @@
                                     echo $coursecls->str2week($row['week']) . "|";
                                     echo $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "|";
                                     /*print teacher name*/
-                                    echo $assocteacher['fname'] . ' ' . $assocteacher['lname'];
+                                    echo $row['tfname'] . ' ' . $row['tlname'];
                                     echo '<br>';
                                     ?>
                                 </span>
                         </div>
                         <!--stars ranking-->
                         <div class="col-sm-3">
+                            <!--rating details-->
+                            <span class="stars<?= round((int)$row['rating']) ?> ratingdetails">
+                                <?= bcdiv($row['rating'] * 10, 10, 1) ?>
+                            </span>
+                            <!--color stars-->
                             <span class="stars<?= round((int)$row['rating']) ?>">
                                 <?= $coursecls->starStr((int)$row['rating']) ?>
                             </span>
+                            <!--gray stars-->
                             <span style="color:#eee">
                                 <?= $coursecls->starStr(5 - (int)$row['rating']) ?>
                             </span>
+                            <!--popularity-->
+                            <span class="popularity"><?= $row['nrating'] ?></span>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,6 @@
         }
 
         /*print semester information*/
-        /**test area*/
         $semester = $_COOKIE['semester'];
         $seminfo = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM semester WHERE id = $semester;"));
         if (!$seminfo) {
@@ -66,36 +65,102 @@
         ?>
         <br>
         <!--search engine-->
-        <div class="container-fluid searchrow">
-            <div class="row">
-                <div class="col-sm-7">
-                    <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="formsearch" method="GET">
+        <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="formsearch" method="GET" onsubmit="ckbx2arr(['advType0', 'advType1', 'advType2'], 'advType');
+    ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');
+">
+            <div class="container-fluid searchrow">
+                <div class="row">
+                    <div class="col-sm-7">
                         <input type="hidden" name="page" value="<?= $page ?>">
-                        <!--advanced search field-->
-                        <?php if ($adv) {
-                            ?>
-                            <input type="hidden" name="advType" value="<?= $advType ?>">
-                            <input type="hidden" name="advWeek" value="<?= $advWeek ?>">
-                            <input type="hidden" name="advFilter" value="<?= $advFilter ?>">
-                            <?php
-                        } ?>
                         <!--if flip set, the form come from here, to disable sql count operation-->
                         <input type="hidden" name="f" value="0">
                         <input type="text" name="search" id="search" placeholder="Type to search..." class="searchinput"
-                               value="<?= $search ?>" autofocus
-                               onblur='submitForm0(<?= json_encode($search) ?>, "search", "formsearch")'>
-                    </form>
-                </div>
-                <div class="col-sm-5">
-                    <h2><?= $seminfo['year'] . ' ' . $coursecls->semester2str($seminfo['type']) ?></h2>
+                               value="<?= $search ?>"
+                               onblur='submitForm(<?= $adv ? json_encode("") : json_encode($search) ?>, "search", "formsearch")'>
+                    </div>
+                    <div class="col-sm-5">
+                        <h2><?= $seminfo['year'] . ' ' . $coursecls->semester2str($seminfo['type']) ?></h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr class="hr">
-
-        <!--advanced tabs-->
-        <form action="" method="get">
-            <input type="hidden" value="">
+            <hr class="hr">
+            <!--advanced ribbon-->
+            <?php if (!$adv) { ?>
+                <!--non-advanced mode-->
+                <a class="advance"
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF']) . '?page=' . (string)$page . $searchURL . "&advType=012&advWeek=&advFilter=0&adv=1" ?>">advanced</a>
+            <?php } else { ?>
+                <!--advanced mode-->
+                <a class="advance2"
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF']) . '?page=' . (string)$page . $searchURL ?>">advanced</a>
+                <!--advanced type gather information-->
+                <div class="container-fluid advancebox">
+                    <!--where to search-->
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <span class="title">Where: </span>
+                        </div>
+                        <div class="col-sm-9">
+                            [<span id="advType0" class="advType0"
+                                   style="color:<?= $coursecls->ckbxColor("advType", "0") ?>"
+                                   onclick="changeColor('advType0')"></span>
+                            | <span id="advType1" class="advType1"
+                                    style="color:<?= $coursecls->ckbxColor("advType", "1") ?>"
+                                    onclick="changeColor('advType1')"></span>
+                            |<span id="advType2" class="advType2"
+                                   style="color:<?= $coursecls->ckbxColor("advType", "2") ?>"
+                                   onclick="changeColor('advType2')"></span>]
+                        </div>
+                    </div>
+                    <hr>
+                    <!--week filter-->
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <span class="title">Week: </span>
+                        </div>
+                        <div class="col-sm-9">
+                            [<span id="advWeek0" style="color:<?= $coursecls->ckbxColor("advWeek", "0") ?>"
+                                   onclick="changeColor('advWeek0')">Su</span>
+                            | <span id="advWeek1" style="color:<?= $coursecls->ckbxColor("advWeek", "1") ?>"
+                                    onclick="changeColor('advWeek1')">Mo</span>
+                            | <span id="advWeek2" style="color:<?= $coursecls->ckbxColor("advWeek", "2") ?>"
+                                    onclick="changeColor('advWeek2')">Tu</span>
+                            | <span id="advWeek3" style="color:<?= $coursecls->ckbxColor("advWeek", "3") ?>"
+                                    onclick="changeColor('advWeek3')">We</span>
+                            | <span id="advWeek4" style="color:<?= $coursecls->ckbxColor("advWeek", "4") ?>"
+                                    onclick="changeColor('advWeek4')">Th</span>
+                            | <span id="advWeek5" style="color:<?= $coursecls->ckbxColor("advWeek", "5") ?>"
+                                    onclick="changeColor('advWeek5')">Fr</span>
+                            | <span id="advWeek6" style="color:<?= $coursecls->ckbxColor("advWeek", "6") ?>"
+                                    onclick="changeColor('advWeek6')">Sa</span>]
+                        </div>
+                    </div>
+                    <hr>
+                    <!--search filter-->
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <span class="title">Rank: </span>
+                        </div>
+                        <div class="col-sm-9">
+                            <select name="advFilter" class="advFilter" id="advFilter">
+                                <option value="0" <?php if ($_GET['advFilter'] == "0") echo 'selected="selected"' ?>>
+                                    Course Name
+                                </option>
+                                <option value="1" <?php if ($_GET['advFilter'] == "1") echo 'selected="selected"' ?>>
+                                    Rating
+                                </option>
+                                <option value="2" <?php if ($_GET['advFilter'] == "2") echo 'selected="selected"' ?>>
+                                    Popularity
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--advanced search field-->
+                <input type="hidden" name="advType" id="advType">
+                <input type="hidden" name="advWeek" id="advWeek">
+                <hr>
+            <?php } ?>
         </form>
         <?php
         /*search engine sql builder*/
@@ -110,7 +175,7 @@
         }
 
         /*if f(lip) is set, it means the input changes, we need to sql count; if flip pages, we don't count*/
-        if (!isset($_SESSION['count']) || isset($_GET['f'])) {
+        if (!isset($_SESSION['count']) || isset($_GET['f']) || isset($_GET['adv'])) {
             /*count how many course available*/
             $_SESSION['count'] = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester " . $coursecls->advWeek($advWeek) . $searchWordSQLbuilder . ";"));
             $count = $_SESSION['count'];
@@ -197,7 +262,7 @@
                   id="form" class="form">
                 <?php if ($adv) {
                     ?>
-                    <input type="hidden" name="advType" value="<?= $advType ?>">
+                    <input type="hidden" name="advType" id="advType">
                     <input type="hidden" name="advWeek" value="<?= $advWeek ?>">
                     <input type="hidden" name="advFilter" value="<?= $advFilter ?>">
                     <?php

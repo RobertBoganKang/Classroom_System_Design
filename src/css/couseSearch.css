@@ -76,6 +76,43 @@ input {
     color: green;
 }
 
+/*advanced*/
+.advance, .advance:visited {
+    font-size: 14px;
+    font-style: italic;
+    padding: 2px;
+    margin: 0;
+    border-bottom: 1px white solid;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px white solid;
+    float: right;
+    color: #eee;
+    line-height: 100%;
+    display: block;
+}
+
+.advance:hover {
+    color: lightgray;
+    border-bottom: 1px #eee dashed;
+}
+
+.advance2, .advance2:visited {
+    font-size: 14px;
+    font-style: italic;
+    padding: 2px;
+    margin: 0;
+    float: right;
+    color: #aaa;
+    line-height: 100%;
+    border-bottom: 1px lightgray dashed;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px gray solid;
+    background: white;
+    display: block;
+}
+
 /*result indicator*/
 .results {
     font-size: 14px;
@@ -98,12 +135,12 @@ input {
 .ratingdetails {
     font-size: 10px;
     font-style: italic;
-    text-align: right;
     line-height: 100%;
 }
 
 .noresult {
     color: pink;
+    display: inline-block;
 }
 
 .navbar {
@@ -145,4 +182,52 @@ input {
 .hr {
     margin-top: -4px;
     margin-bottom: 0;
+}
+
+/*Where to search*/
+.advType0:after {
+    content: "CN";
+}
+
+.advType0:hover:after {
+    content: "Course Name";
+}
+
+.advType1:after {
+    content: "CD";
+}
+
+.advType1:hover:after {
+    content: "Course Detail";
+}
+
+.advType2:after {
+    content: "TN";
+}
+
+.advType2:hover:after {
+    content: "Teacher Name";
+}
+
+/*advanced search title*/
+.title {
+    font-weight: 700;
+    color: #444;
+}
+
+.title:hover {
+    color: black;
+}
+
+.advancebox {
+    margin: 4px;
+    display: inline-block;
+    color: lightgray;
+}
+
+.advFilter {
+    background: white;
+    border: 0;
+    outline: none;
+    color: gray;
 }

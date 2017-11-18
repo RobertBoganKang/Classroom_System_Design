@@ -120,3 +120,23 @@ function strTrim(str) {
     return str.replace(/^\s+|\s+$/gm, '');
 
 }
+
+/*checkbox like click*/
+function changeColor(id) {
+    if (document.getElementById(id).style.color === 'green') {
+        document.getElementById(id).style.color = 'lightgray';
+    } else {
+        document.getElementById(id).style.color = 'green';
+    }
+}
+
+/*checkbox to array*/
+function ckbx2arr(idarr, input) {
+    var str = '';
+    for (var i = 0; i < idarr.length; i++) {
+        if (document.getElementById(idarr[i]).style.color === 'green') {
+            str = str.concat(i.toString());
+        }
+    }
+    document.getElementById(input).value = str;
+}

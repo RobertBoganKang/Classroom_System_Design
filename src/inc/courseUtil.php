@@ -135,7 +135,7 @@ class courseUtil
             $strarr = str_split($str);
             sort($strarr);
             $str2 = implode($strarr);
-            return 'week = $str2';
+            return "AND week LIKE '%$str2%'";
         }
     }
 
@@ -151,5 +151,11 @@ class courseUtil
             default:
                 return "";
         }
+    }
+
+    /*checkbox color initializer*/
+    public function ckbxColor($id, $val)
+    {
+        return (strpos($_GET[$id], $val) !== false) ? "green" : "lightgray";
     }
 }

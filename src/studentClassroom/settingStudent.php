@@ -24,7 +24,7 @@
         <!--Id-->
         <div class="row">
             <div class="col-sm-3 title">
-                <span>ID:</span>
+                <span>#:</span>
             </div>
             <div class="col-sm-5">
                 <?php echo $pq['id'] ?>

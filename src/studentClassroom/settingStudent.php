@@ -16,11 +16,23 @@
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?content=' . $_GET['content']) ?>" method="GET"
       id="form0">
     <input type="hidden" name="content" value="0">
-    <h2 onclick="document.getElementById('form0').submit()"">Information</h2>
+    <h2 onclick="document.getElementById('form0').submit()">Information</h2>
 </form>
 <hr>
 <?php if ($_GET['content'] == 0) { ?>
     <div class="container-fluid align-left">
+        <!--Id-->
+        <div class="row">
+            <div class="col-sm-3 title">
+                <span>ID:</span>
+            </div>
+            <div class="col-sm-5">
+                <?php echo $pq['id'] ?>
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+        <hr>
         <!--UserName-->
         <div class="row">
             <div class="col-sm-3 title">
@@ -87,7 +99,7 @@
 </form>
 <hr>
 <?php if ($_GET['content'] == 1) { ?>
-    <div class="container-fluid align-left">
+    <div class="container-fluid">
         <!--email-->
         <div class="row">
             <div class="col-sm-3 title">

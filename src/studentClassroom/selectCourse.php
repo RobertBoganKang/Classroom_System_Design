@@ -22,7 +22,6 @@
 
         /*print semester information*/
         /**test area*/
-        setcookie('semester', 1, null, '/');
         $semester = $_COOKIE['semester'];
         $seminfo = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM semester WHERE id = $semester;"));
         if (!$seminfo) {
@@ -41,6 +40,29 @@
         } else {
             $search = "";
         }
+        $searchURL = "&search=" . $search;
+
+        /*advanced search functions*/
+        if (!isset($_GET['advType']) || !isset($_GET['advWeek']) || !isset($_GET['advFilter'])) {
+            /*0: course name; 1: course detail; 2: teacher name*/
+            /*translate to ' AND (cname LIKE '%$var%' OR cdetail LIKE '%$var%' OR tfname LIKE '%$var%' OR tlname LIKE '%$var%')'*/
+            $advType = "012";
+            /*0 ~ 6 is Sunday ~ Saturday*/
+            $advWeek = "";
+            /*0: name; 1: rating; 2: popularity*/
+            $advFilter = "0";
+            /*variable to show advanced is not available*/
+            $adv = 0;
+            $advURL = "";
+        } else {
+            /*advanced feature open*/
+            $advType = $_GET['advType'];
+            $advWeek = $_GET['advWeek'];
+            $advFilter = $_GET['advFilter'];
+            $adv = 1;
+            $advURL = "&advType=" . $advType . "&advWeek=" . $advWeek . "&advFilter=" . $advFilter;
+        }
+
         ?>
         <br>
         <!--search engine-->
@@ -49,6 +71,16 @@
                 <div class="col-sm-7">
                     <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="formsearch" method="GET">
                         <input type="hidden" name="page" value="<?= $page ?>">
+                        <!--advanced search field-->
+                        <?php if ($adv) {
+                            ?>
+                            <input type="hidden" name="advType" value="<?= $advType ?>">
+                            <input type="hidden" name="advWeek" value="<?= $advWeek ?>">
+                            <input type="hidden" name="advFilter" value="<?= $advFilter ?>">
+                            <?php
+                        } ?>
+                        <!--if flip set, the form come from here, to disable sql count operation-->
+                        <input type="hidden" name="f" value="0">
                         <input type="text" name="search" id="search" placeholder="Type to search..." class="searchinput"
                                value="<?= $search ?>" autofocus
                                onblur='submitForm0(<?= json_encode($search) ?>, "search", "formsearch")'>
@@ -61,22 +93,32 @@
         </div>
         <hr class="hr">
 
+        <!--advanced tabs-->
+        <form action="" method="get">
+            <input type="hidden" value="">
+        </form>
         <?php
         /*search engine sql builder*/
-        $searchSQLbuilder = '';
+        $searchWordSQLbuilder = '';
         $searcharr = array_unique(preg_split('/\s+/', $search));
         if ($search != '') {
-            $searchSQLbuilder .= " ";
+            $searchWordSQLbuilder .= " ";
             for ($i = 0; $i < count($searcharr); $i++) {
-                $searchSQLbuilder .= " AND (cname LIKE '%$searcharr[$i]%' OR cdetail LIKE '%$searcharr[$i]%' OR tfname LIKE '%$searcharr[$i]%' OR tlname LIKE '%$searcharr[$i]%')";
+                $searchWordSQLbuilder .= $coursecls->advType($advType, $searcharr[$i]);
             }
-            $searchSQLbuilder .= " ";
+            $searchWordSQLbuilder .= " ";
         }
 
-        /*count how many course available*/
-        $count = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester" . $searchSQLbuilder . ";"));
-        if (!$count) {
-            throw new Exception($db->error);
+        /*if f(lip) is set, it means the input changes, we need to sql count; if flip pages, we don't count*/
+        if (!isset($_SESSION['count']) || isset($_GET['f'])) {
+            /*count how many course available*/
+            $_SESSION['count'] = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester " . $coursecls->advWeek($advWeek) . $searchWordSQLbuilder . ";"));
+            $count = $_SESSION['count'];
+            if (!$count) {
+                throw new Exception($db->error);
+            }
+        } else {
+            $count = $_SESSION['count'];
         }
         /*if no result, please show something else*/
         if ($count['count'] > 0) {
@@ -92,7 +134,8 @@
             }
             $offset = ($page - 1) * $limit;
 
-            $semclsq = mysqli_query($db, "SELECT * FROM addcourse WHERE semester_id =$semester " . $searchSQLbuilder . " ORDER BY id DESC LIMIT $limit OFFSET $offset;");
+            /*search to show*/
+            $semclsq = mysqli_query($db, "SELECT * FROM addcourse WHERE semester_id =$semester " . $coursecls->advWeek($advWeek) . $searchWordSQLbuilder . " ORDER BY " . $coursecls->advFilter($advFilter) . " LIMIT $limit OFFSET $offset;");
             if (!$semclsq) {
                 throw new Exception($db->error);
             }
@@ -152,6 +195,13 @@
             <!--jump page by number-->
             <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET"
                   id="form" class="form">
+                <?php if ($adv) {
+                    ?>
+                    <input type="hidden" name="advType" value="<?= $advType ?>">
+                    <input type="hidden" name="advWeek" value="<?= $advWeek ?>">
+                    <input type="hidden" name="advFilter" value="<?= $advFilter ?>">
+                    <?php
+                } ?>
                 <input type="hidden" name="search" value="<?= $search ?>">
         <input type="number" name="page" id="page" value="<?= $page; ?>" min="1" max="<?= $maxpage ?>"
                onblur="submitForm0(<?= $page ?>, 'page', 'form')" class="jump">
@@ -161,21 +211,31 @@
             <!--first page-->
             <?php if ($page != 1) { ?>
                 <a class="jumpPage"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1' . '&search=' . $search) ?>">#</a>
-            <?php } ?>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1' . $searchURL . $advURL) ?>">#</a>
+            <?php }
+            if ($page != 1) {
+                echo "|";
+            } ?>
             <!--previous page-->
             <?php if ($page != 1) { ?>
-                | <a class="jumpPage"
-                     href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1) . '&search=' . $search) ?>">&lt&lt</a>
-            <?php } ?>
+                <a class="jumpPage"
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1) . $searchURL . $advURL) ?>">&lt&lt</a>
+            <?php }
+            if ($page != 1 && $page != $maxpage) {
+                echo "|";
+            } ?>
             <!--next page-->
             <?php
-            if ($page != 1 && $page != $maxpage) {
+            if ($page != $maxpage) { ?>
+                <a class="jumpPage"
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1) . $searchURL . $advURL) ?>">&gt&gt</a>
+            <?php }
+            if ($page != $maxpage) {
                 echo "|";
             }
             if ($page != $maxpage) { ?>
                 <a class="jumpPage"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1) . '&search=' . $search) ?>">&gt&gt</a>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($maxpage) . $searchURL . $advURL) ?>">~.</a>
             <?php } ?>
             ]
             </span>

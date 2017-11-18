@@ -95,13 +95,9 @@ try {
                         if ($remember == "yes") {
                             setcookie('username', $row['username'], time() + 43200 * $memtime, '/');
                             setcookie('password', $row['password'], time() + 43200 * $memtime, '/');
-                            setcookie('fname', $pq['fname'], time() + 43200 * $memtime, '/');
-                            setcookie('lname', $pq['lname'], time() + 43200 * $memtime, '/');
                         } else {
                             setcookie('username', $row['username'], null, '/');
                             setcookie('password', $row['password'], null, '/');
-                            setcookie('fname', $pq['fname'], null, '/');
-                            setcookie('lname', $pq['lname'], null, '/');
                         }
                         if ($type)
                             header("Location: " . "../studentClassroom/studentMain.php");

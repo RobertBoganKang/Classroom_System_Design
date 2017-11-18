@@ -93,4 +93,63 @@ class courseUtil
         }
         return $starbuilder;
     }
+
+    /*advanced search*/
+    private function advTypeHelper($char, $var)
+    {
+        switch ($char) {
+            case "0":
+                return "cname LIKE '%$var%'";
+            case "1":
+                return "cdetail LIKE '%$var%'";
+            case "2":
+                return "tfname LIKE '%$var%' OR tlname LIKE '%$var%'";
+            default:
+                return "";
+        }
+    }
+
+    public function advType($str, $var)
+    {
+        if (strlen($str) < 1) {
+            return " ";
+        } else {
+            $sqlBuilder = " AND (";
+            $strarr = str_split($str);
+            for ($i = 0; $i < count($strarr); $i++) {
+                $sqlBuilder .= (string)$this->advTypeHelper($strarr[$i], $var);
+                if ($i != count($strarr) - 1) {
+                    $sqlBuilder .= " OR ";
+                }
+            }
+            $sqlBuilder .= ")";
+            return $sqlBuilder;
+        }
+    }
+
+    public function advWeek($str)
+    {
+        if (strlen($str) < 1) {
+            return " ";
+        } else {
+            $strarr = str_split($str);
+            sort($strarr);
+            $str2 = implode($strarr);
+            return 'week = $str2';
+        }
+    }
+
+    public function advFilter($char)
+    {
+        switch ($char) {
+            case "0":
+                return "cname ASC";
+            case "1":
+                return "rating DESC";
+            case "2":
+                return "nrating DESC";
+            default:
+                return "";
+        }
+    }
 }

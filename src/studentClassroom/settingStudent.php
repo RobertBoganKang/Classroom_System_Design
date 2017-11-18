@@ -2,6 +2,9 @@
 <title>Settings</title>
 <link rel="stylesheet" href="../css/settings.css">
 <script src="../js/overall.js"></script>
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Homemade+Apple:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+</style>
 <script>
     /*refresh page when 2 minute no response*/
     refresh(120, function () {
@@ -123,6 +126,32 @@
             </div>
             <div class="col-sm-4">
                 <a class="update" href="../errorPage/featureConstruction.html"></a>
+            </div>
+        </div>
+    </div>
+    <hr>
+<?php } ?>
+<!--style-->
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" id="form2">
+    <input type="hidden" name="content" value="2">
+    <h2 onclick="document.getElementById('form2').submit()">Style</h2>
+</form>
+<?php if ($_GET['content'] == 2) { ?>
+    <hr>
+    <div class="container-fluid">
+        <!--style-->
+        <div class="row">
+            <div class="col-sm-3 title">
+                <span style="">Style:</span></div>
+            <div class="col-sm-5">
+                <p onclick="document.cookie='style=0';location.reload();"
+                   style="color: dimgray; font-family: 'Open Sans' , sans-serif;">
+                    Plain</p>
+            </div>
+            <div class="col-sm-4">
+                <p onclick="document.cookie='style=1';location.reload();"
+                   style="color: green; font-family: 'Homemade Apple' , sans-serif;">
+                    Fun</p>
             </div>
         </div>
     </div>

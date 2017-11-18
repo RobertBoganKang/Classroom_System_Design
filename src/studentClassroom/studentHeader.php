@@ -18,9 +18,6 @@
 try {
     session_start();
     if (!isset($_SESSION['pq'])) {
-        /**test area*/
-        setcookie('semester', 1, null, '/');
-        /**test end*/
         /*connect database*/
         include "../inc/connect_inc.php";
         /*get info*/

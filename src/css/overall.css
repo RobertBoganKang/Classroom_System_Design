@@ -28,6 +28,7 @@ h2 {
     line-height: 100%;
     color: #ddd;
     text-align: right;
+    cursor: default;
 }
 
 /*panel borders*/

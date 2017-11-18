@@ -175,7 +175,7 @@
         }
 
         /*if f(lip) is set, it means the input changes, we need to sql count; if flip pages, we don't count*/
-        if (!isset($_SESSION['count']) || isset($_GET['f']) || isset($_GET['adv'])) {
+        if (!isset($_SESSION['count']) || isset($_GET['new']) || isset($_GET['f']) || isset($_GET['adv'])) {
             /*count how many course available*/
             $_SESSION['count'] = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester " . $coursecls->advWeek($advWeek) . $searchWordSQLbuilder . ";"));
             $count = $_SESSION['count'];
@@ -223,6 +223,8 @@
                                     /*print course week and time*/
                                     echo $coursecls->str2week($row['week']) . "|";
                                     echo $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "|";
+                                    /*print office*/
+                                    echo $row['room'] . "|";
                                     /*print teacher name*/
                                     echo $row['tfname'] . ' ' . $row['tlname'];
                                     echo '<br>';

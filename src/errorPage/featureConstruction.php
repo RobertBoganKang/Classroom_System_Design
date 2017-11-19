@@ -6,6 +6,7 @@
     <title>Construction</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/overall.css">
+    <?php include "../inc/setStyle_inc.php"?>
 </head>
 <body>
 <div class="panel">

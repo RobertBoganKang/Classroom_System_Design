@@ -123,18 +123,18 @@ function strTrim(str) {
 
 /*checkbox like click*/
 function changeColor(id) {
-    if (document.getElementById(id).style.color === 'green') {
-        document.getElementById(id).style.color = 'lightgray';
+    if (document.getElementById(id).style.color === "green") {
+        document.getElementById(id).style.color = "lightgray";
     } else {
-        document.getElementById(id).style.color = 'green';
+        document.getElementById(id).style.color = "green";
     }
 }
 
-/*checkbox to array*/
+/*checkbox to array, push the value of checkbox to input values*/
 function ckbx2arr(idarr, input) {
     var str = '';
     for (var i = 0; i < idarr.length; i++) {
-        if (document.getElementById(idarr[i]).style.color === 'green') {
+        if (document.getElementById(idarr[i]).style.color === "green") {
             str = str.concat(i.toString());
         }
     }

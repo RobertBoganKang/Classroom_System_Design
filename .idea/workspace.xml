@@ -11,35 +11,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="studentMain.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/studentClassroom/studentMain.php">
+      <file leaf-file-name="selectCourse.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/studentClassroom/selectCourse.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="selectSemester.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/studentClassroom/selectSemester.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="49" column="27" lean-forward="false" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+            <state relative-caret-position="550">
+              <caret line="76" column="155" lean-forward="false" selection-start-line="76" selection-start-column="155" selection-end-line="76" selection-end-column="155" />
               <folding>
-                <marker date="1511043798040" expanded="true" signature="748:776" ph="SELECT * FRO... semester" />
-                <marker date="1511043798040" expanded="true" signature="748:782" ph="SELECT * FRO... semester" />
-                <marker date="1511043798040" expanded="true" signature="748:783" ph="SELECT * FRO... semester" />
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#3;n#div#1;n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1511074187860" expanded="true" signature="771:805" ph="SELECT * FRO... semester" />
+                <marker date="1511074187860" expanded="true" signature="9138:9208" ph="SELECT COUNT... " />
+                <marker date="1511074187860" expanded="true" signature="10005:10191" ph="SELECT * FRO... addcourse" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classroomMain.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/classroomMain.css">
+      <file leaf-file-name="courseUtil.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/inc/courseUtil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="14" />
+            <state relative-caret-position="525">
+              <caret line="158" column="67" lean-forward="true" selection-start-line="158" selection-start-column="67" selection-end-line="158" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="overall.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/overall.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="723">
+              <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,14 +60,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>result</find>
-      <find>alert</find>
-      <find>italic</find>
-      <find>ckbx</find>
-      <find>checkbox</find>
-      <find>pink</find>
-      <find>input</find>
-      <find>onblur</find>
       <find>submit</find>
       <find>update</find>
       <find>#</find>
@@ -84,10 +78,18 @@
       <find>Fun</find>
       <find>orange</find>
       <find>login</find>
-      <find>h2</find>
       <find>summer</find>
       <find>row</find>
+      <find>featureCon</find>
+      <find>style</find>
+      <find>path</find>
       <find>cookie</find>
+      <find>input</find>
+      <find>h2</find>
+      <find>ckbxCo</find>
+      <find>onblur</find>
+      <find>ckbxColor</find>
+      <find>flip</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,25 +115,30 @@
         <option value="$PROJECT_DIR$/src/loginSystem/logout.php" />
         <option value="$PROJECT_DIR$/src/js/typeSelect.js" />
         <option value="$PROJECT_DIR$/src/inc/courseUtil.php" />
-        <option value="$PROJECT_DIR$/src/js/overall.js" />
         <option value="$PROJECT_DIR$/src/css/style0.css" />
-        <option value="$PROJECT_DIR$/src/teacherClassroom/teacherHeader.php" />
-        <option value="$PROJECT_DIR$/src/errorPage/help.php" />
-        <option value="$PROJECT_DIR$/src/studentClassroom/settingStudent.php" />
-        <option value="$PROJECT_DIR$/src/teacherClassroom/settingTeacher.php" />
-        <option value="$PROJECT_DIR$/src/css/style1.css" />
-        <option value="$PROJECT_DIR$/src/loginSystem/signUpProfessor.php" />
-        <option value="$PROJECT_DIR$/src/loginSystem/signUp.php" />
-        <option value="$PROJECT_DIR$/src/loginSystem/signIn.php" />
         <option value="$PROJECT_DIR$/src/errorPage/featureConstruction.html" />
-        <option value="$PROJECT_DIR$/src/studentClassroom/studentHeader.php" />
-        <option value="$PROJECT_DIR$/src/errorPage/errorPage.php" />
-        <option value="$PROJECT_DIR$/src/studentClassroom/selectCourse.php" />
         <option value="$PROJECT_DIR$/src/css/couseSearch.css" />
         <option value="$PROJECT_DIR$/src/css/overall.css" />
         <option value="$PROJECT_DIR$/src/css/classroomMain.css" />
         <option value="$PROJECT_DIR$/src/studentClassroom/studentMain.php" />
+        <option value="$PROJECT_DIR$/src/teacherClassroom/settingTeacher.php" />
+        <option value="$PROJECT_DIR$/src/studentClassroom/settingStudent.php" />
+        <option value="$PROJECT_DIR$/src/inc/nudeStyle.php" />
+        <option value="$PROJECT_DIR$/src/inc/setStyle.php" />
+        <option value="$PROJECT_DIR$/src/errorPage/help.php" />
+        <option value="$PROJECT_DIR$/src/loginSystem/signUp.php" />
+        <option value="$PROJECT_DIR$/src/css/style1.css" />
+        <option value="$PROJECT_DIR$/src/css/reset.css" />
+        <option value="$PROJECT_DIR$/src/inc/setStyle_inc.php" />
+        <option value="$PROJECT_DIR$/src/loginSystem/signIn.php" />
+        <option value="$PROJECT_DIR$/src/loginSystem/signUpProfessor.php" />
+        <option value="$PROJECT_DIR$/src/studentClassroom/studentHeader.php" />
+        <option value="$PROJECT_DIR$/src/teacherClassroom/teacherHeader.php" />
+        <option value="$PROJECT_DIR$/src/errorPage/errorPage.php" />
+        <option value="$PROJECT_DIR$/src/errorPage/featureConstruction.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/selectSemester.php" />
+        <option value="$PROJECT_DIR$/src/js/overall.js" />
+        <option value="$PROJECT_DIR$/src/studentClassroom/selectCourse.php" />
       </list>
     </option>
   </component>
@@ -146,9 +153,10 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP on XAMPP" />
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="width" value="679" />
-    <option name="height" value="740" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="-1" />
+    <option name="width" value="719" />
+    <option name="height" value="872" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -243,8 +251,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -368,17 +376,20 @@
       <workItem from="1510998821901" duration="46000" />
       <workItem from="1511034853034" duration="1165000" />
       <workItem from="1511038936399" duration="4933000" />
+      <workItem from="1511068461202" duration="24000" />
+      <workItem from="1511068639602" duration="709000" />
+      <workItem from="1511069576222" duration="4636000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161775000" />
+    <option name="totallyTimeSpent" value="167144000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="679" height="740" extended-state="4" />
+    <frame x="0" y="-1" width="1440" height="873" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49037036" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263328" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -437,13 +448,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/loginSystem/signIn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -475,13 +479,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/inc/connect_inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/inc/updateInfo_inc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -510,13 +507,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/reset.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mysqli/mysqli.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -542,13 +532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inc/signin_check_inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="98" column="38" lean-forward="false" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -618,36 +601,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/overall.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="141" column="1" lean-forward="false" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/style0.css" />
-    <entry file="file://$PROJECT_DIR$/src/errorPage/help.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-127">
-          <caret line="9" column="53" lean-forward="true" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/teacherClassroom/settingTeacher.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="170" column="10" lean-forward="false" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/teacherClassroom/teacherHeader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/loginSystemStyle.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -655,108 +609,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/style1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/loginSystem/signUp.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/loginSystem/signUpProfessor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/studentClassroom/studentHeader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding>
-            <marker date="1511039301737" expanded="true" signature="985:1041" ph="SELECT * FRO... student" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/_types.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="105" column="13" lean-forward="false" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/loginSystem/signIn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/errorPage/featureConstruction.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/errorPage/errorPage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/inc/courseUtil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="56" column="30" lean-forward="true" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/studentClassroom/settingStudent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/studentClassroom/selectCourse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="220" column="53" lean-forward="false" selection-start-line="220" selection-start-column="41" selection-end-line="220" selection-end-column="53" />
-          <folding>
-            <marker date="1511042234678" expanded="true" signature="772:806" ph="SELECT * FRO... semester" />
-            <marker date="1511042234678" expanded="true" signature="9025:9095" ph="SELECT COUNT... " />
-            <marker date="1511042234678" expanded="true" signature="9892:10078" ph="SELECT * FRO... addcourse" />
-            <marker date="1511042234678" expanded="true" signature="10367:10679" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="10405:10679" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="10452:10679" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="10544:10679" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="10845:11022" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="11677:11794" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="12277:12348" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="12887:12983" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="13573:13622" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="13698:13877" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="13822:13877" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="14136:14191" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="14512:14567" ph="..." />
-            <marker date="1511042234678" expanded="true" signature="14824:14879" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -764,7 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
           <caret line="227" column="12" lean-forward="true" selection-start-line="227" selection-start-column="12" selection-end-line="227" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -772,15 +627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="30" column="19" lean-forward="false" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/classroomMain.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,14 +638,183 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/studentClassroom/selectSemester.php">
+    <entry file="file://$PROJECT_DIR$/src/css/classroomMain.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/studentClassroom/settingStudent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="150" column="34" lean-forward="true" selection-start-line="150" selection-start-column="34" selection-end-line="150" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inc/connect_inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inc/signin_check_inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2156">
+          <caret line="98" column="38" lean-forward="false" selection-start-line="98" selection-start-column="38" selection-end-line="98" selection-end-column="38" />
+          <folding>
+            <marker date="1510954225394" expanded="true" signature="1342:1388" ph="SELECT * FRO... student" />
+            <marker date="1510954225394" expanded="true" signature="1533:1579" ph="SELECT * FRO... teacher" />
+            <marker date="1510954225394" expanded="true" signature="2067:2123" ph="SELECT * FRO... student" />
+            <marker date="1510954225394" expanded="true" signature="2268:2324" ph="SELECT * FRO... teacher" />
+            <marker date="1510954225394" expanded="true" signature="3511:3568" ph="SELECT * FRO... ${$persontype}" />
+            <marker date="1510954225394" expanded="true" signature="3711:3771" ph="SELECT * FRO... ${$persontype}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/teacherClassroom/settingTeacher.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3630">
+          <caret line="165" column="59" lean-forward="false" selection-start-line="165" selection-start-column="59" selection-end-line="165" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/errorPage/help.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="11" column="45" lean-forward="false" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/loginSystem/signUp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="62" lean-forward="false" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/style1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/errorPage/errorPage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/errorPage/featureConstruction.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="49" column="27" lean-forward="false" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inc/setStyle_inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="51" lean-forward="false" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/loginSystem/signIn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="9" column="39" lean-forward="false" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/loginSystem/signUpProfessor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/studentClassroom/studentHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="9" column="52" lean-forward="true" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
           <folding>
-            <marker date="1511043798040" expanded="true" signature="748:776" ph="SELECT * FRO... semester" />
-            <marker date="1511043798040" expanded="true" signature="748:782" ph="SELECT * FRO... semester" />
-            <marker date="1511043798040" expanded="true" signature="748:783" ph="SELECT * FRO... semester" />
+            <marker date="1511071417672" expanded="true" signature="985:1041" ph="SELECT * FRO... student" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/teacherClassroom/teacherHeader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+          <folding>
+            <marker date="1511071417716" expanded="true" signature="985:1041" ph="SELECT * FRO... teacher" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/studentClassroom/selectSemester.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="31" column="33" lean-forward="true" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+          <folding>
+            <marker date="1511071604848" expanded="true" signature="748:776" ph="SELECT * FRO... semester" />
+            <marker date="1511071604848" expanded="true" signature="748:782" ph="SELECT * FRO... semester" />
+            <marker date="1511071604848" expanded="true" signature="748:783" ph="SELECT * FRO... semester" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/inc/courseUtil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="158" column="67" lean-forward="true" selection-start-line="158" selection-start-column="67" selection-end-line="158" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/overall.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="723">
+          <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/studentClassroom/selectCourse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="76" column="155" lean-forward="false" selection-start-line="76" selection-start-column="155" selection-end-line="76" selection-end-column="155" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#3;n#div#1;n#div#1;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1511074187860" expanded="true" signature="771:805" ph="SELECT * FRO... semester" />
+            <marker date="1511074187860" expanded="true" signature="9138:9208" ph="SELECT COUNT... " />
+            <marker date="1511074187860" expanded="true" signature="10005:10191" ph="SELECT * FRO... addcourse" />
           </folding>
         </state>
       </provider>

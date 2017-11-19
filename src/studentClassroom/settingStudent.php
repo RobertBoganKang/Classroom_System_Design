@@ -111,7 +111,7 @@
                 <?php echo $pq['email'] ?>
             </div>
             <div class="col-sm-4">
-                <a class="update" href="../errorPage/featureConstruction.html"></a>
+                <a class="update" href="../errorPage/featureConstruction.php"></a>
             </div>
         </div>
         <hr>
@@ -125,7 +125,7 @@
                        disabled style="color:lightgray; font-style: italic;">
             </div>
             <div class="col-sm-4">
-                <a class="update" href="../errorPage/featureConstruction.html"></a>
+                <a class="update" href="../errorPage/featureConstruction.php"></a>
             </div>
         </div>
     </div>
@@ -144,12 +144,12 @@
             <div class="col-sm-3 title">
                 <span style="">Style:</span></div>
             <div class="col-sm-5">
-                <p onclick="document.cookie='style=0';location.reload();"
+                <p onclick="document.cookie='style=0;path=/';location.reload();"
                    style="color: dimgray; font-family: 'Open Sans' , sans-serif;">
                     Plain</p>
             </div>
             <div class="col-sm-4">
-                <p onclick="document.cookie='style=1';location.reload();"
+                <p onclick="document.cookie='style=1;path=/';location.reload();"
                    style="color: green; font-family: 'Homemade Apple' , sans-serif;">
                     Fun</p>
             </div>

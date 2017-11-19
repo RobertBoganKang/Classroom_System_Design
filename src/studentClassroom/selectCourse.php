@@ -6,7 +6,6 @@
 <br>
 <div>
     <?php
-
     try {
         /*load php functions*/
         require_once "../inc/courseUtil.php";
@@ -65,18 +64,18 @@
         ?>
         <br>
         <!--search engine-->
-        <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="formsearch" method="GET" onsubmit="ckbx2arr(['advType0', 'advType1', 'advType2'], 'advType');
-    ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');
-">
+        <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="formsearch" method="GET"
+              onsubmit="<?php if ($adv) { ?>ckbx2arr(['advType0', 'advType1', 'advType2'], 'advType');
+                      ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');<?php } ?>">
             <div class="container-fluid searchrow">
                 <div class="row">
                     <div class="col-sm-7">
                         <input type="hidden" name="page" value="<?= $page ?>">
-                        <!--if flip set, the form come from here, to disable sql count operation-->
-                        <input type="hidden" name="f" value="0">
                         <input type="text" name="search" id="search" placeholder="Type to search..." class="searchinput"
                                value="<?= $search ?>"
-                               onblur='submitForm(<?= $adv ? json_encode("") : json_encode($search) ?>, "search", "formsearch")'>
+                               onblur='<?php if ($adv) { ?>ckbx2arr(["advType0", "advType1", "advType2"], "advType");
+                                       ckbx2arr(["advWeek0", "advWeek1", "advWeek2", "advWeek3", "advWeek4", "advWeek5", "advWeek6"], "advWeek");<?php } ?>
+                                       submitForm0(<?= $adv ? json_encode("") : json_encode($search) ?>, "search", "formsearch");'>
                     </div>
                     <div class="col-sm-5">
                         <h2><?= $seminfo['year'] . ' ' . $coursecls->semester2str($seminfo['type']) ?></h2>
@@ -174,8 +173,8 @@
             $searchWordSQLbuilder .= " ";
         }
 
-        /*if f(lip) is set, it means the input changes, we need to sql count; if flip pages, we don't count*/
-        if (!isset($_SESSION['count']) || isset($_GET['new']) || isset($_GET['f']) || isset($_GET['adv'])) {
+        /*if flip pages (is set), we don't count*/
+        if (!isset($_SESSION['count']) || isset($_GET['new']) || !isset($_GET['f']) || isset($_GET['adv'])) {
             /*count how many course available*/
             $_SESSION['count'] = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester " . $coursecls->advWeek($advWeek) . $searchWordSQLbuilder . ";"));
             $count = $_SESSION['count'];
@@ -211,7 +210,7 @@
                 <div class="container-fluid csdetail">
                     <div class="row">
                         <div class="col-sm-9">
-                            <a class="course" href="../errorPage/featureConstruction.html">
+                            <a class="course" href="../errorPage/featureConstruction.php">
                                 <?php
                                 /*print course name*/
                                 echo $row['cname'];
@@ -264,7 +263,8 @@
                   id="form" class="form">
                 <?php if ($adv) {
                     ?>
-                    <input type="hidden" name="advType" id="advType">
+                    <input type="hidden" name="f" value="1">
+                    <input type="hidden" name="advType" id="advType" value="<?= $advType ?>">
                     <input type="hidden" name="advWeek" value="<?= $advWeek ?>">
                     <input type="hidden" name="advFilter" value="<?= $advFilter ?>">
                     <?php
@@ -278,7 +278,7 @@
             <!--first page-->
             <?php if ($page != 1) { ?>
                 <a class="jumpPage"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1' . $searchURL . $advURL) ?>">#</a>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1' . $searchURL . $advURL . '&f=1') ?>">#</a>
             <?php }
             if ($page != 1) {
                 echo "|";
@@ -286,7 +286,7 @@
             <!--previous page-->
             <?php if ($page != 1) { ?>
                 <a class="jumpPage"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1) . $searchURL . $advURL) ?>">&lt&lt</a>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1) . $searchURL . $advURL . '&f=1') ?>">&lt&lt</a>
             <?php }
             if ($page != 1 && $page != $maxpage) {
                 echo "|";
@@ -295,14 +295,14 @@
             <?php
             if ($page != $maxpage) { ?>
                 <a class="jumpPage"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1) . $searchURL . $advURL) ?>">&gt&gt</a>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1) . $searchURL . $advURL . '&f=1') ?>">&gt&gt</a>
             <?php }
             if ($page != $maxpage) {
                 echo "|";
             }
             if ($page != $maxpage) { ?>
                 <a class="jumpPage"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($maxpage) . $searchURL . $advURL) ?>">~.</a>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($maxpage) . $searchURL . $advURL . '&f=1') ?>">~.</a>
             <?php } ?>
             ]
             </span>

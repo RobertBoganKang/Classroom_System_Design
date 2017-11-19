@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/overall.css">
     <link rel="stylesheet" href="../css/loginSystemStyle.css">
-    <?php if (isset($_COOKIE['style']) && $_COOKIE['style'] == 1) { ?>
-        <!--style1-->
-        <link rel="stylesheet" href="../css/style1.css">
-    <?php } ?>
+    <?php include "../inc/setStyle_inc.php"?>
 </head>
 <body>
 <!--hello error message-->

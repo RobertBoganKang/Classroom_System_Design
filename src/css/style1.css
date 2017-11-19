@@ -14,5 +14,5 @@ html, html * {
 }
 
 hr {
-    border: 1px lightgray dashed;
+    border: 1px lightgray solid;
 }

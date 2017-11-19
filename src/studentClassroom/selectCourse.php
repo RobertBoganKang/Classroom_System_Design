@@ -178,14 +178,14 @@
         }
 
         /*calculate max popularity*/
-        if (!isset($_GET['mxpop'])) {
+        if (!isset($_COOKIE['mxpop'])) {
             $temp = mysqli_fetch_assoc(mysqli_query($db, "SELECT MAX(nrating) AS mxpop FROM course;"));
             $mxpop = $temp['mxpop'];
-            setcookie("maxpop", $mxpop);
+            echo "hello";
+            setcookie("mxpop", $mxpop);
         } else {
-            $mxpop = $_GET['mxpop'];
+            $mxpop = $_COOKIE['mxpop'];
         }
-
 
         /*if flip pages (is set), we don't count*/
         if (!isset($_SESSION['count']) || isset($_GET['new']) || !isset($_GET['f']) || isset($_GET['adv'])) {

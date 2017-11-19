@@ -160,6 +160,7 @@ input {
 .navbar {
     color: lightgray;
     display: inline;
+    cursor: default;
     -webkit-transition: color 2s;
     -moz-transition: color 2s;
     -ms-transition: color 2s;

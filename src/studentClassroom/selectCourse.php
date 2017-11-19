@@ -141,7 +141,10 @@
                             <span class="title">Rank: </span>
                         </div>
                         <div class="col-sm-9">
-                            <select name="advFilter" class="advFilter" id="advFilter">
+                            <select name="advFilter" class="advFilter" id="advFilter"
+                                    onchange='<?php if ($adv) { ?>ckbx2arr(["advType0", "advType1", "advType2"], "advType");
+                                            ckbx2arr(["advWeek0", "advWeek1", "advWeek2", "advWeek3", "advWeek4", "advWeek5", "advWeek6"], "advWeek");<?php } ?>
+                                            this.form.submit();'>
                                 <option value="0" <?php if ($_GET['advFilter'] == "0") echo 'selected="selected"' ?>>
                                     Course Name
                                 </option>
@@ -276,11 +279,11 @@
         <span class="navbar">
                 [
             <!--first page-->
-            <?php if ($page != 1) { ?>
+            <?php if ($page != 1 && $maxpage != 2) { ?>
                 <a class="jumpPage"
                    href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=1' . $searchURL . $advURL . '&f=1') ?>">#</a>
             <?php }
-            if ($page != 1) {
+            if ($page != 1 && $maxpage != 2) {
                 echo "|";
             } ?>
             <!--previous page-->
@@ -297,10 +300,10 @@
                 <a class="jumpPage"
                    href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1) . $searchURL . $advURL . '&f=1') ?>">&gt&gt</a>
             <?php }
-            if ($page != $maxpage) {
+            if ($page != $maxpage && $maxpage != 2) {
                 echo "|";
             }
-            if ($page != $maxpage) { ?>
+            if ($page != $maxpage && $maxpage != 2) { ?>
                 <a class="jumpPage"
                    href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($maxpage) . $searchURL . $advURL . '&f=1') ?>">~.</a>
             <?php } ?>

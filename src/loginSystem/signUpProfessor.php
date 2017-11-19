@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/overall.css">
     <link rel="stylesheet" href="../css/loginSystemStyle.css">
+    <?php include "../inc/setStyle_inc.php" ?>
     <script src="../js/overall.js"></script>
     <script>
         /*textarea enter to submit*/

@@ -10,7 +10,6 @@
     remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
     Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
     Lorem Ipsum.</p>
-<hr>
 <h2>Courses</h2>
 <hr class="hr">
 <a class="advance" href="selectSemester.php">Add Course</a>

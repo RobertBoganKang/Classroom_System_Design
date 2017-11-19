@@ -1,0 +1,22 @@
+::selection, body, h1, h2, .panel, .panel:hover, .nav, p, a, a:visited,
+a:hover, textarea, input[type=text], input[type=submit], input[type=password],
+textarea, input[type=submit], input:hover, textarea:hover, input:focus,
+textarea:focus, input[type=checkbox], input[type=checkbox] + .remember-text:before,
+input[type=checkbox]:checked + .remember-text:before, .form, .error,
+.remember, .secretdot, .remember, .success:hover, .success:focus,
+.submit, .submit:focus, .submit:hover, .secretdot, .secretdot:visited,
+.secretdot:hover, .secretdot:hover, .contactPerson, .contactPerson:hover,
+input, .jump, .jumpPage:visited, .jumpPage:hover, .course, .course:visited,
+.course:link, .course:hover, .coursedetail, .form, .csdetail, .csdetail:hover,
+.stars0, .stars1, .stars2, .stars3, .stars4, .stars5, .advance, .advance:visited,
+.advance:hover, .advance2, .advance2:visited, .results, .popularity, .ratingdetails,
+.noresult, .navbar, .navbar:hover, .searchinput, .searchinput:hover,
+.searchinput:focus, .searchinput::placeholder, .searchrow, .advType0:after,
+.advType0:hover:after, .advType1:after, .advType1:hover:after,
+.advType2:after, .advType2:hover:after, .title, .title:hover, .advancebox,
+.advFilter {
+    border: 0;
+    font: inherit;
+    font-family: "Times New Roman";
+    vertical-align: baseline;
+}

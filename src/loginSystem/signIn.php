@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/overall.css">
     <link rel="stylesheet" href="../css/loginSystemStyle.css">
     <script src="../js/overall.js"></script>
+    <?php include "../inc/setStyle_inc.php" ?>
 </head>
 <body>
 <?php include "../inc/signin_check_inc.php" ?>

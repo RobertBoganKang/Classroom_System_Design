@@ -10,6 +10,7 @@
     <script src="../js/overall.js"></script>
     <?php include "../inc/setStyle_inc.php"?>
     <link rel="stylesheet" href="../css/loginSystemStyle.css">
+    <?php include "../inc/setStyle_inc.php" ?>
     <script>
         /*textarea enter to submit*/
         textareaEnterSubmit("#address", "form");

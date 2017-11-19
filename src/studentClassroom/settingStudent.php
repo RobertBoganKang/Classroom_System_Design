@@ -129,7 +129,6 @@
             </div>
         </div>
     </div>
-    <hr>
 <?php } ?>
 <!--style-->
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" id="form2">
@@ -143,15 +142,20 @@
         <div class="row">
             <div class="col-sm-3 title">
                 <span style="">Style:</span></div>
-            <div class="col-sm-5">
+            <div class="col-sm-3">
                 <p onclick="document.cookie='style=0;path=/';location.reload();"
                    style="color: dimgray; font-family: 'Open Sans' , sans-serif;">
                     Plain</p>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <p onclick="document.cookie='style=1;path=/';location.reload();"
                    style="color: green; font-family: 'Homemade Apple' , sans-serif;">
                     Fun</p>
+            </div>
+            <div class="col-sm-3">
+                <p onclick="document.cookie='style=2;path=/';location.reload();"
+                   style="color: red; font-family: 'Times New Roman' , sans-serif;">
+                    Nude</p>
             </div>
         </div>
     </div>

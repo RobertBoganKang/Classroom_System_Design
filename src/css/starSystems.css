@@ -1,7 +1,7 @@
 /*this file is created by mathematica:
 code:
 hover=Reverse@{"#ff0000","#ff3232","#ff6666","#ff9999","#ffcccc","#eee"};\.0cstar={"#eee","red","orangered","darkorange","yellowgreen","green"};str1=StringJoin@Flatten@Table[".stars"<>ToString[i-1]<>ToString[m]<>" {color:"<>If[m<i,star[[i]],"#eee"]<>";} ",{i,Length@star},{m,1,5}];
-str2=StringJoin@Flatten@Table[".dots"<>ToString[j-1]<>ToString[m]<>"\.0c{color:"<>If[5-j<m,hover[[j]],"#eee"]<>";} ",{i,Length@star},{j,Length@hover},{m,1,5}];
+str2=StringJoin@Flatten@Table[".dots"<>ToString[j-1]<>ToString[m]<>"\.0c{color:"<>If[5-j<m,hover[[j+m-5]],"#eee"]<>";} ",{i,Length@star},{j,Length@hover},{m,1,5}];
 str1<>str2
 */
 .stars01 {
@@ -157,7 +157,7 @@ str1<>str2
 }
 
 .dots14 {
-    color: #ffcccc;
+    color: #eee;
 }
 
 .dots15 {
@@ -173,11 +173,11 @@ str1<>str2
 }
 
 .dots23 {
-    color: #ff9999;
+    color: #eee;
 }
 
 .dots24 {
-    color: #ff9999;
+    color: #ffcccc;
 }
 
 .dots25 {
@@ -189,15 +189,15 @@ str1<>str2
 }
 
 .dots32 {
-    color: #ff6666;
+    color: #eee;
 }
 
 .dots33 {
-    color: #ff6666;
+    color: #ffcccc;
 }
 
 .dots34 {
-    color: #ff6666;
+    color: #ff9999;
 }
 
 .dots35 {
@@ -205,19 +205,19 @@ str1<>str2
 }
 
 .dots41 {
-    color: #ff3232;
+    color: #eee;
 }
 
 .dots42 {
-    color: #ff3232;
+    color: #ffcccc;
 }
 
 .dots43 {
-    color: #ff3232;
+    color: #ff9999;
 }
 
 .dots44 {
-    color: #ff3232;
+    color: #ff6666;
 }
 
 .dots45 {
@@ -225,19 +225,619 @@ str1<>str2
 }
 
 .dots51 {
-    color: #ff0000;
+    color: #ffcccc;
 }
 
 .dots52 {
-    color: #ff0000;
+    color: #ff9999;
 }
 
 .dots53 {
-    color: #ff0000;
+    color: #ff6666;
 }
 
 .dots54 {
+    color: #ff3232;
+}
+
+.dots55 {
     color: #ff0000;
+}
+
+.dots01 {
+    color: #eee;
+}
+
+.dots02 {
+    color: #eee;
+}
+
+.dots03 {
+    color: #eee;
+}
+
+.dots04 {
+    color: #eee;
+}
+
+.dots05 {
+    color: #eee;
+}
+
+.dots11 {
+    color: #eee;
+}
+
+.dots12 {
+    color: #eee;
+}
+
+.dots13 {
+    color: #eee;
+}
+
+.dots14 {
+    color: #eee;
+}
+
+.dots15 {
+    color: #ffcccc;
+}
+
+.dots21 {
+    color: #eee;
+}
+
+.dots22 {
+    color: #eee;
+}
+
+.dots23 {
+    color: #eee;
+}
+
+.dots24 {
+    color: #ffcccc;
+}
+
+.dots25 {
+    color: #ff9999;
+}
+
+.dots31 {
+    color: #eee;
+}
+
+.dots32 {
+    color: #eee;
+}
+
+.dots33 {
+    color: #ffcccc;
+}
+
+.dots34 {
+    color: #ff9999;
+}
+
+.dots35 {
+    color: #ff6666;
+}
+
+.dots41 {
+    color: #eee;
+}
+
+.dots42 {
+    color: #ffcccc;
+}
+
+.dots43 {
+    color: #ff9999;
+}
+
+.dots44 {
+    color: #ff6666;
+}
+
+.dots45 {
+    color: #ff3232;
+}
+
+.dots51 {
+    color: #ffcccc;
+}
+
+.dots52 {
+    color: #ff9999;
+}
+
+.dots53 {
+    color: #ff6666;
+}
+
+.dots54 {
+    color: #ff3232;
+}
+
+.dots55 {
+    color: #ff0000;
+}
+
+.dots01 {
+    color: #eee;
+}
+
+.dots02 {
+    color: #eee;
+}
+
+.dots03 {
+    color: #eee;
+}
+
+.dots04 {
+    color: #eee;
+}
+
+.dots05 {
+    color: #eee;
+}
+
+.dots11 {
+    color: #eee;
+}
+
+.dots12 {
+    color: #eee;
+}
+
+.dots13 {
+    color: #eee;
+}
+
+.dots14 {
+    color: #eee;
+}
+
+.dots15 {
+    color: #ffcccc;
+}
+
+.dots21 {
+    color: #eee;
+}
+
+.dots22 {
+    color: #eee;
+}
+
+.dots23 {
+    color: #eee;
+}
+
+.dots24 {
+    color: #ffcccc;
+}
+
+.dots25 {
+    color: #ff9999;
+}
+
+.dots31 {
+    color: #eee;
+}
+
+.dots32 {
+    color: #eee;
+}
+
+.dots33 {
+    color: #ffcccc;
+}
+
+.dots34 {
+    color: #ff9999;
+}
+
+.dots35 {
+    color: #ff6666;
+}
+
+.dots41 {
+    color: #eee;
+}
+
+.dots42 {
+    color: #ffcccc;
+}
+
+.dots43 {
+    color: #ff9999;
+}
+
+.dots44 {
+    color: #ff6666;
+}
+
+.dots45 {
+    color: #ff3232;
+}
+
+.dots51 {
+    color: #ffcccc;
+}
+
+.dots52 {
+    color: #ff9999;
+}
+
+.dots53 {
+    color: #ff6666;
+}
+
+.dots54 {
+    color: #ff3232;
+}
+
+.dots55 {
+    color: #ff0000;
+}
+
+.dots01 {
+    color: #eee;
+}
+
+.dots02 {
+    color: #eee;
+}
+
+.dots03 {
+    color: #eee;
+}
+
+.dots04 {
+    color: #eee;
+}
+
+.dots05 {
+    color: #eee;
+}
+
+.dots11 {
+    color: #eee;
+}
+
+.dots12 {
+    color: #eee;
+}
+
+.dots13 {
+    color: #eee;
+}
+
+.dots14 {
+    color: #eee;
+}
+
+.dots15 {
+    color: #ffcccc;
+}
+
+.dots21 {
+    color: #eee;
+}
+
+.dots22 {
+    color: #eee;
+}
+
+.dots23 {
+    color: #eee;
+}
+
+.dots24 {
+    color: #ffcccc;
+}
+
+.dots25 {
+    color: #ff9999;
+}
+
+.dots31 {
+    color: #eee;
+}
+
+.dots32 {
+    color: #eee;
+}
+
+.dots33 {
+    color: #ffcccc;
+}
+
+.dots34 {
+    color: #ff9999;
+}
+
+.dots35 {
+    color: #ff6666;
+}
+
+.dots41 {
+    color: #eee;
+}
+
+.dots42 {
+    color: #ffcccc;
+}
+
+.dots43 {
+    color: #ff9999;
+}
+
+.dots44 {
+    color: #ff6666;
+}
+
+.dots45 {
+    color: #ff3232;
+}
+
+.dots51 {
+    color: #ffcccc;
+}
+
+.dots52 {
+    color: #ff9999;
+}
+
+.dots53 {
+    color: #ff6666;
+}
+
+.dots54 {
+    color: #ff3232;
+}
+
+.dots55 {
+    color: #ff0000;
+}
+
+.dots01 {
+    color: #eee;
+}
+
+.dots02 {
+    color: #eee;
+}
+
+.dots03 {
+    color: #eee;
+}
+
+.dots04 {
+    color: #eee;
+}
+
+.dots05 {
+    color: #eee;
+}
+
+.dots11 {
+    color: #eee;
+}
+
+.dots12 {
+    color: #eee;
+}
+
+.dots13 {
+    color: #eee;
+}
+
+.dots14 {
+    color: #eee;
+}
+
+.dots15 {
+    color: #ffcccc;
+}
+
+.dots21 {
+    color: #eee;
+}
+
+.dots22 {
+    color: #eee;
+}
+
+.dots23 {
+    color: #eee;
+}
+
+.dots24 {
+    color: #ffcccc;
+}
+
+.dots25 {
+    color: #ff9999;
+}
+
+.dots31 {
+    color: #eee;
+}
+
+.dots32 {
+    color: #eee;
+}
+
+.dots33 {
+    color: #ffcccc;
+}
+
+.dots34 {
+    color: #ff9999;
+}
+
+.dots35 {
+    color: #ff6666;
+}
+
+.dots41 {
+    color: #eee;
+}
+
+.dots42 {
+    color: #ffcccc;
+}
+
+.dots43 {
+    color: #ff9999;
+}
+
+.dots44 {
+    color: #ff6666;
+}
+
+.dots45 {
+    color: #ff3232;
+}
+
+.dots51 {
+    color: #ffcccc;
+}
+
+.dots52 {
+    color: #ff9999;
+}
+
+.dots53 {
+    color: #ff6666;
+}
+
+.dots54 {
+    color: #ff3232;
+}
+
+.dots55 {
+    color: #ff0000;
+}
+
+.dots01 {
+    color: #eee;
+}
+
+.dots02 {
+    color: #eee;
+}
+
+.dots03 {
+    color: #eee;
+}
+
+.dots04 {
+    color: #eee;
+}
+
+.dots05 {
+    color: #eee;
+}
+
+.dots11 {
+    color: #eee;
+}
+
+.dots12 {
+    color: #eee;
+}
+
+.dots13 {
+    color: #eee;
+}
+
+.dots14 {
+    color: #eee;
+}
+
+.dots15 {
+    color: #ffcccc;
+}
+
+.dots21 {
+    color: #eee;
+}
+
+.dots22 {
+    color: #eee;
+}
+
+.dots23 {
+    color: #eee;
+}
+
+.dots24 {
+    color: #ffcccc;
+}
+
+.dots25 {
+    color: #ff9999;
+}
+
+.dots31 {
+    color: #eee;
+}
+
+.dots32 {
+    color: #eee;
+}
+
+.dots33 {
+    color: #ffcccc;
+}
+
+.dots34 {
+    color: #ff9999;
+}
+
+.dots35 {
+    color: #ff6666;
+}
+
+.dots41 {
+    color: #eee;
+}
+
+.dots42 {
+    color: #ffcccc;
+}
+
+.dots43 {
+    color: #ff9999;
+}
+
+.dots44 {
+    color: #ff6666;
+}
+
+.dots45 {
+    color: #ff3232;
+}
+
+.dots51 {
+    color: #ffcccc;
+}
+
+.dots52 {
+    color: #ff9999;
+}
+
+.dots53 {
+    color: #ff6666;
+}
+
+.dots54 {
+    color: #ff3232;
 }
 
 .dots55 {

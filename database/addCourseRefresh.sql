@@ -1,3 +1,26 @@
+DROP TABLE IF EXISTS `addcourse`;
+
+
+CREATE TABLE addcourse AS
+  (SELECT course.id AS course_id,
+          semcourse.semester_id AS semester_id,
+          course.cname AS cname,
+          course.detail AS cdetail,
+          teacher.fname AS tfname,
+          teacher.lname AS tlname,
+          semcourse.room AS room,
+          semcourse.week AS week,
+          semcourse.cstart AS cstart,
+          semcourse.cend AS cend,
+          course.rating AS rating,
+          course.nrating AS nrating
+   FROM ((semcourse
+          JOIN course ON course.id = semcourse.course_id)
+         JOIN teacher ON course.teacher_id = teacher.id));
+
+ALTER TABLE `classroom`.`addcourse` 
+ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST,
+ADD PRIMARY KEY (`id`);
 CREATE DATABASE  IF NOT EXISTS `classroom` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `classroom`;
 -- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)

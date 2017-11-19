@@ -76,70 +76,6 @@ input {
     border-left: 4px lightgray solid;
 }
 
-/*star colors*/
-.starsA0, .starsA1, .starsA2, .starsA3, .starsA4, .starsA5 {
-    color: #eee;
-    cursor: default;
-}
-
-.starsA0:hover {
-    color: gray;
-}
-
-.starsA1:hover {
-    color: red;
-}
-
-.starsA2:hover {
-    color: orangered;
-}
-
-.starsA3:hover {
-    color: darkorange;
-}
-
-.starsA4:hover {
-    color: yellowgreen;
-}
-
-.starsA5:hover {
-    color: green;
-}
-
-.stars0 {
-    color: #eee;
-    cursor: default;
-}
-
-.stars0:hover {
-    color: gray;
-}
-
-.stars1 {
-    color: red;
-    cursor: default;
-}
-
-.stars2 {
-    color: orangered;
-    cursor: default;
-}
-
-.stars3 {
-    color: darkorange;
-    cursor: default;
-}
-
-.stars4 {
-    color: yellowgreen;
-    cursor: default;
-}
-
-.stars5 {
-    color: green;
-    cursor: default;
-}
-
 /*advanced*/
 .advance, .advance:visited {
     font-size: 14px;
@@ -194,7 +130,8 @@ input {
 
 /*popularity*/
 .popularity {
-    font-size: 8px;
+    color: gray;
+    font-size: 10px;
     font-style: italic;
     text-align: right;
     line-height: 100%;
@@ -206,6 +143,13 @@ input {
     font-size: 10px;
     font-style: italic;
     line-height: 100%;
+}
+
+.ratingstars {
+    font-size: 18px;
+    font-style: normal;
+    line-height: 100%;
+    letter-spacing: -3px;
 }
 
 .noresult {

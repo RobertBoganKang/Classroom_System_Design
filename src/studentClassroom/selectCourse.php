@@ -2,6 +2,7 @@
 <title>Add Courses</title>
 <script src="../js/overall.js"></script>
 <link rel="stylesheet" href="../css/couseSearch.css">
+<link rel="stylesheet" href="../css/starSystems.css">
 <h1 style="display: block; float:left">Select Course</h1>
 <br>
 <div>
@@ -176,6 +177,16 @@
             $searchWordSQLbuilder .= " ";
         }
 
+        /*calculate max popularity*/
+        if (!isset($_GET['mxpop'])) {
+            $temp = mysqli_fetch_assoc(mysqli_query($db, "SELECT MAX(nrating) AS mxpop FROM course;"));
+            $mxpop = $temp['mxpop'];
+            setcookie("maxpop", $mxpop);
+        } else {
+            $mxpop = $_GET['mxpop'];
+        }
+
+
         /*if flip pages (is set), we don't count*/
         if (!isset($_SESSION['count']) || isset($_GET['new']) || !isset($_GET['f']) || isset($_GET['adv'])) {
             /*count how many course available*/
@@ -234,21 +245,25 @@
                                 </span>
                         </div>
                         <!--stars ranking-->
-                        <div class="col-sm-3 starsA<?= 5 - (int)$row['rating'] ?>">
+                        <div class="col-sm-3">
                             <!--rating details-->
-                            <span class="stars<?= round((int)$row['rating']) ?> ratingdetails">
-                                <?= bcdiv($row['rating'] * 10, 10, 1) ?>
-                            </span>
-                            <!--color stars-->
-                            <span class="stars<?= round((int)$row['rating']) ?>">
-                                <?= $coursecls->starStr((int)$row['rating']) ?>
-                            </span>
-                            <!--gray stars-->
-                            <span>
-                                <?= $coursecls->starStr(5 - (int)$row['rating']) ?>
+                            <span id="starslist">
+                                <span class="stars<?= round($row['rating']) . '1' ?> ratingdetails"><?= bcdiv($row['rating'] * 10, 10, 1) ?></span>
+                                <span class="ratingstars">
+                                    <span class="stars<?= round($row['rating']) . "1" ?>">*</span>
+                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "1" ?>">_</span>
+                                    <span class="stars<?= round($row['rating']) . "2" ?>">*</span>
+                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "2" ?>">_</span>
+                                    <span class="stars<?= round($row['rating']) . "3" ?>">*</span>
+                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "3" ?>">_</span>
+                                    <span class="stars<?= round($row['rating']) . "4" ?>">*</span>
+                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "4" ?>">_</span>
+                                    <span class="stars<?= round($row['rating']) . "5" ?>">*</span>
+                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "5" ?>">_</span>
+                                </span>
                             </span>
                             <!--popularity-->
-                            <span class="popularity">(<?= $row['nrating'] ?>)</span>
+                            <span class="popularity dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "5" ?>"><?= $row['nrating'] ?></span>
                         </div>
                     </div>
                 </div>

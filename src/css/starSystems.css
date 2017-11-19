@@ -1,0 +1,245 @@
+/*this file is created by mathematica:
+code:
+hover=Reverse@{"#ff0000","#ff3232","#ff6666","#ff9999","#ffcccc","#eee"};\.0cstar={"#eee","red","orangered","darkorange","yellowgreen","green"};str1=StringJoin@Flatten@Table[".stars"<>ToString[i-1]<>ToString[m]<>" {color:"<>If[m<i,star[[i]],"#eee"]<>";} ",{i,Length@star},{m,1,5}];
+str2=StringJoin@Flatten@Table[".dots"<>ToString[j-1]<>ToString[m]<>"\.0c{color:"<>If[5-j<m,hover[[j]],"#eee"]<>";} ",{i,Length@star},{j,Length@hover},{m,1,5}];
+str1<>str2
+*/
+.stars01 {
+    color: #eee;
+}
+
+.stars02 {
+    color: #eee;
+}
+
+.stars03 {
+    color: #eee;
+}
+
+.stars04 {
+    color: #eee;
+}
+
+.stars05 {
+    color: #eee;
+}
+
+.stars11 {
+    color: red;
+}
+
+.stars12 {
+    color: #eee;
+}
+
+.stars13 {
+    color: #eee;
+}
+
+.stars14 {
+    color: #eee;
+}
+
+.stars15 {
+    color: #eee;
+}
+
+.stars21 {
+    color: orangered;
+}
+
+.stars22 {
+    color: orangered;
+}
+
+.stars23 {
+    color: #eee;
+}
+
+.stars24 {
+    color: #eee;
+}
+
+.stars25 {
+    color: #eee;
+}
+
+.stars31 {
+    color: darkorange;
+}
+
+.stars32 {
+    color: darkorange;
+}
+
+.stars33 {
+    color: darkorange;
+}
+
+.stars34 {
+    color: #eee;
+}
+
+.stars35 {
+    color: #eee;
+}
+
+.stars41 {
+    color: yellowgreen;
+}
+
+.stars42 {
+    color: yellowgreen;
+}
+
+.stars43 {
+    color: yellowgreen;
+}
+
+.stars44 {
+    color: yellowgreen;
+}
+
+.stars45 {
+    color: #eee;
+}
+
+.stars51 {
+    color: green;
+}
+
+.stars52 {
+    color: green;
+}
+
+.stars53 {
+    color: green;
+}
+
+.stars54 {
+    color: green;
+}
+
+.stars55 {
+    color: green;
+}
+
+.dots01 {
+    color: #eee;
+}
+
+.dots02 {
+    color: #eee;
+}
+
+.dots03 {
+    color: #eee;
+}
+
+.dots04 {
+    color: #eee;
+}
+
+.dots05 {
+    color: #eee;
+}
+
+.dots11 {
+    color: #eee;
+}
+
+.dots12 {
+    color: #eee;
+}
+
+.dots13 {
+    color: #eee;
+}
+
+.dots14 {
+    color: #ffcccc;
+}
+
+.dots15 {
+    color: #ffcccc;
+}
+
+.dots21 {
+    color: #eee;
+}
+
+.dots22 {
+    color: #eee;
+}
+
+.dots23 {
+    color: #ff9999;
+}
+
+.dots24 {
+    color: #ff9999;
+}
+
+.dots25 {
+    color: #ff9999;
+}
+
+.dots31 {
+    color: #eee;
+}
+
+.dots32 {
+    color: #ff6666;
+}
+
+.dots33 {
+    color: #ff6666;
+}
+
+.dots34 {
+    color: #ff6666;
+}
+
+.dots35 {
+    color: #ff6666;
+}
+
+.dots41 {
+    color: #ff3232;
+}
+
+.dots42 {
+    color: #ff3232;
+}
+
+.dots43 {
+    color: #ff3232;
+}
+
+.dots44 {
+    color: #ff3232;
+}
+
+.dots45 {
+    color: #ff3232;
+}
+
+.dots51 {
+    color: #ff0000;
+}
+
+.dots52 {
+    color: #ff0000;
+}
+
+.dots53 {
+    color: #ff0000;
+}
+
+.dots54 {
+    color: #ff0000;
+}
+
+.dots55 {
+    color: #ff0000;
+}

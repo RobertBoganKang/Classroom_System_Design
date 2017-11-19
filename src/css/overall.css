@@ -3,6 +3,11 @@
 
 html, html * {
     font-family: 'Open Sans', sans-serif;
+    -webkit-transition: color 1s, border 1s;
+    -moz-transition: color 1s, border 1s;
+    -ms-transition: color 1s, border 1s;
+    -o-transition: color 1s, border 1s;
+    transition: color 1s, border 1s;
 }
 
 ::selection {
@@ -29,6 +34,10 @@ h2 {
     color: #ddd;
     text-align: right;
     cursor: default;
+}
+
+h2:hover {
+    color: #bbb;
 }
 
 /*panel borders*/

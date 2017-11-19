@@ -99,16 +99,13 @@
                         <div class="col-sm-3">
                             <span class="title">Where: </span>
                         </div>
-                        <div class="col-sm-9">
-                            [<span id="advType0" class="advType0"
-                                   style="color:<?= $coursecls->ckbxColor("advType", "0") ?>"
-                                   onclick="changeColor('advType0')"></span>
-                            | <span id="advType1" class="advType1"
-                                    style="color:<?= $coursecls->ckbxColor("advType", "1") ?>"
-                                    onclick="changeColor('advType1')"></span>
-                            |<span id="advType2" class="advType2"
-                                   style="color:<?= $coursecls->ckbxColor("advType", "2") ?>"
-                                   onclick="changeColor('advType2')"></span>]
+                        <div class="col-sm-9 navbar" onclick="hidden2show('hiddenSubmit')">
+                            [<span id="advType0" class="ckbx<?= $coursecls->ckbxColor('advType', '0') ?>"
+                                   onclick="changeColor('advType0')">Course Name</span>
+                            | <span id="advType1" class="ckbx<?= $coursecls->ckbxColor('advType', '1') ?>"
+                                    onclick="changeColor('advType1')">Course Detail</span>
+                            |<span id="advType2" class="ckbx<?= $coursecls->ckbxColor('advType', '2') ?>"
+                                   onclick="changeColor('advType2')">Teacher Name</span>]
                         </div>
                     </div>
                     <hr>
@@ -117,20 +114,20 @@
                         <div class="col-sm-3">
                             <span class="title">Week: </span>
                         </div>
-                        <div class="col-sm-9">
-                            [<span id="advWeek0" style="color:<?= $coursecls->ckbxColor("advWeek", "0") ?>"
+                        <div class="col-sm-9 navbar" onclick="hidden2show('hiddenSubmit')">
+                            [<span id="advWeek0" class="ckbx<?= $coursecls->ckbxColor('advWeek', '0') ?>"
                                    onclick="changeColor('advWeek0')">Su</span>
-                            | <span id="advWeek1" style="color:<?= $coursecls->ckbxColor("advWeek", "1") ?>"
+                            | <span id="advWeek1" class="ckbx<?= $coursecls->ckbxColor('advWeek', '1') ?>"
                                     onclick="changeColor('advWeek1')">Mo</span>
-                            | <span id="advWeek2" style="color:<?= $coursecls->ckbxColor("advWeek", "2") ?>"
+                            | <span id="advWeek2" class="ckbx<?= $coursecls->ckbxColor('advWeek', '2') ?>"
                                     onclick="changeColor('advWeek2')">Tu</span>
-                            | <span id="advWeek3" style="color:<?= $coursecls->ckbxColor("advWeek", "3") ?>"
+                            | <span id="advWeek3" class="ckbx<?= $coursecls->ckbxColor('advWeek', '3') ?>"
                                     onclick="changeColor('advWeek3')">We</span>
-                            | <span id="advWeek4" style="color:<?= $coursecls->ckbxColor("advWeek", "4") ?>"
+                            | <span id="advWeek4" class="ckbx<?= $coursecls->ckbxColor('advWeek', '4') ?>"
                                     onclick="changeColor('advWeek4')">Th</span>
-                            | <span id="advWeek5" style="color:<?= $coursecls->ckbxColor("advWeek", "5") ?>"
+                            | <span id="advWeek5" class="ckbx<?= $coursecls->ckbxColor('advWeek', '5') ?>"
                                     onclick="changeColor('advWeek5')">Fr</span>
-                            | <span id="advWeek6" style="color:<?= $coursecls->ckbxColor("advWeek", "6") ?>"
+                            | <span id="advWeek6" class="ckbx<?= $coursecls->ckbxColor('advWeek', '6') ?>"
                                     onclick="changeColor('advWeek6')">Sa</span>]
                         </div>
                     </div>
@@ -140,7 +137,7 @@
                         <div class="col-sm-3">
                             <span class="title">Rank: </span>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-sm-6">
                             <select name="advFilter" class="advFilter" id="advFilter"
                                     onchange='<?php if ($adv) { ?>ckbx2arr(["advType0", "advType1", "advType2"], "advType");
                                             ckbx2arr(["advWeek0", "advWeek1", "advWeek2", "advWeek3", "advWeek4", "advWeek5", "advWeek6"], "advWeek");<?php } ?>
@@ -155,6 +152,9 @@
                                     Popularity
                                 </option>
                             </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="submit" class="hiddenSubmit" value="Search" id="hiddenSubmit">
                         </div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@
                                 </span>
                         </div>
                         <!--stars ranking-->
-                        <div class="col-sm-3">
+                        <div class="col-sm-3 starsA<?= 5 - (int)$row['rating'] ?>">
                             <!--rating details-->
                             <span class="stars<?= round((int)$row['rating']) ?> ratingdetails">
                                 <?= bcdiv($row['rating'] * 10, 10, 1) ?>
@@ -244,7 +244,7 @@
                                 <?= $coursecls->starStr((int)$row['rating']) ?>
                             </span>
                             <!--gray stars-->
-                            <span style="color:#eee">
+                            <span>
                                 <?= $coursecls->starStr(5 - (int)$row['rating']) ?>
                             </span>
                             <!--popularity-->
@@ -288,7 +288,7 @@
             } ?>
             <!--previous page-->
             <?php if ($page != 1) { ?>
-                <a class="jumpPage"
+                <a class="jumpPage1"
                    href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page - 1) . $searchURL . $advURL . '&f=1') ?>">&lt&lt</a>
             <?php }
             if ($page != 1 && $page != $maxpage) {
@@ -297,14 +297,14 @@
             <!--next page-->
             <?php
             if ($page != $maxpage) { ?>
-                <a class="jumpPage"
+                <a class="jumpPage2"
                    href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($page + 1) . $searchURL . $advURL . '&f=1') ?>">&gt&gt</a>
             <?php }
             if ($page != $maxpage && $maxpage != 2) {
                 echo "|";
             }
             if ($page != $maxpage && $maxpage != 2) { ?>
-                <a class="jumpPage"
+                <a class="jumpPage3"
                    href="<?= htmlspecialchars($_SERVER['PHP_SELF'] . '?page=' . (string)($maxpage) . $searchURL . $advURL . '&f=1') ?>">~.</a>
             <?php } ?>
             ]

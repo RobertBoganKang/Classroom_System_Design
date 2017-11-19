@@ -2,8 +2,8 @@
 /*initialize all variables*/
 $phone = $phoneErr = $address = $addressErr = $office = $officeErr = "";
 /*text trim*/
-include "stringUtils.php";
-$strcls = new stringUtils();
+include "checkUtils.php";
+$ckcls = new checkUtils();
 
 try {
     /*if using the session, do query again*/
@@ -27,8 +27,8 @@ try {
     if ($type == 0) $office = $pq['office'];
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /*pass variables*/
-        $phone = $strcls->trimText(mysqli_real_escape_string($db, $_POST["phone"]));
-        $address = $strcls->trimText(mysqli_real_escape_string($db, $_POST["address"]));
+        $phone = $ckcls->trimText(mysqli_real_escape_string($db, $_POST["phone"]));
+        $address = $ckcls->trimText(mysqli_real_escape_string($db, $_POST["address"]));
 
         /*phone check*/
         if (!(preg_match("/^[1-9][0-9]*$/", $phone) || $phone == '')) {
@@ -51,16 +51,14 @@ try {
 
         /*teacher has office*/
         if ($type == 0) {
-            $office = $strcls->trimText(mysqli_real_escape_string($db, $_POST["office"]));
+            $office = $ckcls->trimText(mysqli_real_escape_string($db, $_POST["office"]));
             /*check office*/
             if (isset($office)) {
                 /*add dimensions*/
-                $office = $strcls->trimText(mysqli_real_escape_string($db, $_POST["office"]));
+                $office = $ckcls->trimText(mysqli_real_escape_string($db, $_POST["office"]));
 
                 /*check office*/
-                if (empty($office)) {
-                    $officeErr = "Office location is required";
-                }
+                $ckcls->ckOffice($office, $officeErr);
             }
             /*update office*/
             if ($officeErr == '') {

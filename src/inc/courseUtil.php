@@ -156,6 +156,6 @@ class courseUtil
     /*checkbox color initializer*/
     public function ckbxColor($id, $val)
     {
-        return (strpos($_GET[$id], $val) !== false) ? "green" : "lightgray";
+        return (strpos($_GET[$id], $val) !== false) ? "0" : "1";
     }
 }

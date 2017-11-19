@@ -9,12 +9,32 @@ input {
     color: dimgray;
 }
 
-.jumpPage:visited {
+.jump:hover, .jump:focus {
+    color: purple;
+}
+
+.jumpPage, .jumpPage1, .jumpPage2, .jumpPage3 {
+    color: dimgray;
+}
+
+.jumpPage:visited, .jumpPage1:visited, .jumpPage2:visited, .jumpPage3:visited {
     color: dimgray;
 }
 
 .jumpPage:hover {
-    color: gray;
+    color: orangered;
+}
+
+.jumpPage1:hover {
+    color: green;
+}
+
+.jumpPage2:hover {
+    color: darkorange;
+}
+
+.jumpPage3:hover {
+    color: dodgerblue;
 }
 
 .course {
@@ -42,9 +62,14 @@ input {
 /*class left border effect*/
 .csdetail {
     padding: 15px;
-    border-left: 4px white solid;
+    border-left: 4px white double;
     max-width: 800px;
     display: inline-block;
+    -webkit-transition: border .5s;
+    -moz-transition: border .5s;
+    -ms-transition: border .5s;
+    -o-transition: border .5s;
+    transition: border .5s;
 }
 
 .csdetail:hover {
@@ -52,28 +77,67 @@ input {
 }
 
 /*star colors*/
+.starsA0, .starsA1, .starsA2, .starsA3, .starsA4, .starsA5 {
+    color: #eee;
+    cursor: default;
+}
+
+.starsA0:hover {
+    color: gray;
+}
+
+.starsA1:hover {
+    color: red;
+}
+
+.starsA2:hover {
+    color: orangered;
+}
+
+.starsA3:hover {
+    color: darkorange;
+}
+
+.starsA4:hover {
+    color: yellowgreen;
+}
+
+.starsA5:hover {
+    color: green;
+}
+
 .stars0 {
-    color: lightgray;
+    color: #eee;
+    cursor: default;
+}
+
+.stars0:hover {
+    color: gray;
 }
 
 .stars1 {
     color: red;
+    cursor: default;
 }
 
 .stars2 {
     color: orangered;
+    cursor: default;
 }
 
 .stars3 {
     color: darkorange;
+    cursor: default;
 }
 
 .stars4 {
     color: yellowgreen;
+    cursor: default;
 }
 
 .stars5 {
     color: green;
+    cursor: default;
 }
 
 /*advanced*/
@@ -85,7 +149,7 @@ input {
     border-bottom: 1px white solid;
     border-left: 0;
     border-right: 0;
-    border-top: 1px white solid;
+    border-top: 1px white dashed;
     float: right;
     color: #eee;
     line-height: 100%;
@@ -94,7 +158,7 @@ input {
 
 .advance:hover {
     color: lightgray;
-    border-bottom: 1px #eee dashed;
+    border-bottom: 1px #eee solid;
 }
 
 .advance2, .advance2:visited {
@@ -108,9 +172,15 @@ input {
     border-bottom: 1px lightgray dashed;
     border-left: 0;
     border-right: 0;
-    border-top: 1px gray solid;
+    border-top: 1px white dashed;
     background: white;
     display: block;
+}
+
+.advance2:hover {
+    border-bottom: 1px lightgray solid;
+    color: gray;
+    border-top: 1px dimgray solid;
 }
 
 /*result indicator*/
@@ -127,8 +197,8 @@ input {
     font-size: 8px;
     font-style: italic;
     text-align: right;
-    color: #eee;
     line-height: 100%;
+    cursor: default;
 }
 
 /*rating details*/
@@ -146,26 +216,38 @@ input {
 .navbar {
     color: lightgray;
     display: inline;
+    -webkit-transition: color 2s;
+    -moz-transition: color 2s;
+    -ms-transition: color 2s;
+    -o-transition: color 2s;
+    transition: color 2s;
 }
 
 .navbar:hover {
-    color: #bbb;
+    color: gray;
 }
 
 /*search input*/
 .searchinput {
-    color: darkblue;
+    color: gray;
     font-style: italic;
     width: 100%;
     line-height: 2em;
     border: white 1px solid;
+    -webkit-transition: color 1s, border 2s;
+    -moz-transition: color 1s, border 2s;
+    -ms-transition: color 1s, border 2s;
+    -o-transition: color 1s, border 2s;
+    transition: color 1s, border 2s;
 }
 
 .searchinput:hover {
-    border-bottom: dimgray 1px solid;
+    color: dimgray;
+    border-bottom: gray 1px solid;
 }
 
 .searchinput:focus {
+    color: darkblue;
     border-bottom: dimgray 1px solid;
     border-top: #eee 1px dashed;
 }
@@ -182,31 +264,6 @@ input {
 .hr {
     margin-top: -4px;
     margin-bottom: 0;
-}
-
-/*Where to search*/
-.advType0:after {
-    content: "CN";
-}
-
-.advType0:hover:after {
-    content: "Course Name";
-}
-
-.advType1:after {
-    content: "CD";
-}
-
-.advType1:hover:after {
-    content: "Course Detail";
-}
-
-.advType2:after {
-    content: "TN";
-}
-
-.advType2:hover:after {
-    content: "Teacher Name";
 }
 
 /*advanced search title*/
@@ -230,4 +287,43 @@ input {
     border: 0;
     outline: none;
     color: gray;
+}
+
+/*hidden submit button*/
+.hiddenSubmit {
+    color: pink;
+    padding: 0;
+    font-size: 95%;
+    margin: 0;
+    font-weight: 300;
+    display: none;
+    border: 1px white dashed;
+    font-style: italic;
+    float: right;
+    background: white;
+    -webkit-transition: color 1s, border 2s;
+    -moz-transition: color 1s, border 2s;
+    -ms-transition: color 1s, border 2s;
+    -o-transition: color 1s, border 2s;
+    transition: color 1s, border 2s;
+}
+
+.hiddenSubmit:hover {
+    color: red;
+    border: 1px red solid;
+}
+
+/*checkbox color*/
+.ckbx0 {
+    color: green;
+    cursor: pointer;
+}
+
+.ckbx1 {
+    color: lightgray;
+    cursor: pointer;
+}
+
+.ckbx1:hover {
+    color: green;
 }

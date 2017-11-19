@@ -23,7 +23,7 @@
 </form>
 <hr>
 <?php if ($_GET['content'] == 0) { ?>
-    <div class="container-fluid align-left">
+    <div class="container-fluid">
         <!--Id-->
         <div class="row">
             <div class="col-sm-3 title">

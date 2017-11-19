@@ -140,3 +140,8 @@ function ckbx2arr(idarr, input) {
     }
     document.getElementById(input).value = str;
 }
+
+function hidden2show(id) {
+    document.getElementById(id).style.display = "inline";
+
+}

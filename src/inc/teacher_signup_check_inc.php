@@ -6,8 +6,8 @@ $username = $email = $phone = $pswd = $pswd2 = $fname = $lname = $address = $off
 $errorArr = array('');
 $errorFirstLocation = 'username';
 /*text trim*/
-include "stringUtils.php";
-$strcls = new stringUtils();
+include 'checkUtils.php';
+$ckcls = new checkUtils();
 
 try {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

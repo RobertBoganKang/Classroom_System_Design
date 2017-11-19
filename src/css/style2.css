@@ -1,4 +1,4 @@
-::selection, body, h1, h2, .panel, .panel:hover, .nav, p, a, a:visited,
+::selection, html, div, span, body, h1, h2, .panel, .panel:hover, .nav, p, a, a:visited,
 a:hover, textarea, input[type=text], input[type=submit], input[type=password],
 textarea, input[type=submit], input:hover, textarea:hover, input:focus,
 textarea:focus, input[type=checkbox], input[type=checkbox] + .remember-text:before,
@@ -14,9 +14,17 @@ input, .jump, .jumpPage:visited, .jumpPage:hover, .course, .course:visited,
 .searchinput:focus, .searchinput::placeholder, .searchrow, .advType0:after,
 .advType0:hover:after, .advType1:after, .advType1:hover:after,
 .advType2:after, .advType2:hover:after, .title, .title:hover, .advancebox,
-.advFilter {
+.advFilter, .hiddenSubmit, .hiddenSubmit:hover {
     border: 0;
     font: inherit;
     font-family: "Times New Roman";
     vertical-align: baseline;
+}
+
+html, html * {
+    -webkit-transition: color 0s, border 0s;
+    -moz-transition: color 0s, border 0s;
+    -ms-transition: color 0s, border 0s;
+    -o-transition: color 0s, border 0s;
+    transition: color 0s, border 0s;
 }

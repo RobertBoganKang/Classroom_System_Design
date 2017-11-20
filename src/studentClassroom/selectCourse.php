@@ -17,7 +17,9 @@
     try {
         /*load php functions*/
         require_once "../inc/courseUtil.php";
+        require_once "../inc/stringUtils.php";
         $coursecls = new courseUtil();
+        $stringcls = new stringUtils();
 
         /*print semester information*/
         $semester = $_COOKIE['semester'];

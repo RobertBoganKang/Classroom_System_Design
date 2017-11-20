@@ -7,9 +7,9 @@
 <div>
     <?php
     try {
-        /*connect database*/
+
         if (!isset($p)) {
-            include "../inc/connect_inc.php";
+            throw new Exception($db->error);
         }
         /*load php functions*/
         require_once "../inc/courseUtil.php";

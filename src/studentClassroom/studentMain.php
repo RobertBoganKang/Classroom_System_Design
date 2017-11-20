@@ -62,7 +62,7 @@ if (mysqli_num_rows($myClass) > 0) {
                                 </span>
                 </div>
                 <div class="col-sm-5">
-                    <span style="margin:5px">*</span>
+                    <span>N/A</span>
                 </div>
             </div>
         </div>

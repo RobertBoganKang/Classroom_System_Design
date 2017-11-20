@@ -7,10 +7,6 @@
 <div>
     <?php
     try {
-
-        if (!isset($p)) {
-            throw new Exception($db->error);
-        }
         /*load php functions*/
         require_once "../inc/courseUtil.php";
         $coursecls = new courseUtil();

@@ -7,6 +7,10 @@
 <div>
     <?php
     try {
+        /*connect database*/
+        if (!isset($p)) {
+            include "../inc/connect_inc.php";
+        }
         /*load php functions*/
         require_once "../inc/courseUtil.php";
         $coursecls = new courseUtil();

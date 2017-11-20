@@ -19,6 +19,11 @@
         require_once "../inc/courseUtil.php";
         $coursecls = new courseUtil();
 
+        /*connect database*/
+        if (!isset($p)) {
+            include "../inc/connect_inc.php";
+        }
+
         /*print semester information*/
         $semester = $_COOKIE['semester'];
         $seminfo = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM semester WHERE id = $semester;"));
@@ -269,7 +274,7 @@
                                 </span>
                         </div>
                         <!--stars ranking-->
-                        <div class="col-sm-3 defaulthover">
+                        <div class="col-sm-3">
                             <!--print dots and stars-->
                             <?= $coursecls->starDots($row['rating'], $row['nrating'], $mxpop) ?>
                         </div>

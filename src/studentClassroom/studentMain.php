@@ -16,8 +16,12 @@
 <?php
 /*load php functions*/
 require_once "../inc/courseUtil.php";
-require_once "../inc/stringUtils.php";
 $coursecls = new courseUtil();
+
+/*connect database*/
+if (!isset($p)) {
+    include "../inc/connect_inc.php";
+}
 
 /*prepare semester*/
 $today = date("Y-m-d");
@@ -33,16 +37,18 @@ if (mysqli_num_rows($myClass) > 0) {
         $course_id = $rows['course_id'];
         $row = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM addcourse WHERE course_id=$course_id AND semester_id=$semester"));
         ?>
-        <div class="csdetail">
-            <a class="course"
-               href="../errorPage/featureConstruction.php?scID=<?= $row['semcourse_id'] ?>&cID=<?= $row['course_id'] ?>">
-                <?php
-                /*print course name*/
-                echo $row['cname'];
-                ?>
-            </a>
-            <br>
-            <span class="coursedetail">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-7 csdetail">
+                    <a class="course"
+                       href="../errorPage/featureConstruction.php?scID=<?= $row['semcourse_id'] ?>&cID=<?= $row['course_id'] ?>">
+                        <?php
+                        /*print course name*/
+                        echo $row['cname'];
+                        ?>
+                    </a>
+                    <br>
+                    <span class="coursedetail">
                                     <?php
                                     /*print course week and time*/
                                     echo $coursecls->str2week($row['week']) . "|";
@@ -54,6 +60,11 @@ if (mysqli_num_rows($myClass) > 0) {
                                     echo '<br>';
                                     ?>
                                 </span>
+                </div>
+                <div class="col-sm-5">
+                    <span style="margin:5px">*</span>
+                </div>
+            </div>
         </div>
         <?
     }

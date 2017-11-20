@@ -9,6 +9,11 @@
             require_once "../inc/courseUtil.php";
             $coursecls = new courseUtil();
 
+            /*connect database*/
+            if (!isset($p)) {
+                include "../inc/connect_inc.php";
+            }
+
             /*semester information*/
             $semester = $_COOKIE['semester'];
 

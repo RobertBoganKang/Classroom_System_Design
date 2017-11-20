@@ -18,7 +18,6 @@
 require_once "../inc/courseUtil.php";
 require_once "../inc/stringUtils.php";
 $coursecls = new courseUtil();
-$stringcls = new stringUtils();
 
 /*prepare semester*/
 $today = date("Y-m-d");

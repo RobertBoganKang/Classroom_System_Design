@@ -15,9 +15,9 @@
 <?php
 try {
     session_start();
+    /*connect to database*/
+    include "../inc/connect_inc.php";
     if (!isset($_SESSION['pq'])) {
-        /*connect to database*/
-        include "../inc/connect_inc.php";
         /*get info*/
         $username = $_COOKIE['username'];
         $p = mysqli_query($db, "SELECT * FROM student WHERE BINARY username ='$username';");

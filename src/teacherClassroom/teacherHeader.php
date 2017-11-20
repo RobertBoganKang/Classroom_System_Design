@@ -15,7 +15,7 @@
 <?php
 try {
     session_start();
-    /*connect database*/
+    /*connect to database*/
     include "../inc/connect_inc.php";
     if (!isset($_SESSION['pq'])) {
         /*get info*/

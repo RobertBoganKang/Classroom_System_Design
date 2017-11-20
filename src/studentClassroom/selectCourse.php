@@ -19,11 +19,6 @@
         require_once "../inc/courseUtil.php";
         $coursecls = new courseUtil();
 
-        /*connect database*/
-        if (!isset($p)) {
-            include "../inc/connect_inc.php";
-        }
-
         /*print semester information*/
         $semester = $_COOKIE['semester'];
         $seminfo = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM semester WHERE id = $semester;"));

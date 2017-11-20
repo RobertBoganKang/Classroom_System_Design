@@ -252,12 +252,11 @@
             }
             /**test area*/
             /*UI continue*/
-            while ($row = mysqli_fetch_assoc($semclsq)) {
-                ?>
+            while ($row = mysqli_fetch_assoc($semclsq)) { ?>
                 <div class="container-fluid csdetail">
                     <div class="row">
                         <div class="col-sm-9">
-                            <a class="course"
+                            <a class="course" target="<?= $row['course_id'] ?>"
                                href="courseDetails.php?scID=<?= $row['semcourse_id'] ?>&cID=<?= $row['course_id'] ?>">
                                 <?php
                                 /*print course name*/

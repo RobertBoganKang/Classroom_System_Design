@@ -313,3 +313,24 @@ input[type=time]:focus {
 .ckbx0:hover {
     color: gray;
 }
+
+/*hidden submit button*/
+.classchoose, .classchoose:visited {
+    color: green;
+    font-size: 95%;
+    margin: 0;
+    padding: 2px;
+    font-weight: 700;
+    border: 1px white dashed;
+    background: white;
+    -webkit-transition: color 1s, border 2s;
+    -moz-transition: color 1s, border 2s;
+    -ms-transition: color 1s, border 2s;
+    -o-transition: color 1s, border 2s;
+    transition: color 1s, border 2s;
+}
+
+.classchoose:hover {
+    color: orangered;
+    border: 1px orangered solid;
+}

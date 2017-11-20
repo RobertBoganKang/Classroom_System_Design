@@ -13,5 +13,5 @@
 <h2>Courses</h2>
 <hr class="hr">
 <a class="advance" href="selectSemester.php">Add Course</a>
-<span class="results noresult">No Course Available</span>
+<span class="results noresult">No Course Available...</span>
 <?php include "studentFooter.php"; ?>

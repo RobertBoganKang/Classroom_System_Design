@@ -30,7 +30,51 @@
             /*get course information*/
             $courseinfo = mysqli_fetch_assoc($course);
 
-
+            /*prepare class select button*/
+            $Myid = $pq['id'];
+            /*prepare error message*/
+            $checkcourseErr = "";
+            /*check chose class status*/
+            $checkcourse = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$Myid AND course_id=$cID");
+            if (!$checkcourse) {
+                throw new Exception($db->error);
+            }
+            if (mysqli_num_rows($checkcourse) > 0) {
+                $coursestatus = mysqli_fetch_assoc($checkcourse);
+                if ($coursestatus['semester_id'] == $semester) {
+                    $checkcourseErr = "You have already chosed for this semester";
+                } else {
+                    $checkcourseErr = "You have chosed this course previously";
+                }
+            }
+            /*check time overlap for this semester*/
+            $checkcourse = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$Myid AND semester_id=$semester");
+            if (!$checkcourse) {
+                throw new Exception($db->error);
+            }
+            if (mysqli_num_rows($checkcourse) > 0) {
+                $courseweekarr = str_split($courseinfo['week']);
+                while ($row = mysqli_fetch_assoc($checkcourse)) {
+                    if ($checkcourseErr != "") break;
+                    $courseidcheck = $row['course_id'];
+                    $findchosedcourseq = mysqli_query($db, "SELECT * FROM addcourse WHERE course_id=$courseidcheck AND semester_id=$semester");
+                    $findchosedcourse = mysqli_fetch_assoc($findchosedcourseq);
+                    if (!$findchosedcourse) {
+                        throw new Exception($db->error);
+                    }
+                    foreach ($courseweekarr as $week) {
+                        /*find if week has matched*/
+                        if (strpos($findchosedcourse['week'], $week) != -1) {
+                            /*find time interval has overlap*/
+                            if (($findchosedcourse['cstart'] > $courseinfo['cstart'] && $findchosedcourse['cstart'] < $courseinfo['cend']) ||
+                                ($findchosedcourse['cend'] > $courseinfo['cstart'] && $findchosedcourse['cend'] < $courseinfo['cend'])) {
+                                $checkcourseErr = "[" . $findchosedcourse['cname'] . "] took up the time for this course";
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
             ?>
             <title><?= $courseinfo['cname'] ?></title>
             <h1>Course Details</h1>
@@ -95,13 +139,40 @@
                         </span>
                     </div>
                 </div>
+                <hr>
+                <!--button to choose course-->
+                <?php if ($checkcourseErr != "") { ?>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a href="../errorPage/featureConstruction.php" style="color:red;font-weight:700;">Error:</a>
+                        </div>
+                        <div class="col-sm-9 coursedetail">
+                            <span class="results noresult">* <?= $checkcourseErr ?></span>
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a href="../errorPage/featureConstruction.php" class="classchoose">Choose</a>
+                        </div>
+                        <div class="col-sm-9 coursedetail">
+                            <span style="color:green">*</span>
+                        </div>
+                    </div>
+                    <?php
+                } ?>
+
             </div>
+            <!--comments section-->
             <h2>Comments</h2>
             <hr class="hr">
             <!--overall star rating-->
             <span class="commentstars"><?= $coursecls->starRating($courseinfo['rating']) ?></span>
             <?php
-            $comments = mysqli_query($db, "SELECT * FROM stucourse WHERE course_id=$cID ORDER BY id DESC");
+            /*limit comment numbers*/
+            /**not implemented*/
+            $limit = 300;
+            $comments = mysqli_query($db, "SELECT * FROM stucourse WHERE course_id=$cID ORDER BY id DESC LIMIT $limit");
             if (!$comments) {
                 throw new Exception($db->error);
             }

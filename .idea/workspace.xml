@@ -61,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="courseDetails.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="courseDetails.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/studentClassroom/courseDetails.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="511">
@@ -91,6 +91,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="couseSearch.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/css/couseSearch.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="94" column="20" lean-forward="true" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="settingStudent.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/studentClassroom/settingStudent.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -114,11 +124,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>after</find>
       <find>ckbx</find>
       <find>green</find>
       <find>time</find>
-      <find>advance</find>
       <find>hr</find>
       <find>&lt;=</find>
       <find>navbar</find>
@@ -144,6 +152,8 @@
       <find>stringu</find>
       <find>stringutil</find>
       <find>script</find>
+      <find>advance</find>
+      <find>advance`</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,7 +202,6 @@
         <option value="$PROJECT_DIR$/src/js/overall.js" />
         <option value="$PROJECT_DIR$/src/css/overall.css" />
         <option value="$PROJECT_DIR$/src/errorPage/errorPage.php" />
-        <option value="$PROJECT_DIR$/src/css/couseSearch.css" />
         <option value="$PROJECT_DIR$/src/inc/updateInfo_inc.php" />
         <option value="$PROJECT_DIR$/src/inc/connect_inc.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/studentHeader.php" />
@@ -203,6 +212,7 @@
         <option value="$PROJECT_DIR$/src/studentClassroom/selectSemester.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/studentMain.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/courseDetails.php" />
+        <option value="$PROJECT_DIR$/src/css/couseSearch.css" />
       </list>
     </option>
   </component>
@@ -453,18 +463,18 @@
       <workItem from="1511168167075" duration="972000" />
       <workItem from="1511170118657" duration="2707000" />
       <workItem from="1511203199693" duration="16382000" />
-      <workItem from="1511219607639" duration="1598000" />
+      <workItem from="1511219607639" duration="1776000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246606000" />
+    <option name="totallyTimeSpent" value="246784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1360" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42204726" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42173252" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263328" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -784,13 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/couseSearch.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="141" column="19" lean-forward="false" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/errorPage/errorPageFunc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -937,6 +940,14 @@
             <marker date="1511221194316" expanded="true" signature="9173:9204" ph="SELECT * FRO... student" />
             <marker date="1511221194316" expanded="true" signature="9500:9532" ph="SELECT * FRO... semester" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/couseSearch.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="94" column="20" lean-forward="true" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>

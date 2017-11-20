@@ -80,7 +80,7 @@ input {
     border-left: 4px lightgray solid;
 }
 
-/*advanced*/
+/*`d*/
 .advance, .advance:visited {
     font-size: 14px;
     font-style: italic;
@@ -92,6 +92,7 @@ input {
     border-top: 1px white dashed;
     float: right;
     color: #eee;
+    cursor: pointer;
     line-height: 100%;
     display: block;
 }
@@ -106,6 +107,7 @@ input {
     font-style: italic;
     padding: 2px;
     margin: 0;
+    cursor: pointer;
     float: right;
     color: #aaa;
     line-height: 100%;

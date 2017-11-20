@@ -38,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="studentMain.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="studentMain.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/studentClassroom/studentMain.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
@@ -56,6 +56,36 @@
                 <marker date="1511220205345" expanded="true" signature="1611:1673" ph="SELECT * FRO... stucourse" />
                 <marker date="1511220205345" expanded="true" signature="1611:1674" ph="SELECT * FRO... stucourse" />
                 <marker date="1511220205345" expanded="true" signature="1905:1972" ph="SELECT * FRO... stucourse" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="courseDetails.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/studentClassroom/courseDetails.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="511">
+              <caret line="209" column="26" lean-forward="false" selection-start-line="209" selection-start-column="26" selection-end-line="209" selection-end-column="26" />
+              <folding>
+                <element signature="e#8778#8804#0#HTML" expanded="true" />
+                <element signature="e#9815#9841#0#HTML" expanded="true" />
+                <marker date="1511221194316" expanded="true" signature="613:636" ph="SELECT * AS " />
+                <marker date="1511221194316" expanded="true" signature="613:655" ph="SELECT * FRO... addcourse" />
+                <marker date="1511221194316" expanded="true" signature="613:664" ph="SELECT * AS " />
+                <marker date="1511221194316" expanded="true" signature="613:702" ph="SELECT * FRO... addcourse" />
+                <marker date="1511221194316" expanded="true" signature="1198:1239" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="1198:1240" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="1198:1259" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="1866:1907" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="1866:1912" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="1866:1929" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="1866:1930" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="1866:1940" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="2392:2463" ph="SELECT * FRO... addcourse" />
+                <marker date="1511221194316" expanded="true" signature="8335:8402" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="8335:8403" ph="SELECT * FRO... stucourse" />
+                <marker date="1511221194316" expanded="true" signature="9173:9204" ph="SELECT * FRO... student" />
+                <marker date="1511221194316" expanded="true" signature="9500:9532" ph="SELECT * FRO... semester" />
               </folding>
             </state>
           </provider>
@@ -166,13 +196,13 @@
         <option value="$PROJECT_DIR$/src/inc/updateInfo_inc.php" />
         <option value="$PROJECT_DIR$/src/inc/connect_inc.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/studentHeader.php" />
-        <option value="$PROJECT_DIR$/src/studentClassroom/courseDetails.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/classroomMain.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/courseSubmit.php" />
         <option value="$PROJECT_DIR$/src/teacherClassroom/teacherHeader.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/selectCourse.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/selectSemester.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/studentMain.php" />
+        <option value="$PROJECT_DIR$/src/studentClassroom/courseDetails.php" />
       </list>
     </option>
   </component>
@@ -188,7 +218,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP on XAMPP" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="95" />
+    <option name="x" value="133" />
     <option name="width" value="659" />
     <option name="height" value="730" />
   </component>
@@ -423,18 +453,18 @@
       <workItem from="1511168167075" duration="972000" />
       <workItem from="1511170118657" duration="2707000" />
       <workItem from="1511203199693" duration="16382000" />
-      <workItem from="1511219607639" duration="681000" />
+      <workItem from="1511219607639" duration="1598000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245689000" />
+    <option name="totallyTimeSpent" value="246606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1360" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20364742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42204726" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3263328" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -821,32 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/studentClassroom/courseDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="45" lean-forward="true" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding>
-            <marker date="1511218806195" expanded="true" signature="613:636" ph="SELECT * AS " />
-            <marker date="1511218806195" expanded="true" signature="613:655" ph="SELECT * FRO... addcourse" />
-            <marker date="1511218806195" expanded="true" signature="613:664" ph="SELECT * AS " />
-            <marker date="1511218806195" expanded="true" signature="613:702" ph="SELECT * FRO... addcourse" />
-            <marker date="1511218806195" expanded="true" signature="1198:1239" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="1198:1240" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="1198:1259" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="1866:1907" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="1866:1912" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="1866:1929" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="1866:1930" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="1866:1940" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="2392:2463" ph="SELECT * FRO... addcourse" />
-            <marker date="1511218806195" expanded="true" signature="8335:8402" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="8335:8403" ph="SELECT * FRO... stucourse" />
-            <marker date="1511218806195" expanded="true" signature="9132:9163" ph="SELECT * FRO... student" />
-            <marker date="1511218806195" expanded="true" signature="9439:9471" ph="SELECT * FRO... semester" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/studentClassroom/classroomMain.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -904,6 +908,34 @@
             <marker date="1511220205345" expanded="true" signature="1611:1673" ph="SELECT * FRO... stucourse" />
             <marker date="1511220205345" expanded="true" signature="1611:1674" ph="SELECT * FRO... stucourse" />
             <marker date="1511220205345" expanded="true" signature="1905:1972" ph="SELECT * FRO... stucourse" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/studentClassroom/courseDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="209" column="26" lean-forward="false" selection-start-line="209" selection-start-column="26" selection-end-line="209" selection-end-column="26" />
+          <folding>
+            <element signature="e#8778#8804#0#HTML" expanded="true" />
+            <element signature="e#9815#9841#0#HTML" expanded="true" />
+            <marker date="1511221194316" expanded="true" signature="613:636" ph="SELECT * AS " />
+            <marker date="1511221194316" expanded="true" signature="613:655" ph="SELECT * FRO... addcourse" />
+            <marker date="1511221194316" expanded="true" signature="613:664" ph="SELECT * AS " />
+            <marker date="1511221194316" expanded="true" signature="613:702" ph="SELECT * FRO... addcourse" />
+            <marker date="1511221194316" expanded="true" signature="1198:1239" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="1198:1240" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="1198:1259" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="1866:1907" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="1866:1912" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="1866:1929" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="1866:1930" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="1866:1940" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="2392:2463" ph="SELECT * FRO... addcourse" />
+            <marker date="1511221194316" expanded="true" signature="8335:8402" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="8335:8403" ph="SELECT * FRO... stucourse" />
+            <marker date="1511221194316" expanded="true" signature="9173:9204" ph="SELECT * FRO... student" />
+            <marker date="1511221194316" expanded="true" signature="9500:9532" ph="SELECT * FRO... semester" />
           </folding>
         </state>
       </provider>

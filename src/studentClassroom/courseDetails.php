@@ -185,49 +185,49 @@
                 <?php
             } else { ?>
                 <div class="container-fluid" style="font-style: italic">
-                <?php
-                $i = 0;
-                $student_id = $pq['id'];
-                while ($row = mysqli_fetch_assoc($comments)) {
-                    if ($row['rating'] != null) {
-                        /*find student information*/
-                        $student = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM student WHERE id=$student_id"));
-                        if (!$student) {
-                            throw new Exception($db->error);
-                        }
-                        $stusem = $row['semester_id'];
-                        $stusemester = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM semester WHERE id=$stusem"));
-                        if (!$stusemester) {
-                            throw new Exception($db->error);
-                        }
-                        /*print out comments*/
-                        ?>
-                        <div class="row" style="font-style: italic">
-                            <div class="col-sm-7">
-                                <span class="title"><?= ucwords($student['fname']) . ' ' . ucwords($student['lname']) ?></span>
-                                <span class="commentUsername">@<?= $student['username'] ?></span>
-                                <br>
-                                <span class="comments"><?= $row['comment'] ?></span>
-                            </div>
-                            <div class="col-sm-5">
-                                <span class="advance2"><?= $stusemester['year'] . ' ' . $coursecls->semester2str($stusemester['type']) ?></span>
-                                <span>
+                    <?php
+                    $i = 0;
+                    while ($row = mysqli_fetch_assoc($comments)) {
+                        $student_id = $row['student_id'];
+                        if ($row['rating'] != null) {
+                            /*find student information*/
+                            $student = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM student WHERE id=$student_id"));
+                            if (!$student) {
+                                throw new Exception($db->error);
+                            }
+                            $stusem = $row['semester_id'];
+                            $stusemester = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM semester WHERE id=$stusem"));
+                            if (!$stusemester) {
+                                throw new Exception($db->error);
+                            }
+                            /*print out comments*/
+                            ?>
+                            <div class="row" style="font-style: italic">
+                                <div class="col-sm-7">
+                                    <span class="title"><?= ucwords($student['fname']) . ' ' . ucwords($student['lname']) ?></span>
+                                    <span class="commentUsername">@<?= $student['username'] ?></span>
+                                    <br>
+                                    <span class="comments"><?= $row['comment'] ?></span>
+                                </div>
+                                <div class="col-sm-5">
+                                    <span class="advance2"><?= $stusemester['year'] . ' ' . $coursecls->semester2str($stusemester['type']) ?></span>
+                                    <span>
                                     <?= $coursecls->starRating($row['rating']) ?>
                                 </span>
+                                </div>
                             </div>
-                        </div>
-                        <?php
-                        $i++;
-                        if ($i < mysqli_num_rows($comments)) {
-                            ?>
-                            <hr>
                             <?php
+                            $i++;
+                            if ($i < mysqli_num_rows($comments)) {
+                                ?>
+                                <hr>
+                                <?php
+                            }
                         }
                     }
                     ?>
-                    </div>
-                    <?php
-                }
+                </div>
+                <?php
             }
         } catch (Exception $e) {
             require_once "../errorPage/errorPageFunc.php";

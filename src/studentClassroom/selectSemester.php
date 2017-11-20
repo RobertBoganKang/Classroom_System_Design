@@ -13,12 +13,6 @@
         $coursecls = new courseUtil();
         $stringcls = new stringUtils();
 
-        /*if not connect in the header file, connect database*/
-        if (!isset($p)) {
-            /*connect database*/
-            include "../inc/connect_inc.php";
-        }
-
         /*print semester information*/
         $today = date("Y-m-d");
         $seminfo = mysqli_query($db, "SELECT * FROM semester WHERE end > $today;");

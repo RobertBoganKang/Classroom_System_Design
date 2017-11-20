@@ -10,8 +10,61 @@
     remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
     Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
     Lorem Ipsum.</p>
-<h2>Courses</h2>
+<h2>My Courses</h2>
 <hr class="hr">
 <a class="advance" href="selectSemester.php">Add Course</a>
-<span class="results noresult">No Course Available...</span>
+<?php
+/*load php functions*/
+require_once "../inc/courseUtil.php";
+require_once "../inc/stringUtils.php";
+$coursecls = new courseUtil();
+$stringcls = new stringUtils();
+
+/*prepare semester*/
+$today = date("Y-m-d");
+//echo $today;
+$semester = mysqli_fetch_assoc(mysqli_query($db, "SELECT id FROM semester WHERE end > '$today' AND start<'$today'"));
+$semester = $semester['id'];
+/*find my class*/
+$myID = $pq['id'];
+$myClass = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$myID AND semester_id=$semester");
+if (mysqli_num_rows($myClass) > 0) {
+    while ($rows = mysqli_fetch_assoc($myClass)) {
+        /*find what's this course*/
+        $course_id = $rows['course_id'];
+        $row = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM addcourse WHERE course_id=$course_id AND semester_id=$semester"));
+        ?>
+        <div class="csdetail">
+            <a class="course"
+               href="../errorPage/featureConstruction.php?scID=<?= $row['semcourse_id'] ?>&cID=<?= $row['course_id'] ?>">
+                <?php
+                /*print course name*/
+                echo $row['cname'];
+                ?>
+            </a>
+            <br>
+            <span class="coursedetail">
+                                    <?php
+                                    /*print course week and time*/
+                                    echo $coursecls->str2week($row['week']) . "|";
+                                    echo $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "|";
+                                    /*print office*/
+                                    echo $row['room'] . "|";
+                                    /*print teacher name*/
+                                    echo $row['tfname'] . ' ' . $row['tlname'];
+                                    echo '<br>';
+                                    ?>
+                                </span>
+        </div>
+        <?
+    }
+} else { ?>
+    <!--no class chosed-->
+    <span class="results noresult">No Course Available...</span>
+    <?php
+}
+
+
+?>
+
 <?php include "studentFooter.php"; ?>

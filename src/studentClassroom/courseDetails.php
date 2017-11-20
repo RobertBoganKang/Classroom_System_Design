@@ -11,12 +11,6 @@
             $coursecls = new courseUtil();
             $stringcls = new stringUtils();
 
-            /*if not connect in the header file, connect database*/
-            if (!isset($p)) {
-                /*connect database*/
-                include "../inc/connect_inc.php";
-            }
-
             /*semester information*/
             $semester = $_COOKIE['semester'];
 

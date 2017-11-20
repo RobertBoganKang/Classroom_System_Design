@@ -21,12 +21,6 @@
         $coursecls = new courseUtil();
         $stringcls = new stringUtils();
 
-        /*if not connect in the header file, connect database*/
-        if (!isset($p)) {
-            /*connect database*/
-            include "../inc/connect_inc.php";
-        }
-
         /*print semester information*/
         $semester = $_COOKIE['semester'];
         $seminfo = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM semester WHERE id = $semester;"));
@@ -250,7 +244,6 @@
             if (!$semclsq) {
                 throw new Exception($db->error);
             }
-            /**test area*/
             /*UI continue*/
             while ($row = mysqli_fetch_assoc($semclsq)) { ?>
                 <div class="container-fluid csdetail">

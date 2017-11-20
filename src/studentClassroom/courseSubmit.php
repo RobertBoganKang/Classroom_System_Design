@@ -13,6 +13,4 @@ $qr = mysqli_query($db, $sql);
 if (!$qr) {
     throw new Exception($db->error);
 }
-session_destroy();
-session_unset();
 header("Location:" . "studentMain.php");

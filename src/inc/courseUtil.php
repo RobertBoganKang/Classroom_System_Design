@@ -178,15 +178,15 @@ class courseUtil
         if ($advLess == "" && $advGreater == "" || $advLess <= $advGreater) {
             return "";
         } else {
-            if ($advLess != "" && $advLess != "23:59") {
+            if ($advLess != "") {
                 $sqlBuilder .= " AND ";
                 $sqlBuilder .= ("cend<='$advLess" . ":00'");
             }
-            if ($advGreater != "" && $advLess != "00:00") {
+            if ($advGreater != "") {
                 $sqlBuilder .= " AND ";
                 $sqlBuilder .= ("cstart>='$advGreater" . ":00'");
             }
-            if ($advLess == "") $advLess = "23:59";
+            if ($advLess == "") $advLess = "00:00";
             if ($advGreater == "") $advLess = "00:00";
         }
         return $sqlBuilder;

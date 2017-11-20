@@ -261,3 +261,20 @@ input[type=time]:hover {
 .comments {
     color: dimgray;
 }
+
+.commentUsername {
+    color: white;
+    -webkit-transition: color 4s;
+    -moz-transition: color 4s;
+    -ms-transition: color 4s;
+    -o-transition: color 4s;
+    transition: color 4s;
+}
+
+.commentUsername:hover {
+    color: lightgray;
+}
+
+.ckbx:hover {
+    color: darkgreen;
+}

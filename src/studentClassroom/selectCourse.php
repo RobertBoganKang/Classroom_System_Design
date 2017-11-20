@@ -93,7 +93,7 @@
             <?php if (!$adv) { ?>
                 <!--non-advanced mode-->
                 <a class="advance"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF']) . '?page=' . (string)$page . $searchURL . "&advType=012&advWeek=&advFilter=0&adv=1&advLess=23:59&advGreater=00:00" ?>">advanced</a>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF']) . '?page=' . (string)$page . $searchURL . "&advType=012&advWeek=&advFilter=0&adv=1&advLess=00:00&advGreater=00:00" ?>">advanced</a>
             <?php } else { ?>
                 <!--advanced mode-->
                 <a class="advance2"

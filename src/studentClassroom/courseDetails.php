@@ -34,18 +34,17 @@
             ?>
             <title><?= $courseinfo['cname'] ?></title>
             <h1>Course Details</h1>
-            <h2><?= $courseinfo['cname'] ?> #</h2>
+            <h2><?= $courseinfo['cname'] ?></h2>
             <hr class="hr">
-            <p style="font-style: italic; color: gray"><?= $courseinfo['cdetail'] ?></p>
+            <p style="font-style: italic; color: #aaa;text-align: right;"><?= $courseinfo['cdetail'] ?></p>
             <!--            <h2>Information</h2>-->
-            <hr class="hr">
             <div class="container-fluid">
                 <!--course id-->
                 <div class="row">
                     <div class="col-sm-3">
                         <span class="title">#:</span>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 coursedetail">
                         <span>(<?= $courseinfo['course_id'] ?>)</span>
                     </div>
                 </div>
@@ -55,7 +54,7 @@
                     <div class="col-sm-3">
                         <span class="title">Name:</span>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 coursedetail">
                         <span><?= $courseinfo['cname'] ?></span>
                     </div>
                 </div>
@@ -65,7 +64,7 @@
                     <div class="col-sm-3">
                         <span class="title">Time:</span>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 coursedetail">
                         <span>
                             <?php echo $coursecls->shortenTime($courseinfo['cstart']) . " ~ " . $coursecls->shortenTime($courseinfo['cend']) . " @ ";
                             echo $coursecls->fullstr2week($courseinfo['week']); ?>
@@ -78,8 +77,8 @@
                     <div class="col-sm-3">
                         <span class="title">Teacher:</span>
                     </div>
-                    <div class="col-sm-9">
-                        <a style="color:black" href="teacherProfile.php?tid=<?= $courseinfo['tid'] ?>">
+                    <div class="col-sm-9 coursedetail">
+                        <a href="teacherProfile.php?tid=<?= $courseinfo['tid'] ?>">
                             <?= $courseinfo['tfname'] . ' ' . $courseinfo['tlname']; ?>
                         </a>
                     </div>
@@ -90,7 +89,7 @@
                     <div class="col-sm-3">
                         <span class="title">Classroom:</span>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 coursedetail">
                         <span>
                             <?= $courseinfo['room']; ?>
                         </span>
@@ -130,9 +129,10 @@
                         }
                         /*print out comments*/
                         ?>
-                        <div class="row">
+                        <div class="row" style="font-style: italic">
                             <div class="col-sm-7">
-                                <span class="title"><?= $student['username'] ?>:</span>
+                                <span class="title"><?= ucwords($student['fname']) . ' ' . ucwords($student['lname']) ?></span>
+                                <span class="commentUsername">@<?= $student['username'] ?></span>
                                 <br>
                                 <span class="comments"><?= $row['comment'] ?></span>
                             </div>

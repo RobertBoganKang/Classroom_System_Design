@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-sm-3 title">
                 <span class="title">Email:</span></div>
-            <div class="col-sm-9">
+            <div class="col-sm-9 coursedetail">
                 <span><?= $teacher['email'] ?></span>
             </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-sm-3 title">
                 <span class="title">Phone:</span></div>
-            <div class="col-sm-9">
+            <div class="col-sm-9 coursedetail">
                 <span><?= $teacher['phone'] ?></span>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-sm-3 title">
                 <span class="title">Office:</span></div>
-            <div class="col-sm-9">
+            <div class="col-sm-9 coursedetail">
                 <span><?= $teacher['office'] ?></span>
             </div>
         </div>

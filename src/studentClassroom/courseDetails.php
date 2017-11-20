@@ -75,6 +75,12 @@
                     }
                 }
             }
+            /*submit course using session variable*/
+            if ($checkcourseErr == "") {
+                $_SESSION['submit_course_id'] = $cID;
+                $_SESSION['submit_semester_id'] = $semester;
+                $_SESSION['submit_student_id'] = $pq['id'];
+            }
             ?>
             <title><?= $courseinfo['cname'] ?></title>
             <h1>Course Details</h1>
@@ -144,7 +150,7 @@
                 <?php if ($checkcourseErr != "") { ?>
                     <div class="row">
                         <div class="col-sm-3">
-                            <a href="../errorPage/featureConstruction.php" style="color:red;font-weight:700;">Error:</a>
+                            <span style="color:red;font-weight:700;">Error:</span>
                         </div>
                         <div class="col-sm-9 coursedetail">
                             <span class="results noresult">* <?= $checkcourseErr ?></span>
@@ -153,10 +159,14 @@
                 <?php } else { ?>
                     <div class="row">
                         <div class="col-sm-3">
-                            <a href="../errorPage/featureConstruction.php" class="classchoose">Choose</a>
+                            <a id="chooseCourseConfirm" href="courseSubmit.php" class="classchooseconfirm">Confirm</a>
+                            <span id="chooseCourse" class="classchoose"
+                                  onclick="document.getElementById('chooseCourse').style.display='none';
+                                  document.getElementById('chooseCourseConfirm').style.display='inline';
+                                  document.getElementById('confirmStar').style.color='red'">Choose:</span>
                         </div>
                         <div class="col-sm-9 coursedetail">
-                            <span style="color:green">*</span>
+                            <span id="confirmStar" style="color:green">*</span>
                         </div>
                     </div>
                     <?php
@@ -185,10 +195,10 @@
                 <div class="container-fluid" style="font-style: italic">
                 <?php
                 $i = 0;
+                $student_id = $pq['id'];
                 while ($row = mysqli_fetch_assoc($comments)) {
                     if ($row['rating'] != null) {
                         /*find student information*/
-                        $student_id = $row['student_id'];
                         $student = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM student WHERE id=$student_id"));
                         if (!$student) {
                             throw new Exception($db->error);

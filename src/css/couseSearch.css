@@ -321,6 +321,7 @@ input[type=time]:focus {
     margin: 0;
     padding: 2px;
     font-weight: 700;
+    cursor: pointer;
     border: 1px white dashed;
     background: white;
     -webkit-transition: color 1s, border 2s;
@@ -331,6 +332,22 @@ input[type=time]:focus {
 }
 
 .classchoose:hover {
+    color: orangered;
+    border: 1px orangered solid;
+}
+
+.classchooseconfirm, .classchooseconfirm:visited {
+    color: orangered;
+    font-size: 95%;
+    display: none;
+    margin: 0;
+    padding: 2px;
+    font-weight: 700;
+    border: 1px orangered dashed;
+    background: white;
+}
+
+.classchooseconfirm:hover {
     color: orangered;
     border: 1px orangered solid;
 }

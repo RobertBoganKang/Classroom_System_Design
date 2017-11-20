@@ -123,10 +123,12 @@ function strTrim(str) {
 
 /*checkbox like click*/
 function changeColor(id) {
-    if (document.getElementById(id).style.color === "green") {
-        document.getElementById(id).style.color = "lightgray";
+    if (document.getElementById(id).classList.contains("ckbx1")) {
+        document.getElementById(id).classList.remove("ckbx1");
+        document.getElementById(id).classList.add("ckbx0");
     } else {
-        document.getElementById(id).style.color = "green";
+        document.getElementById(id).classList.remove("ckbx0");
+        document.getElementById(id).classList.add("ckbx1");
     }
 }
 
@@ -134,7 +136,7 @@ function changeColor(id) {
 function ckbx2arr(idarr, input) {
     var str = '';
     for (var i = 0; i < idarr.length; i++) {
-        if (document.getElementById(idarr[i]).style.color === "green") {
+        if (document.getElementById(idarr[i]).classList.contains("ckbx1")) {
             str = str.concat(i.toString());
         }
     }

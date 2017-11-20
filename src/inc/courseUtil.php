@@ -209,7 +209,7 @@ class courseUtil
     /*checkbox color initializer*/
     public function ckbxColor($id, $val)
     {
-        return (strpos($_GET[$id], $val) !== false) ? "green" : "lightgray";
+        return (strpos($_GET[$id], $val) !== false) ? "1" : "0";
     }
 
     /*print stars and dots, do not forget to import css for star system*/

@@ -86,3 +86,7 @@ hr {
 textarea {
     overflow-x: hidden;
 }
+
+.defaulthover {
+    cursor: default;
+}

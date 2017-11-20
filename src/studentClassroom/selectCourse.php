@@ -5,6 +5,13 @@
 <link rel="stylesheet" href="../css/starSystems.css">
 <h1 style="display: block; float:left">Select Course</h1>
 <br>
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            $("p").slideToggle();
+        });
+    });
+</script>
 <div>
     <?php
     try {
@@ -106,11 +113,11 @@
                             <span class="title">Where: </span>
                         </div>
                         <div class="col-sm-9 navbar">
-                            [<span id="advType0" style="color:<?= $coursecls->ckbxColor('advType', '0') ?>"
+                            [<span id="advType0" class="ckbx<?= $coursecls->ckbxColor('advType', '0') ?>"
                                    onclick="changeColor('advType0')">Course Name</span>
-                            | <span id="advType1" style="color:<?= $coursecls->ckbxColor('advType', '1') ?>"
+                            | <span id="advType1" class="ckbx<?= $coursecls->ckbxColor('advType', '1') ?>"
                                     onclick="changeColor('advType1')">Course Detail</span>
-                            |<span id="advType2" style="color:<?= $coursecls->ckbxColor('advType', '2') ?>"
+                            |<span id="advType2" class="ckbx<?= $coursecls->ckbxColor('advType', '2') ?>"
                                    onclick="changeColor('advType2')">Teacher Name</span>]
                         </div>
                     </div>
@@ -121,19 +128,19 @@
                             <span class="title">Week: </span>
                         </div>
                         <div class="col-sm-9 navbar">
-                            [<span id="advWeek0" style="color:<?= $coursecls->ckbxColor('advWeek', '0') ?>"
+                            [<span id="advWeek0" class="ckbx<?= $coursecls->ckbxColor('advWeek', '0') ?>"
                                    onclick="changeColor('advWeek0')">Su</span>
-                            | <span id="advWeek1" style="color:<?= $coursecls->ckbxColor('advWeek', '1') ?>"
+                            | <span id="advWeek1" class="ckbx<?= $coursecls->ckbxColor('advWeek', '1') ?>"
                                     onclick="changeColor('advWeek1')">Mo</span>
-                            | <span id="advWeek2" style="color:<?= $coursecls->ckbxColor('advWeek', '2') ?>"
+                            | <span id="advWeek2" class="ckbx<?= $coursecls->ckbxColor('advWeek', '2') ?>"
                                     onclick="changeColor('advWeek2')">Tu</span>
-                            | <span id="advWeek3" style="color:<?= $coursecls->ckbxColor('advWeek', '3') ?>"
+                            | <span id="advWeek3" class="ckbx<?= $coursecls->ckbxColor('advWeek', '3') ?>"
                                     onclick="changeColor('advWeek3')">We</span>
-                            | <span id="advWeek4" style="color:<?= $coursecls->ckbxColor('advWeek', '4') ?>"
+                            | <span id="advWeek4" class="ckbx<?= $coursecls->ckbxColor('advWeek', '4') ?>"
                                     onclick="changeColor('advWeek4')">Th</span>
-                            | <span id="advWeek5" style="color:<?= $coursecls->ckbxColor('advWeek', '5') ?>"
+                            | <span id="advWeek5" class="ckbx<?= $coursecls->ckbxColor('advWeek', '5') ?>"
                                     onclick="changeColor('advWeek5')">Fr</span>
-                            | <span id="advWeek6" style="color:<?= $coursecls->ckbxColor('advWeek', '6') ?>"
+                            | <span id="advWeek6" class="ckbx<?= $coursecls->ckbxColor('advWeek', '6') ?>"
                                     onclick="changeColor('advWeek6')">Sa</span>]
                         </div>
                     </div>
@@ -144,14 +151,14 @@
                             <span class="title">Time: </span>
                         </div>
                         <!--greater than-->
-                        <div class="col-sm-5 navbar">
-                            <span>>=
+                        <div class="col-sm-5">
+                            <span class="greaterthan">>=
                                 <input type="time" name="advGreater" value="<?= htmlspecialchars($advGreater) ?>">
                             </span>
                         </div>
                         <!--less than-->
-                        <div class="col-sm-4 navbar">
-                            <span><=
+                        <div class="col-sm-4">
+                            <span class="lessthan"><=
                                 <input type="time" name="advLess" value="<?= htmlspecialchars($advLess) ?>">
                             </span>
                         </div>
@@ -272,12 +279,9 @@
                                 </span>
                         </div>
                         <!--stars ranking-->
-                        <div class="col-sm-3">
-                            <!--rating details-->
-
+                        <div class="col-sm-3 defaulthover">
                             <!--print dots and stars-->
                             <?= $coursecls->starDots($row['rating'], $row['nrating'], $mxpop) ?>
-
                         </div>
                     </div>
                 </div>

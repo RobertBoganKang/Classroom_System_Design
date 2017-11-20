@@ -13,6 +13,14 @@
 <h2>My Courses</h2>
 <hr class="hr">
 <a class="advance" href="selectSemester.php">Add Course</a>
+<script src="../js/overall.js"></script>
+<script>
+    /*refresh page when 1 minute no response*/
+    refresh(60, function () {
+        location.reload();
+    });
+    textareaEnterSubmit("#address", "form");
+</script>
 <?php
 /*load php functions*/
 require_once "../inc/courseUtil.php";

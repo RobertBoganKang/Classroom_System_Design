@@ -154,7 +154,7 @@ CREATE TABLE `stucourse` (
   `rating` int(11) DEFAULT NULL,
   `comment` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +163,7 @@ CREATE TABLE `stucourse` (
 
 LOCK TABLES `stucourse` WRITE;
 /*!40000 ALTER TABLE `stucourse` DISABLE KEYS */;
-INSERT INTO `stucourse` VALUES (1,1,1,1,NULL,4,'I love arabic! Arabic man and woman are so sexy.'),(2,2,1,1,NULL,5,'If you want to know the art of language, Arabic will be your choice.'),(3,3,1,1,NULL,NULL,NULL);
+INSERT INTO `stucourse` VALUES (2,2,1,1,NULL,5,'If you want to know the art of language, Arabic will be your choice.'),(3,3,1,1,NULL,4,'Arabic is fun to learn, I love Arabic.');
 /*!40000 ALTER TABLE `stucourse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-20  1:58:39
+-- Dump completed on 2017-11-20 17:25:03

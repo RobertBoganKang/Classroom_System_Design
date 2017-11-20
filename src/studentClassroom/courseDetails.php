@@ -79,9 +79,9 @@
                         <span class="title">Teacher:</span>
                     </div>
                     <div class="col-sm-9">
-                        <span>
+                        <a style="color:black" href="teacherProfile.php?tid=<?= $courseinfo['tid'] ?>">
                             <?= $courseinfo['tfname'] . ' ' . $courseinfo['tlname']; ?>
-                        </span>
+                        </a>
                     </div>
                 </div>
                 <hr>

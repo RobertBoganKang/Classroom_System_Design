@@ -30,7 +30,7 @@
                 <span>#:</span>
             </div>
             <div class="col-sm-5">
-                <?php echo $pq['id'] ?>
+                (<?php echo $pq['id'] ?>)
             </div>
             <div class="col-sm-4">
             </div>

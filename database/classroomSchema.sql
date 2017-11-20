@@ -192,7 +192,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'robert','a@a.a','6a204bd89f3c8348afd5c77c717a097a','robertbogan','kang','234234243','My house',1);
+INSERT INTO `student` VALUES (1,'robert','a@a.a','6a204bd89f3c8348afd5c77c717a097a','robertbogan','kang','55512315','My house',1);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,4 +237,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-19  2:31:44
+-- Dump completed on 2017-11-19 21:33:28

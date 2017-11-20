@@ -138,20 +138,6 @@ input {
     cursor: default;
 }
 
-/*rating details*/
-.ratingdetails {
-    font-size: 10px;
-    font-style: italic;
-    line-height: 100%;
-}
-
-.ratingstars {
-    font-size: 18px;
-    font-style: normal;
-    line-height: 100%;
-    letter-spacing: -3px;
-}
-
 .noresult {
     color: pink;
     display: inline-block;
@@ -258,21 +244,6 @@ input {
     border: 1px red solid;
 }
 
-/*checkbox color*/
-.ckbx0 {
-    color: green;
-    cursor: pointer;
-}
-
-.ckbx1 {
-    color: lightgray;
-    cursor: pointer;
-}
-
-.ckbx1:hover {
-    color: green;
-}
-
 input[type=time] {
     border: 0;
     color: lightgray;
@@ -280,4 +251,13 @@ input[type=time] {
 
 input[type=time]:hover {
     color: green;
+}
+
+.commentstars {
+    text-align: right;
+    display: block;
+}
+
+.comments {
+    color: dimgray;
 }

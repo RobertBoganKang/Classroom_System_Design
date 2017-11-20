@@ -72,7 +72,7 @@
         <br>
         <!--search engine-->
         <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="formsearch" method="GET"
-              onclick="hidden2show('hiddenSubmit');"
+              onclick="<?php if ($adv) { ?>hidden2show('hiddenSubmit');<?php } ?>"
               onsubmit="<?php if ($adv) { ?>ckbx2arr(['advType0', 'advType1', 'advType2'], 'advType');
                       ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');<?php } ?>">
             <div class="container-fluid searchrow">
@@ -205,16 +205,18 @@
         /*calculate max popularity*/
         if (!isset($_COOKIE['mxpop'])) {
             $temp = mysqli_fetch_assoc(mysqli_query($db, "SELECT MAX(nrating) AS mxpop FROM course;"));
+            if (!$temp) {
+                throw new Exception($db->error);
+            }
             $mxpop = $temp['mxpop'];
             setcookie("mxpop", $mxpop);
         } else {
             $mxpop = $_COOKIE['mxpop'];
         }
-
         /*if flip pages (is set), we don't count*/
         if (!isset($_SESSION['count']) || isset($_GET['new']) || !isset($_GET['f']) || isset($_GET['adv'])) {
             /*count how many course available*/
-            $count = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester " . $coursecls->advWeek($advWeek) . $coursecls->advTimeFilter($advGreater, $advLess) . $searchWordSQLbuilder . ";"));
+            $count = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester " . $coursecls->advTimeFilter($advGreater, $advLess) . $coursecls->advWeek($advWeek) . $coursecls->advTimeFilter($advGreater, $advLess) . $searchWordSQLbuilder . ";"));
             if (!$count) {
                 throw new Exception($db->error);
             }
@@ -238,7 +240,7 @@
             $offset = ($page - 1) * $limit;
 
             /*search to show*/
-            $semclsq = mysqli_query($db, "SELECT * FROM addcourse WHERE semester_id =$semester " . $coursecls->advWeek($advWeek) . $searchWordSQLbuilder . " ORDER BY " . $coursecls->advFilter($advFilter) . " LIMIT $limit OFFSET $offset;");
+            $semclsq = mysqli_query($db, "SELECT * FROM addcourse WHERE semester_id =$semester " . $coursecls->advTimeFilter($advGreater, $advLess) . $coursecls->advWeek($advWeek) . $searchWordSQLbuilder . " ORDER BY " . $coursecls->advFilter($advFilter) . " LIMIT $limit OFFSET $offset;");
             if (!$semclsq) {
                 throw new Exception($db->error);
             }
@@ -249,7 +251,8 @@
                 <div class="container-fluid csdetail">
                     <div class="row">
                         <div class="col-sm-9">
-                            <a class="course" href="../errorPage/featureConstruction.php">
+                            <a class="course"
+                               href="courseDetails.php?scID=<?= $row['semcourse_id'] ?>&cID=<?= $row['course_id'] ?>">
                                 <?php
                                 /*print course name*/
                                 echo $row['cname'];
@@ -272,23 +275,10 @@
                         <!--stars ranking-->
                         <div class="col-sm-3">
                             <!--rating details-->
-                            <span id="starslist">
-                                <span class="stars<?= round($row['rating']) . '1' ?> ratingdetails"><?= bcdiv($row['rating'] * 10, 10, 1) ?></span>
-                                <span class="ratingstars">
-                                    <span class="stars<?= round($row['rating']) . "1" ?>">*</span>
-                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "1" ?>">_</span>
-                                    <span class="stars<?= round($row['rating']) . "2" ?>">*</span>
-                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "2" ?>">_</span>
-                                    <span class="stars<?= round($row['rating']) . "3" ?>">*</span>
-                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "3" ?>">_</span>
-                                    <span class="stars<?= round($row['rating']) . "4" ?>">*</span>
-                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "4" ?>">_</span>
-                                    <span class="stars<?= round($row['rating']) . "5" ?>">*</span>
-                                    <span class="dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "5" ?>">_</span>
-                                </span>
-                            </span>
-                            <!--popularity-->
-                            <span class="popularity dots<?= round(5 * bcdiv($row['nrating'], $mxpop, 3)) . "5" ?>"><?= $row['nrating'] ?></span>
+
+                            <!--print dots and stars-->
+                            <?= $coursecls->starDots($row['rating'], $row['nrating'], $mxpop) ?>
+
                         </div>
                     </div>
                 </div>
@@ -352,7 +342,7 @@
         </span>
             <?php }
         } else { ?>
-            <div class="results noresult">No result available</div>
+            <div class="results noresult">No result available...</div>
         <?php } ?>
         <?php
     } catch (Exception $e) {

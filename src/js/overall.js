@@ -123,6 +123,7 @@ function strTrim(str) {
 
 /*checkbox like click*/
 function changeColor(id) {
+    alert(document.getElementById(id).style.color);
     if (document.getElementById(id).style.color === "green") {
         document.getElementById(id).style.color = "lightgray";
     } else {

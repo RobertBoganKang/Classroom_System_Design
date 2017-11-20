@@ -139,6 +139,28 @@ class courseUtil
         }
     }
 
+    /*time filter*/
+    public function advTimeFilter(&$advGreater, &$advLess)
+    {
+        $sqlBuilder = " ";
+        /*no define of time filter*/
+        if ($advLess == "" && $advGreater == "" || $advLess <= $advGreater) {
+            return "";
+        } else {
+            if ($advLess != "" && $advLess != "23:59") {
+                $sqlBuilder .= " AND ";
+                $sqlBuilder .= ("cend<='$advLess" . ":00'");
+            }
+            if ($advGreater != "" && $advLess != "00:00") {
+                $sqlBuilder .= " AND ";
+                $sqlBuilder .= ("cstart>='$advGreater" . ":00'");
+            }
+            if ($advLess == "") $advLess = "23:59";
+            if ($advGreater == "") $advLess = "00:00";
+        }
+        return $sqlBuilder;
+    }
+
     public function advFilter($char)
     {
         switch ($char) {
@@ -156,6 +178,6 @@ class courseUtil
     /*checkbox color initializer*/
     public function ckbxColor($id, $val)
     {
-        return (strpos($_GET[$id], $val) !== false) ? "0" : "1";
+        return (strpos($_GET[$id], $val) !== false) ? "green" : "lightgray";
     }
 }

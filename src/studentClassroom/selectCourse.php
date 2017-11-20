@@ -42,12 +42,16 @@
         $searchURL = "&search=" . $search;
 
         /*advanced search functions*/
-        if (!isset($_GET['advType']) || !isset($_GET['advWeek']) || !isset($_GET['advFilter'])) {
+        $advTest = (!isset($_GET['advType']) || !isset($_GET['advWeek']) || !isset($_GET['advFilter']) || !isset($_GET['advLess']) || !isset($_GET['advGreater']));
+        if ($advTest) {
             /*0: course name; 1: course detail; 2: teacher name*/
             /*translate to ' AND (cname LIKE '%$var%' OR cdetail LIKE '%$var%' OR tfname LIKE '%$var%' OR tlname LIKE '%$var%')'*/
             $advType = "012";
             /*0 ~ 6 is Sunday ~ Saturday*/
             $advWeek = "";
+            /*time filter*/
+            $advLess = "";
+            $advGreater = "";
             /*0: name; 1: rating; 2: popularity*/
             $advFilter = "0";
             /*variable to show advanced is not available*/
@@ -57,15 +61,18 @@
             /*advanced feature open*/
             $advType = $_GET['advType'];
             $advWeek = $_GET['advWeek'];
+            $advLess = $_GET['advLess'];
+            $advGreater = $_GET['advGreater'];
             $advFilter = $_GET['advFilter'];
             $adv = 1;
-            $advURL = "&advType=" . $advType . "&advWeek=" . $advWeek . "&advFilter=" . $advFilter;
+            $advURL = "&advType=" . $advType . "&advWeek=" . $advWeek . "&advFilter=" . $advFilter . "&advLess=" . $advLess . "&advGreater=" . $advGreater;
         }
 
         ?>
         <br>
         <!--search engine-->
         <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="formsearch" method="GET"
+              onclick="hidden2show('hiddenSubmit');"
               onsubmit="<?php if ($adv) { ?>ckbx2arr(['advType0', 'advType1', 'advType2'], 'advType');
                       ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');<?php } ?>">
             <div class="container-fluid searchrow">
@@ -74,9 +81,7 @@
                         <input type="hidden" name="page" value="<?= $page ?>">
                         <input type="text" name="search" id="search" placeholder="Type to search..." class="searchinput"
                                value="<?= $search ?>"
-                               onblur='<?php if ($adv) { ?>ckbx2arr(["advType0", "advType1", "advType2"], "advType");
-                                       ckbx2arr(["advWeek0", "advWeek1", "advWeek2", "advWeek3", "advWeek4", "advWeek5", "advWeek6"], "advWeek");<?php } ?>
-                                       submitForm0(<?= $adv ? json_encode("") : json_encode($search) ?>, "search", "formsearch");'>
+                               onblur='submitForm0(<?= $adv ? json_encode("") : json_encode($search) ?>, "search", "formsearch");'>
                     </div>
                     <div class="col-sm-5">
                         <h2><?= $seminfo['year'] . ' ' . $coursecls->semester2str($seminfo['type']) ?></h2>
@@ -88,7 +93,7 @@
             <?php if (!$adv) { ?>
                 <!--non-advanced mode-->
                 <a class="advance"
-                   href="<?= htmlspecialchars($_SERVER['PHP_SELF']) . '?page=' . (string)$page . $searchURL . "&advType=012&advWeek=&advFilter=0&adv=1" ?>">advanced</a>
+                   href="<?= htmlspecialchars($_SERVER['PHP_SELF']) . '?page=' . (string)$page . $searchURL . "&advType=012&advWeek=&advFilter=0&adv=1&advLess=23:59&advGreater=00:00" ?>">advanced</a>
             <?php } else { ?>
                 <!--advanced mode-->
                 <a class="advance2"
@@ -100,12 +105,13 @@
                         <div class="col-sm-3">
                             <span class="title">Where: </span>
                         </div>
-                        <div class="col-sm-9 navbar" onclick="hidden2show('hiddenSubmit')">
-                            [<span id="advType0" class="ckbx<?= $coursecls->ckbxColor('advType', '0') ?>"
+                        <div class="col-sm-9 navbar">
+                            [<span id="advType0" style="color:<?= $coursecls->ckbxColor('advType', '0') ?>"
                                    onclick="changeColor('advType0')">Course Name</span>
-                            | <span id="advType1" class="ckbx<?= $coursecls->ckbxColor('advType', '1') ?>"
+                            | <span id="advType1" style="color:<?= $coursecls->ckbxColor('advType', '1') ?>"
                                     onclick="changeColor('advType1')">Course Detail</span>
-                            |<span id="advType2" class="ckbx<?= $coursecls->ckbxColor('advType', '2') ?>"
+                            |<span id="advType2" style="color:<?= $coursecls->ckbxColor('advType', '2') ?>"
+                                   class="ckbx<?= $coursecls->ckbxColor('advType', '2') ?>"
                                    onclick="changeColor('advType2')">Teacher Name</span>]
                         </div>
                     </div>
@@ -115,21 +121,40 @@
                         <div class="col-sm-3">
                             <span class="title">Week: </span>
                         </div>
-                        <div class="col-sm-9 navbar" onclick="hidden2show('hiddenSubmit')">
-                            [<span id="advWeek0" class="ckbx<?= $coursecls->ckbxColor('advWeek', '0') ?>"
+                        <div class="col-sm-9 navbar">
+                            [<span id="advWeek0" style="color:<?= $coursecls->ckbxColor('advWeek', '0') ?>"
                                    onclick="changeColor('advWeek0')">Su</span>
-                            | <span id="advWeek1" class="ckbx<?= $coursecls->ckbxColor('advWeek', '1') ?>"
+                            | <span id="advWeek1" style="color:<?= $coursecls->ckbxColor('advWeek', '1') ?>"
                                     onclick="changeColor('advWeek1')">Mo</span>
-                            | <span id="advWeek2" class="ckbx<?= $coursecls->ckbxColor('advWeek', '2') ?>"
+                            | <span id="advWeek2" style="color:<?= $coursecls->ckbxColor('advWeek', '2') ?>"
                                     onclick="changeColor('advWeek2')">Tu</span>
-                            | <span id="advWeek3" class="ckbx<?= $coursecls->ckbxColor('advWeek', '3') ?>"
+                            | <span id="advWeek3" style="color:<?= $coursecls->ckbxColor('advWeek', '3') ?>"
                                     onclick="changeColor('advWeek3')">We</span>
-                            | <span id="advWeek4" class="ckbx<?= $coursecls->ckbxColor('advWeek', '4') ?>"
+                            | <span id="advWeek4" style="color:<?= $coursecls->ckbxColor('advWeek', '4') ?>"
                                     onclick="changeColor('advWeek4')">Th</span>
-                            | <span id="advWeek5" class="ckbx<?= $coursecls->ckbxColor('advWeek', '5') ?>"
+                            | <span id="advWeek5" style="color:<?= $coursecls->ckbxColor('advWeek', '5') ?>"
                                     onclick="changeColor('advWeek5')">Fr</span>
-                            | <span id="advWeek6" class="ckbx<?= $coursecls->ckbxColor('advWeek', '6') ?>"
+                            | <span id="advWeek6" style="color:<?= $coursecls->ckbxColor('advWeek', '6') ?>"
                                     onclick="changeColor('advWeek6')">Sa</span>]
+                        </div>
+                    </div>
+                    <hr>
+                    <!--time filter-->
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <span class="title">Time: </span>
+                        </div>
+                        <!--greater than-->
+                        <div class="col-sm-5 navbar">
+                            <span>>=
+                                <input type="time" name="advGreater" value="<?= htmlspecialchars($advGreater) ?>">
+                            </span>
+                        </div>
+                        <!--less than-->
+                        <div class="col-sm-4 navbar">
+                            <span><=
+                                <input type="time" name="advLess" value="<?= htmlspecialchars($advLess) ?>">
+                            </span>
                         </div>
                     </div>
                     <hr>
@@ -181,7 +206,6 @@
         if (!isset($_COOKIE['mxpop'])) {
             $temp = mysqli_fetch_assoc(mysqli_query($db, "SELECT MAX(nrating) AS mxpop FROM course;"));
             $mxpop = $temp['mxpop'];
-            echo "hello";
             setcookie("mxpop", $mxpop);
         } else {
             $mxpop = $_COOKIE['mxpop'];
@@ -190,20 +214,21 @@
         /*if flip pages (is set), we don't count*/
         if (!isset($_SESSION['count']) || isset($_GET['new']) || !isset($_GET['f']) || isset($_GET['adv'])) {
             /*count how many course available*/
-            $_SESSION['count'] = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester " . $coursecls->advWeek($advWeek) . $searchWordSQLbuilder . ";"));
-            $count = $_SESSION['count'];
+            $count = mysqli_fetch_assoc(mysqli_query($db, "SELECT COUNT(*) AS count FROM addcourse WHERE semester_id = $semester " . $coursecls->advWeek($advWeek) . $coursecls->advTimeFilter($advGreater, $advLess) . $searchWordSQLbuilder . ";"));
             if (!$count) {
                 throw new Exception($db->error);
             }
+            $_SESSION['count'] = $count['count'];
+            $count = $count['count'];
         } else {
             $count = $_SESSION['count'];
         }
         /*if no result, please show something else*/
-        if ($count['count'] > 0) {
+        if ($count > 0) {
             /*how many result on one page*/
             $limit = 3;
             /*maximum page*/
-            $maxpage = intdiv((int)$count['count'] + $limit - 1, $limit);
+            $maxpage = intdiv((int)$count + $limit - 1, $limit);
             if ($page < 1) {
                 $page = 1;
             }
@@ -271,7 +296,7 @@
             }
             ?>
             <!--show result-->
-            <div class="results"><?= $count['count'] ?> result(s) available</div>
+            <div class="results"><?= $count ?> result(s) available</div>
             <hr>
             <?php if ($maxpage > 1) { ?>
                 <!--jump page-->

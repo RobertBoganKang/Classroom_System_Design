@@ -272,3 +272,12 @@ input {
 .ckbx1:hover {
     color: green;
 }
+
+input[type=time] {
+    border: 0;
+    color: lightgray;
+}
+
+input[type=time]:hover {
+    color: green;
+}

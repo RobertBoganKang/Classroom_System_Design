@@ -274,7 +274,3 @@ input[type=time]:hover {
 .commentUsername:hover {
     color: lightgray;
 }
-
-.ckbx:hover {
-    color: darkgreen;
-}

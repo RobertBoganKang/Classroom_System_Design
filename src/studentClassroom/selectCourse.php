@@ -111,7 +111,6 @@
                             | <span id="advType1" style="color:<?= $coursecls->ckbxColor('advType', '1') ?>"
                                     onclick="changeColor('advType1')">Course Detail</span>
                             |<span id="advType2" style="color:<?= $coursecls->ckbxColor('advType', '2') ?>"
-                                   class="ckbx<?= $coursecls->ckbxColor('advType', '2') ?>"
                                    onclick="changeColor('advType2')">Teacher Name</span>]
                         </div>
                     </div>
@@ -352,4 +351,7 @@
     }
     ?>
 </div>
+<script>
+    document.getElementsByClassName('greenhover')
+</script>
 <?php include "studentFooter.php"; ?>

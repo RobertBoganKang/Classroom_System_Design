@@ -1,5 +1,10 @@
 input {
+    background: white;
     outline: none;
+}
+
+input[type=time] {
+    background: white;
 }
 
 .jump {

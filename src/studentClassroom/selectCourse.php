@@ -82,7 +82,9 @@
                         <input type="hidden" name="page" value="<?= $page ?>">
                         <input type="text" name="search" id="search" placeholder="Type to search..." class="searchinput"
                                value="<?= $search ?>"
-                               onblur='submitForm0(<?= $adv ? json_encode("") : json_encode($search) ?>, "search", "formsearch");'>
+                               onblur='<?php if ($adv) { ?>ckbx2arr(["advType0", "advType1", "advType2"], "advType");
+                                       ckbx2arr(["advWeek0", "advWeek1", "advWeek2", "advWeek3", "advWeek4", "advWeek5", "advWeek6"], "advWeek");<?php } ?>
+                                       submitForm0(<?= $adv ? json_encode("") : json_encode($search) ?>, "search", "formsearch");'>
                     </div>
                     <div class="col-sm-5">
                         <h2><?= $seminfo['year'] . ' ' . $coursecls->semester2str($seminfo['type']) ?></h2>

@@ -20,6 +20,46 @@
     letter-spacing: 1px;
 }
 
+/*star rating with your mouse*/
+.star_activated0, .star_activated1, .star_activated2, .star_activated3, .star_activated4, .star_not_activate {
+    font-size: 36px;
+}
+
+.star_not_activate {
+    color: lightgray;
+}
+
+.star_activated0 {
+    color: red;
+}
+
+.star_activated1 {
+    color: orangered;
+}
+
+.star_activated2 {
+    color: darkorange;
+}
+
+.star_activated3 {
+    color: yellowgreen;
+}
+
+.star_activated4 {
+    color: green;
+}
+
+.starsPanel {
+    cursor: pointer;
+    text-space: 1px;
+    display: block;
+}
+
+.star_word {
+    font-size: 22px;
+    font-style: italic;
+}
+
 /*this file is created by mathematica:
 code:
 hover=Reverse@{"#ff0000","#ff3232","#ff6666","#ff9999","#ffcccc","#eee"};\.0cstar={"#eee","red","orangered","darkorange","yellowgreen","green"};str1=StringJoin@Flatten@Table[".stars"<>ToString[i-1]<>ToString[m]<>" {color:"<>If[m<i,star[[i]],"#eee"]<>";} ",{i,Length@star},{m,1,5}];

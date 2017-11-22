@@ -351,6 +351,11 @@ input[type=time]:focus {
     font-weight: 700;
     border: 1px orangered dashed;
     background: white;
+    -webkit-transition: color 1s, border 2s;
+    -moz-transition: color 1s, border 2s;
+    -ms-transition: color 1s, border 2s;
+    -o-transition: color 1s, border 2s;
+    transition: color 1s, border 2s;
 }
 
 .classchooseconfirm:hover {

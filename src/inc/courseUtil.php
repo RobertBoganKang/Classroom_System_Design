@@ -247,4 +247,19 @@ class courseUtil
         </span>
         ';
     }
+
+    /*star rating with your mouse; don't forget to import starSystem.js*/
+    public function starManualRating($remember)
+    {
+        return '
+<div class="starsPanel" onmouseleave="star_leave()">
+    <span id="star_rate0" onmouseenter="star_rate(1);star_word(1)" onclick="remember=1">*</span>
+    <span id="star_rate1" onmouseenter="star_rate(2);star_word(2)" onclick="remember=2">*</span>
+    <span id="star_rate2" onmouseenter="star_rate(3);star_word(3)" onclick="remember=3">*</span>
+    <span id="star_rate3" onmouseenter="star_rate(4);star_word(4)" onclick="remember=4">*</span>
+    <span id="star_rate4" onmouseenter="star_rate(5);star_word(5)" onclick="remember=5">*</span>
+    <span class="star_word star_not_activate" id="star_word"></span>
+</div>
+<script>remember=' . $remember . ';star_word(remember);star_rate(remember);</script>';
+    }
 }

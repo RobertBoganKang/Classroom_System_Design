@@ -349,7 +349,4 @@
     }
     ?>
 </div>
-<script>
-    document.getElementsByClassName('greenhover')
-</script>
 <?php include "studentFooter.php"; ?>

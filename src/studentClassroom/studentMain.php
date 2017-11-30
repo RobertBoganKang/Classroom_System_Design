@@ -19,7 +19,6 @@
     refresh(60, function () {
         location.reload();
     });
-    textareaEnterSubmit("#address", "form");
 </script>
 <?php
 /*load php functions*/

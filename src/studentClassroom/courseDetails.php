@@ -1,4 +1,4 @@
-<?php include "studentHeader.php"; ?>
+<?php include "studentHeaderNoSetting.php"; ?>
     <script src="../js/overall.js"></script>
     <link rel="stylesheet" href="../css/couseSearch.css">
     <link rel="stylesheet" href="../css/starSystems.css">

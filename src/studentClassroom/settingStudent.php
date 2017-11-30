@@ -1,4 +1,4 @@
-<?php include "studentHeader.php"; ?>
+<?php include "studentHeaderNoSetting.php"; ?>
 <title>Settings</title>
 <link rel="stylesheet" href="../css/settings.css">
 <script src="../js/overall.js"></script>
@@ -19,7 +19,7 @@
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'] . '?content=' . $_GET['content']) ?>" method="GET"
       id="form0">
     <input type="hidden" name="content" value="0">
-    <h2 onclick="document.getElementById('form0').submit()">Information</h2>
+    <h2 style="cursor: pointer" onclick="document.getElementById('form0').submit()">Information</h2>
 </form>
 <hr>
 <?php if ($_GET['content'] == 0) { ?>
@@ -98,7 +98,7 @@
 <!--privacy-->
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" id="form1">
     <input type="hidden" name="content" value="1">
-    <h2 onclick="document.getElementById('form1').submit()">Privacy</h2>
+    <h2 style="cursor: pointer" onclick="document.getElementById('form1').submit()">Privacy</h2>
 </form>
 <hr>
 <?php if ($_GET['content'] == 1) { ?>
@@ -133,7 +133,7 @@
 <!--style-->
 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET" id="form2">
     <input type="hidden" name="content" value="2">
-    <h2 onclick="document.getElementById('form2').submit()">Style</h2>
+    <h2 style="cursor: pointer" onclick="document.getElementById('form2').submit()">Style</h2>
 </form>
 <?php if ($_GET['content'] == 2) { ?>
     <hr>
@@ -144,17 +144,17 @@
                 <span style="">Style:</span></div>
             <div class="col-sm-3">
                 <p onclick="document.cookie='style=0;path=/';location.reload();"
-                   style="color: dimgray; font-family: 'Open Sans' , sans-serif;">
+                   style="cursor: pointer; color: dimgray; font-family: 'Open Sans' , sans-serif;">
                     Plain</p>
             </div>
             <div class="col-sm-3">
                 <p onclick="document.cookie='style=1;path=/';location.reload();"
-                   style="color: green; font-family: 'Homemade Apple' , sans-serif;">
+                   style="cursor: pointer; color: green; font-family: 'Homemade Apple' , sans-serif;">
                     Fun</p>
             </div>
             <div class="col-sm-3">
                 <p onclick="document.cookie='style=2;path=/';location.reload();"
-                   style="color: red; font-family: 'Times New Roman' , sans-serif;">
+                   style="cursor: pointer; color: red; font-family: 'Times New Roman' , sans-serif;">
                     Nude</p>
             </div>
         </div>

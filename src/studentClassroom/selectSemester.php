@@ -1,4 +1,4 @@
-<?php include "studentHeader.php"; ?>
+<?php include "studentHeaderNoSetting.php"; ?>
 <title>Select Semester</title>
 <script src="../js/overall.js"></script>
 <link rel="stylesheet" href="../css/couseSearch.css">
@@ -13,13 +13,14 @@
 
         /*print semester information*/
         $today = date("Y-m-d");
-        $seminfo = mysqli_query($db, "SELECT * FROM semester WHERE end > $today;");
+        $endingdate = date('Y-m-d', strtotime("+6 months", strtotime($today)));
+        $seminfo = mysqli_query($db, "SELECT * FROM semester WHERE end > '$today' AND start < '$endingdate';");
         if (!$seminfo) {
             throw new Exception($db->error);
         }
-        /*only print 2 result*/
+        /*print results*/
         $i = 0;
-        while ($i < 2 && $row = mysqli_fetch_assoc($seminfo)) { ?>
+        while ($row = mysqli_fetch_assoc($seminfo)) { ?>
             <div class="container-fluid searchrow">
                 <div class="row">
                     <div class="col-sm-1">
@@ -28,7 +29,7 @@
                         <form action="<?= $_SERVER['PHP_SELF'] . '/../selectCourse.php' ?>" id="form<?= $i ?>"
                               method="get">
                             <input type="hidden" name="new" value="1">
-                            <h2 onclick='document.cookie = "semester=<?= $row['id'] ?>; path=/;";document.getElementById("form<?= $i ?>").submit();'>
+                            <h2 style="cursor: pointer" onclick='document.cookie = "semester=<?= $row['id'] ?>; path=/;";document.getElementById("form<?= $i ?>").submit();'>
                                 <?= $row['year'] . ' ' . $coursecls->semester2str($row['type']) ?>
                             </h2>
                         </form>

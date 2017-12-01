@@ -40,6 +40,19 @@ h2:hover {
     color: #bbb;
 }
 
+h3 {
+    font-style: italic;
+    font-weight: 100;
+    font-size: 24px;
+    line-height: 100%;
+    color: #333333;
+    text-align: right;
+}
+
+h3:hover {
+    color: #111111;
+}
+
 /*panel borders*/
 .panel {
     margin: 20px;
@@ -62,14 +75,9 @@ p {
 }
 
 /*unvisited link*/
-a {
+a, a:visited {
     color: dimgray;
     text-decoration: none;
-}
-
-/*visited link*/
-a:visited {
-    color: dimgray;
 }
 
 /*link on hover*/

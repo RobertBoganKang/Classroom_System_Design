@@ -12,7 +12,7 @@
     Lorem Ipsum.</p>
 <h2>My Courses</h2>
 <hr class="hr">
-<a class="advance" href="selectSemester.php">Add Course</a>
+<a class="advance" href="manageCourse.php">Manage Course</a>
 <script src="../js/overall.js"></script>
 <script>
     /*refresh page when 1 minute no response*/
@@ -30,32 +30,40 @@ if (!isset($p)) {
     include "../inc/connect_inc.php";
 }
 
-/*prepare semester*/
-$today = date("Y-m-d");
+try {
+    /*prepare semester*/
+    $today = date("Y-m-d");
 //echo $today;
-$semester = mysqli_fetch_assoc(mysqli_query($db, "SELECT id FROM semester WHERE end > '$today' AND start<'$today'"));
-$semester = $semester['id'];
-/*find my class*/
-$myID = $pq['id'];
-$myClass = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$myID AND semester_id=$semester");
-if (mysqli_num_rows($myClass) > 0) {
-    while ($rows = mysqli_fetch_assoc($myClass)) {
-        /*find what's this course*/
-        $course_id = $rows['course_id'];
-        $row = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM addcourse WHERE course_id=$course_id AND semester_id=$semester"));
-        ?>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-7 csdetail">
-                    <a class="course"
-                       href="../errorPage/featureConstruction.php?scID=<?= $row['semcourse_id'] ?>&cID=<?= $row['course_id'] ?>">
-                        <?php
-                        /*print course name*/
-                        echo $row['cname'];
-                        ?>
-                    </a>
-                    <br>
-                    <span class="coursedetail">
+    $semester = mysqli_fetch_assoc(mysqli_query($db, "SELECT id FROM semester WHERE end > '$today' AND start<'$today'"));
+    $semester = $semester['id'];
+    /*find my class*/
+    $myID = $pq['id'];
+    $myClass = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$myID AND semester_id=$semester AND NOT (grade = 'W' OR grade = 'O')");
+    if (!$myClass) {
+        throw new Exception($db->error);
+    }
+    if (mysqli_num_rows($myClass) > 0) {
+        while ($rows = mysqli_fetch_assoc($myClass)) {
+            /*find what's this course*/
+            $course_id = $rows['course_id'];
+            $row = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM addcourse WHERE course_id=$course_id AND semester_id=$semester"));
+            if (!$row) {
+                throw new Exception($db->error);
+            }
+            ?>
+            <br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-7 csdetail">
+                        <a class="course"
+                           href="../errorPage/featureConstruction.php?scID=<?= $row['semcourse_id'] ?>&cID=<?= $row['course_id'] ?>">
+                            <?php
+                            /*print course name*/
+                            echo $row['cname'];
+                            ?>
+                        </a>
+                        <br>
+                        <span class="coursedetail">
                                     <?php
                                     /*print course week and time*/
                                     echo $coursecls->str2week($row['week']) . "|";
@@ -67,21 +75,23 @@ if (mysqli_num_rows($myClass) > 0) {
                                     echo '<br>';
                                     ?>
                                 </span>
-                </div>
-                <div class="col-sm-5">
-                    <span>N/A</span>
+                    </div>
+                    <div class="col-sm-5">
+                        <span>N/A</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <?
+            <?
+        }
+    } else { ?>
+        <!--no class chosed-->
+        <span class="results noresult">No Course Available...</span>
+        <?php
     }
-} else { ?>
-    <!--no class chosed-->
-    <span class="results noresult">No Course Available...</span>
-    <?php
-}
-
-
-?>
+} catch (Exception $e) {
+    require_once "../errorPage/errorPageFunc.php";
+    $cls = new errorPageFunc();
+    $cls->sendErrMsg($e->getMessage());
+} ?>
 
 <?php include "studentFooter.php"; ?>

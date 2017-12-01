@@ -342,7 +342,7 @@ input[type=time]:focus {
     border: 1px orangered solid;
 }
 
-.classchooseconfirm, .classchooseconfirm:visited {
+.classchooseconfirm, .classchooseconfirm:visited, .classchooseconfirm:focus {
     color: orangered;
     font-size: 95%;
     display: none;
@@ -359,6 +359,28 @@ input[type=time]:focus {
 }
 
 .classchooseconfirm:hover {
+    color: orangered;
+    border: 1px orangered solid;
+}
+
+/*drop course*/
+.classdrop, .classdrop:visited {
+    color: pink;
+    font-size: 95%;
+    margin: 0;
+    padding: 2px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px white dashed;
+    background: white;
+    -webkit-transition: color 1s, border 2s;
+    -moz-transition: color 1s, border 2s;
+    -ms-transition: color 1s, border 2s;
+    -o-transition: color 1s, border 2s;
+    transition: color 1s, border 2s;
+}
+
+.classdrop:hover {
     color: orangered;
     border: 1px orangered solid;
 }

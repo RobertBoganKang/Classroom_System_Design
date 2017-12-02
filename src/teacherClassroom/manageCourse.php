@@ -134,10 +134,12 @@
                                                       onclick="ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');
 if(document.getElementById('advWeek').value!=='' && document.getElementById('advStart').value!=='' && document.getElementById('advEnd').value!==''&&document.getElementById('officeText').value!==''&&document.getElementById('advEnd').value>document.getElementById('advStart').value){
     document.getElementById('submitOpenCourse0').style.display='none'; document.getElementById('submitOpenCourse1').style.display='inline';
-}"
-                                                      onkeydown="ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');
-if(document.getElementById('advWeek').value!=='' && document.getElementById('advStart').value!=='' && document.getElementById('advEnd').value!==''&&document.getElementById('officeText').value!==''&&document.getElementById('advEnd').value>document.getElementById('advStart').value){
+} else {
+    document.getElementById('submitOpenCourse0').style.display='inline'; document.getElementById('submitOpenCourse1').style.display='none';
+}" onkeyup="if(document.getElementById('advWeek').value!=='' && document.getElementById('advStart').value!=='' && document.getElementById('advEnd').value!==''&&document.getElementById('officeText').value!==''&&document.getElementById('advEnd').value>document.getElementById('advStart').value){
     document.getElementById('submitOpenCourse0').style.display='none'; document.getElementById('submitOpenCourse1').style.display='inline';
+} else {
+    document.getElementById('submitOpenCourse0').style.display='inline'; document.getElementById('submitOpenCourse1').style.display='none';
 }">
                                                     <!--week filter-->
                                                     <div class="row">

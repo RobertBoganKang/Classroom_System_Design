@@ -64,7 +64,7 @@
                             /*find time interval has overlap*/
                             if (($findchosedcourse['cstart'] > $courseinfo['cstart'] && $findchosedcourse['cstart'] < $courseinfo['cend']) ||
                                 ($findchosedcourse['cend'] > $courseinfo['cstart'] && $findchosedcourse['cend'] < $courseinfo['cend'])) {
-                                $checkcourseErr = "[" . $findchosedcourse['cname'] . " @ " . $coursecls->shortenTime($findchosedcourse['cstart']) . " ~ " . $coursecls->shortenTime($findchosedcourse['cend']) . "; " . $coursecls->str2week($findchosedcourse['week']) . "] took up the time for this course";
+                                $checkcourseErr = "[" . $findchosedcourse['cname'] . " @ " . $coursecls->shortenTime($findchosedcourse['cstart']) . " ~ " . $coursecls->shortenTime($findchosedcourse['cend']) . "; " . $coursecls->str2week($findchosedcourse['week']) . "] took up the time for this course.";
                                 break;
                             }
                         }

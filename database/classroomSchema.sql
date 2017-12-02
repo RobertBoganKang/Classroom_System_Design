@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `classroom` /*!40100 DEFAULT CHARACTER SET latin1
 USE `classroom`;
 -- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
 --
--- Host: localhost    Database: classroom
+-- Host: 127.0.0.1    Database: classroom
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.1.28-MariaDB
 
@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS `semcourse`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `semcourse` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `course_id` int(11) NOT NULL,
   `semester_id` int(11) NOT NULL,
   `room` varchar(45) NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE `semcourse` (
   `cstart` time NOT NULL,
   `cend` time NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,8 +153,9 @@ CREATE TABLE `stucourse` (
   `grade` varchar(2) NOT NULL,
   `rating` int(11) DEFAULT NULL,
   `comment` varchar(1024) DEFAULT NULL,
+  `read_time` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +164,7 @@ CREATE TABLE `stucourse` (
 
 LOCK TABLES `stucourse` WRITE;
 /*!40000 ALTER TABLE `stucourse` DISABLE KEYS */;
-INSERT INTO `stucourse` VALUES (2,2,1,1,'',5,'If you want to know the art of language, Arabic will be your choice.'),(3,3,1,1,'',4,'Arabic is fun to learn, I love Arabic.'),(7,1,8,1,'',NULL,NULL);
+INSERT INTO `stucourse` VALUES (2,2,1,1,'',5,'If you want to know the art of language, Arabic will be your choice.','1970-01-01'),(3,3,1,1,'',4,'Arabic is fun to learn, I love Arabic.','1970-01-01'),(7,1,8,1,'',NULL,NULL,'1970-01-01');
 /*!40000 ALTER TABLE `stucourse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-01  5:07:44
+-- Dump completed on 2017-12-02  3:13:06

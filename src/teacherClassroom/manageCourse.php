@@ -23,6 +23,9 @@
         if (isset($_GET['semester'])) {
             $myID = $pq['id'];
             $myCourse = mysqli_query($db, "SELECT * FROM course WHERE teacher_id=$myID");
+            if (!$myCourse) {
+                throw new Exception($db->error);
+            }
         }
         ?>
         <br>
@@ -62,7 +65,11 @@
                                 $countOpenCourse = 0;
                                 while ($rowCourse = mysqli_fetch_assoc($myCourse)) {
                                     $course_id = $rowCourse['id'];
-                                    $checkOpenStatus = mysqli_num_rows(mysqli_query($db, "SELECT * FROM semcourse WHERE course_id=$course_id AND semester_id=$semester"));
+                                    $checkOpenStatusq = mysqli_query($db, "SELECT * FROM semcourse WHERE course_id=$course_id AND semester_id=$semester");
+                                    if (!$checkOpenStatusq) {
+                                        throw new Exception($db->error);
+                                    }
+                                    $checkOpenStatus = mysqli_num_rows($checkOpenStatusq);
                                     /*not opened, show it here*/
                                     if ($checkOpenStatus < 1) {
                                         $countOpenCourse++; ?>
@@ -72,8 +79,7 @@
                                                     <span class="course"><?= $rowCourse['cname'] ?></span>
                                                 </div>
 
-                                                <?php if (!isset($_GET['course']) || isset($_GET['course']) && $_GET['course'] != $rowCourse['id']) {
-                                                    ?>
+                                                <?php if (!isset($_GET['course']) || isset($_GET['course']) && $_GET['course'] != $rowCourse['id']) { ?>
                                                     <!--if not activate to open tab-->
                                                     <div class="col-sm-5">
                                                         <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>"
@@ -175,6 +181,15 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                                                                   placeholder="Type Office information..."></textarea>
                                                         </div>
                                                     </div>
+                                                    <?php if (isset($_SESSION['checkcourseErr'])) { ?>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <span class="results noresult"><?= $_SESSION['checkcourseErr'] ?></span>
+                                                            </div>
+                                                        </div>
+                                                        <?php
+                                                        unset($_SESSION['checkcourseErr']);
+                                                    } ?>
                                                     <!--real body-->
                                                     <input type="hidden" name="advWeek" id="advWeek">
                                                     <input type="hidden" name="semester"

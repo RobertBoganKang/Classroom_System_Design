@@ -51,6 +51,9 @@
                     if ($checkcourseErr != "") break;
                     $courseidcheck = $row['course_id'];
                     $findchosedcourseq = mysqli_query($db, "SELECT * FROM addcourse WHERE course_id=$courseidcheck AND semester_id=$semester");
+                    if (!$findchosedcourseq) {
+                        throw new Exception($db->error);
+                    }
                     $findchosedcourse = mysqli_fetch_assoc($findchosedcourseq);
                     if (!$findchosedcourse) {
                         throw new Exception($db->error);

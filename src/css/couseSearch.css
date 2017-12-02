@@ -232,6 +232,7 @@ input[type=time] {
 
 /*hidden submit button*/
 .hiddenSubmit {
+    cursor: pointer;
     color: pink;
     padding: 0;
     font-size: 95%;
@@ -383,4 +384,58 @@ input[type=time]:focus {
 .classdrop:hover {
     color: orangered;
     border: 1px orangered solid;
+}
+
+/*inactive h3 title*/
+.h3inactive {
+    color: lightgray;
+}
+
+.h3inactive:hover {
+    color: #111111;
+}
+
+/*button for open course*/
+.openCourseButton {
+    padding: 15px;
+    cursor: pointer;
+    color: green;
+}
+
+.openCourseButton:hover:after {
+    color: green;
+    content: 'Open';
+}
+
+textarea {
+    border: 2px white solid;
+    outline: 0;
+    width: 100%;
+    color: gray;
+    -webkit-transition: color 1s, border 2s;
+    -moz-transition: color 1s, border 2s;
+    -ms-transition: color 1s, border 2s;
+    -o-transition: color 1s, border 2s;
+    transition: color 1s, border 2s;
+}
+
+textarea::placeholder {
+    color: lightgray;
+    font-style: italic;
+}
+
+textarea:hover {
+    border: 2px gray solid;
+}
+
+textarea:focus {
+    border: 2px mediumpurple solid;
+    color: rebeccapurple;
+}
+
+.openClassButton {
+    border: 2px green solid;
+    color: green;
+    background: lightgreen;
+    width: 100%;
 }

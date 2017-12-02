@@ -12,7 +12,7 @@
     Lorem Ipsum.</p>
 <h2>My Courses</h2>
 <hr class="hr">
-<a class="advance" href="manageCourse.php">Manage Course</a>
+<a class="advance" href="manageCourse.php?menu=0">Manage Course</a>
 <script src="../js/overall.js"></script>
 <script>
     /*refresh page when 1 minute no response*/
@@ -74,7 +74,7 @@ try {
                                     echo $row['tfname'] . ' ' . $row['tlname'];
                                     echo '<br>';
                                     ?>
-                                </span>
+                        </span>
                     </div>
                     <div class="col-sm-5">
                         <span>N/A</span>

@@ -160,10 +160,10 @@
                                                 <span class="classdrop" id="classdrop"
                                                       onclick="document.getElementById('classdrop').style.display='none';
                                   document.getElementById('classdropconfirm').style.display='inline';
-                                  setTimeout(function(){document.getElementById('classdropconfirm').innerHTML='No!!'},5000);
+                                  setTimeout(function(){document.getElementById('classdropconfirm').innerHTML='No?'},5000);
                                   setTimeout(function(){document.getElementById('classdrop').style.display='inline';
                                   document.getElementById('classdropconfirm').style.display='none';
-                                  document.getElementById('classdropconfirm').innerHTML='I\'m crying!';},8000
+                                  document.getElementById('classdropconfirm').innerHTML='Drop?';},8000
                                     )">Drop</span>
                                                 <a class="classchooseconfirm" style="color: orangered"
                                                    id="classdropconfirm"
@@ -179,9 +179,7 @@
                         /*if no result, delete this tab*/
                         if ($dropcount < 1) {
                             ?>
-                            <script>
-                                document.getElementById("dropCourseTab").style.display = "none";
-                            </script>
+                            <span class="results">No available courses to drop...</span>
                             <?php
                         }
                         ?>
@@ -196,6 +194,7 @@
                 <h2 style="cursor: pointer" onclick="document.getElementById('menu2').submit()">My Grade</h2>
             </form>
             <?php if (isset($_GET['menu']) && $_GET['menu'] == 2) { ?>
+                <!--* write something here *-->
                 <?= "b" ?>
             <?php } ?>
         </div>

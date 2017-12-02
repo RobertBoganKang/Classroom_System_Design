@@ -40,7 +40,8 @@
                 }
             }
             /*check time overlap for this semester*/
-            $checkcourse = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$Myid AND semester_id=$semester");
+            /*student course except dropped and withdraw course to check time*/
+            $checkcourse = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$Myid AND semester_id=$semester AND NOT (grade = 'W' OR grade = 'O')");
             if (!$checkcourse) {
                 throw new Exception($db->error);
             }
@@ -155,7 +156,11 @@
                             <span id="chooseCourse" class="classchoose"
                                   onclick="document.getElementById('chooseCourse').style.display='none';
                                   document.getElementById('chooseCourseConfirm').style.display='inline';
-                                  document.getElementById('confirmStar').style.color='red'">Choose:</span>
+                                  document.getElementById('confirmStar').style.color='red';setTimeout(function() {
+                                  document.getElementById('chooseCourse').style.display='inline';
+                                  document.getElementById('chooseCourseConfirm').style.display='none';
+                                  document.getElementById('confirmStar').style.color='green'
+                                  },5000)">Choose:</span>
                         </div>
                         <div class="col-sm-9 coursedetail">
                             <span id="confirmStar" style="color:green">*</span>

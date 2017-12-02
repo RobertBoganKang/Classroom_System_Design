@@ -4,6 +4,12 @@ try {
     session_start();
     /*connect to database*/
     include "../inc/connect_inc.php";
+    /*load php functions*/
+    require_once "../inc/courseUtil.php";
+    require_once "../inc/stringUtils.php";
+    $coursecls = new courseUtil();
+    $stringcls = new stringUtils();
+
     if (!isset($_SESSION['pq'])) {
         /*get info*/
         $username = $_COOKIE['username'];
@@ -33,11 +39,13 @@ try {
 
 try {
     /*get values*/
+    $start = htmlspecialchars($_GET['advStart']);
     $cstart = $_GET['advStart'] . ":00";
+    $end = htmlspecialchars($_GET['advEnd']);
     $cend = $_GET['advEnd'] . ":00";
     $course_id = $_GET['course'];
     $semester_id = $_GET['semester'];
-    $room = $_GET['office'];
+    $room = $stringcls->trimText($_GET['office']);
     $week = $_GET['advWeek'];
 
     /*check time violence*/
@@ -59,7 +67,7 @@ WHERE teacher_id=$myID AND semester_id=$semester_id";
                 if (strpos($row['week'], $weekA) != -1) {
                     /*find time interval has overlap*/
                     if (($cstart > $row['cstart'] && $cstart < $row['cend']) || ($cend > $row['cstart'] && $cend < $row['cend'])) {
-                        $checkcourseErr = "[" . $row['cname'] . "] took up the time for this course";
+                        $checkcourseErr = "[" . $row['cname'] . " @ " . $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "] took up the time for this course";
                         break;
                     }
                 }
@@ -82,7 +90,7 @@ VALUES (NULL, '$course_id', '$semester_id','$room', '$week', '$cstart', '$cend')
         }
     } else {
         /*has error*/
-        header("Location: " . "manageCourse.php?menu=0&course=$course_id&semester=$semester_id");
+        header("Location: " . "manageCourse.php?menu=0&course=$course_id&semester=$semester_id&advWeek=$week&advCstart=$start&advCend=$end&advRoom=$room");
     }
 
 } catch (Exception $e) {

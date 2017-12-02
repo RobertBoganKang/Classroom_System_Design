@@ -1,7 +1,7 @@
 <?php include "studentHeader.php"; ?>
     <script src="../js/overall.js"></script>
     <script src="../js/starSystem.js"></script>
-    <link rel="stylesheet" href="../css/couseSearch.css">
+    <link rel="stylesheet" href="../css/couseMaster.css">
     <link rel="stylesheet" href="../css/starSystems.css">
     <div>
         <?php

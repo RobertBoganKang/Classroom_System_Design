@@ -1,5 +1,5 @@
 <?php include "teacherHeader.php"; ?>
-<link rel="stylesheet" href="../css/couseSearch.css">
+<link rel="stylesheet" href="../css/couseMaster.css">
 <title>My Classroom</title>
 <h1>Welcome Professor <?php echo ucwords($pq['fname']) . " " . ucwords($pq['lname']); ?>!</h1>
 <h2>Announcement</h2>

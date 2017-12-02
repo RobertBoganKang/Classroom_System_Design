@@ -1,6 +1,6 @@
 <?php include "studentHeaderNoSetting.php"; ?>
 <script src="../js/overall.js"></script>
-<link rel="stylesheet" href="../css/couseSearch.css">
+<link rel="stylesheet" href="../css/couseMaster.css">
 <div>
     <?php
     try {

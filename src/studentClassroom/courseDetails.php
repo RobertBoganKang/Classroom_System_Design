@@ -1,6 +1,6 @@
 <?php include "studentHeaderNoSetting.php"; ?>
     <script src="../js/overall.js"></script>
-    <link rel="stylesheet" href="../css/couseSearch.css">
+    <link rel="stylesheet" href="../css/couseMaster.css">
     <link rel="stylesheet" href="../css/starSystems.css">
     <div>
         <?php
@@ -64,7 +64,7 @@
                             /*find time interval has overlap*/
                             if (($findchosedcourse['cstart'] > $courseinfo['cstart'] && $findchosedcourse['cstart'] < $courseinfo['cend']) ||
                                 ($findchosedcourse['cend'] > $courseinfo['cstart'] && $findchosedcourse['cend'] < $courseinfo['cend'])) {
-                                $checkcourseErr = "[" . $findchosedcourse['cname'] . "] took up the time for this course";
+                                $checkcourseErr = "[" . $findchosedcourse['cname'] . " @ " . $coursecls->shortenTime($findchosedcourse['cstart']) . " ~ " . $coursecls->shortenTime($findchosedcourse['cend']) . "] took up the time for this course";
                                 break;
                             }
                         }

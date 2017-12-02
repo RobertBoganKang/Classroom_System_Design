@@ -1,7 +1,7 @@
 <?php include "studentHeaderNoSetting.php"; ?>
 <title>Add Courses</title>
 <script src="../js/overall.js"></script>
-<link rel="stylesheet" href="../css/couseSearch.css">
+<link rel="stylesheet" href="../css/couseMaster.css">
 <link rel="stylesheet" href="../css/starSystems.css">
 <h1 style="display: block; float:left">Select Course</h1>
 <br>

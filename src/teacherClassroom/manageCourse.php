@@ -1,7 +1,7 @@
 <?php include "teacherHeaderNoSetting.php"; ?>
 <title>Course Master</title>
 <script src="../js/overall.js"></script>
-<link rel="stylesheet" href="../css/couseSearch.css">
+<link rel="stylesheet" href="../css/couseMaster.css">
 <h1 style="display: block; float:left">Manage Course</h1>
 <br>
 <div>
@@ -103,7 +103,7 @@
                                                     ?>
                                                     <!--if activate to open tab-->
                                                     <div class="col-sm-5" style="padding:15px">
-                                                        <span style="color:red" id="submitOpenCourse0"> * </span>
+                                                        <span style="color:red" id="submitOpenCourse0"> ... </span>
                                                         <span style="color:red;display:none;border:1px red solid;cursor: pointer;"
                                                               id="submitOpenCourse1"
                                                               onclick="document.getElementById('courseOpenForm').submit()"> Open </span>
@@ -111,8 +111,24 @@
                                                     <?php
                                                 } ?>
                                             </div>
-                                            <?php if (isset($_GET['course']) && $_GET['course'] == $rowCourse['id']) { ?>
-                                                <hr>
+                                            <hr>
+                                            <?php if (isset($_GET['course']) && $_GET['course'] == $rowCourse['id']) {
+                                                /*get all filled info*/
+                                                $advCstart = $advCend = $advRoom = $advWeek = "";
+                                                if (isset($_GET['advCstart'])) {
+                                                    $advCstart = $_GET['advCstart'];
+                                                }
+                                                if (isset($_GET['advCend'])) {
+                                                    $advCend = $_GET['advCend'];
+                                                }
+                                                if (isset($_GET['advRoom'])) {
+                                                    $advRoom = $_GET['advRoom'];
+                                                }
+                                                if (isset($_GET['advWeek'])) {
+                                                    $advWeek = $_GET['advWeek'];
+                                                }
+
+                                                ?>
                                                 <!--form of open course-->
                                                 <form action="openCourse.php" method="get" id="courseOpenForm"
                                                       onclick="ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');
@@ -161,13 +177,14 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                                                         <!--starting time-->
                                                         <div class="col-sm-5">
                             <span class="greaterthan">start
-                                <input type="time" name="advStart" id="advStart">
+                                <input type="time" name="advStart" id="advStart"
+                                       value="<?= htmlspecialchars($advCstart) ?>">
                             </span>
                                                         </div>
                                                         <!--ending time-->
                                                         <div class="col-sm-4">
                             <span class="lessthan">end
-                                <input type="time" name="advEnd" id="advEnd">
+                                <input type="time" name="advEnd" id="advEnd" value="<?= htmlspecialchars($advCend) ?>">
                                                         </div>
                                                     </div>
                                                     <hr>
@@ -178,10 +195,11 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                                                         </div>
                                                         <div class="col-sm-9">
                                                         <textarea name="office" rows="1" id="officeText"
-                                                                  placeholder="Type Office information..."></textarea>
+                                                                  placeholder="Type Office information..."><?= $advRoom ?></textarea>
                                                         </div>
                                                     </div>
                                                     <?php if (isset($_SESSION['checkcourseErr'])) { ?>
+                                                        <!--Violence Error Message-->
                                                         <div class="row">
                                                             <div class="col-sm-12">
                                                                 <span class="results noresult"><?= $_SESSION['checkcourseErr'] ?></span>
@@ -222,8 +240,9 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                     <h2 style="cursor: pointer" onclick="document.getElementById('menu1').submit()">Close</h2>
                 </form>
                 <hr>
-
-
+                <?php if (isset($_GET['menu']) && $_GET['menu'] == 1) {
+                    echo "hello1";
+                } ?>
             </div>
 
             <!--create course-->
@@ -231,8 +250,9 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                 <input type="hidden" value="2" name="menu">
                 <h2 style="cursor: pointer" onclick="document.getElementById('menu2').submit()">Create</h2>
             </form>
-
-
+            <?php if (isset($_GET['menu']) && $_GET['menu'] == 2) {
+                echo "hello2";
+            } ?>
         </div>
         <?php
 

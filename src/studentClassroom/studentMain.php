@@ -1,6 +1,6 @@
 <?php include "studentHeader.php"; ?>
 <title>My Classroom</title>
-<link rel="stylesheet" href="../css/couseSearch.css">
+<link rel="stylesheet" href="../css/couseMaster.css">
 <h1>Welcome <?php echo ucwords($pq['fname']) . " " . ucwords($pq['lname']); ?>!</h1>
 <h2>Announcement</h2>
 <hr class="hr">

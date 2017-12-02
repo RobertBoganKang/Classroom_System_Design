@@ -1,7 +1,7 @@
 <?php include "studentHeaderNoSetting.php"; ?>
 <title>Course Master</title>
 <script src="../js/overall.js"></script>
-<link rel="stylesheet" href="../css/couseSearch.css">
+<link rel="stylesheet" href="../css/couseMaster.css">
 <h1 style="display: block; float:left">Manage Course</h1>
 <br>
 <div>

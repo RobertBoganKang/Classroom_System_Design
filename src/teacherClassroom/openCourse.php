@@ -29,7 +29,8 @@ WHERE teacher_id=$myID AND semester_id=$semester_id";
         while ($row = mysqli_fetch_assoc($checkcourse)) {
             foreach ($courseweekarr as $weekA) {
                 /*find if week has matched*/
-                if (strpos($row['week'], $weekA) != -1) {
+                if (strpos($row['week'], $weekA) !== false) {
+                    echo $weekA . " " . $row['week'] . " " . strpos("abc", "d");
                     /*find time interval has overlap*/
                     if (($cstart > $row['cstart'] && $cstart < $row['cend']) || ($cend > $row['cstart'] && $cend < $row['cend'])) {
                         $checkcourseErr = "[" . $row['cname'] . " @ " . $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "] took up the time for this course";
@@ -50,6 +51,8 @@ VALUES (NULL, '$course_id', '$semester_id','$room', '$week', '$cstart', '$cend')
             if (!$openCourseSQL) {
                 throw new Exception($db->error);
             }
+            /*refresh addcourse*/
+            require "refreshAddcourse.php";
         } else {
             throw new Exception("Please do not hack our system!");
         }

@@ -60,7 +60,7 @@
                     }
                     foreach ($courseweekarr as $week) {
                         /*find if week has matched*/
-                        if (strpos($findchosedcourse['week'], $week) != -1) {
+                        if (strpos($findchosedcourse['week'], $week) !== false) {
                             /*find time interval has overlap*/
                             if (($findchosedcourse['cstart'] > $courseinfo['cstart'] && $findchosedcourse['cstart'] < $courseinfo['cend']) ||
                                 ($findchosedcourse['cend'] > $courseinfo['cstart'] && $findchosedcourse['cend'] < $courseinfo['cend'])) {

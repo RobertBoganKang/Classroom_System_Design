@@ -3,6 +3,10 @@
 require "securityCheck.php";
 
 try {
+    /*load php functions*/
+    require_once "../inc/courseUtil.php";
+    $coursecls = new courseUtil();
+
     /*get values*/
     $start = htmlspecialchars($_GET['advStart']);
     $cstart = $_GET['advStart'] . ":00";
@@ -33,7 +37,7 @@ WHERE teacher_id=$myID AND semester_id=$semester_id";
                     echo $weekA . " " . $row['week'] . " " . strpos("abc", "d");
                     /*find time interval has overlap*/
                     if (($cstart > $row['cstart'] && $cstart < $row['cend']) || ($cend > $row['cstart'] && $cend < $row['cend'])) {
-                        $checkcourseErr = "[" . $row['cname'] . " @ " . $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "] took up the time for this course";
+                        $checkcourseErr = "[" . $row['cname'] . " @ " . $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "; " . $coursecls->str2week($row['week']) . "] took up the time for this course";
                         break;
                     }
                 }

@@ -119,7 +119,7 @@
                                     ?>
                                     <span class="results noresult" style="line-height: 120%">Warning: since you have passing the last day
                                 (<?= $endingdatedrop ?>) of dropping the course.
-                        You will receive 'W' in your grade. This grade will not affect overall GPA, however your tuition will not refunded.</span>
+                        You will receive 'W' in your grade. This grade will not affect overall GPA, however your tuition will not be refunded.</span>
                                     <?php
                                 }
 
@@ -157,16 +157,16 @@
                                             </div>
                                             <div class="col-sm-3" style="padding: 15px; cursor: pointer;">
                                                 <!--write a funny javascript-->
-                                                <span class="classdrop" id="classdrop"
-                                                      onclick="document.getElementById('classdrop').style.display='none';
-                                  document.getElementById('classdropconfirm').style.display='inline';
-                                  setTimeout(function(){document.getElementById('classdropconfirm').innerHTML='No?'},5000);
-                                  setTimeout(function(){document.getElementById('classdrop').style.display='inline';
-                                  document.getElementById('classdropconfirm').style.display='none';
-                                  document.getElementById('classdropconfirm').innerHTML='Drop?';},8000
-                                    )">Drop</span>
+                                                <span class="classdrop" id="classdrop<?= $course_id ?>"
+                                                      onclick="document.getElementById('classdrop<?= $course_id ?>').style.display='none';
+                                                              document.getElementById('classdropconfirm<?= $course_id ?>').style.display='inline';
+                                                              setTimeout(function(){document.getElementById('classdropconfirm<?= $course_id ?>').innerHTML='No?'},5000);
+                                                              setTimeout(function(){document.getElementById('classdrop<?= $course_id ?>').style.display='inline';
+                                                              document.getElementById('classdropconfirm<?= $course_id ?>').style.display='none';
+                                                              document.getElementById('classdropconfirm<?= $course_id ?>').innerHTML='Drop?';},8000
+                                                              )">Drop</span>
                                                 <a class="classchooseconfirm" style="color: orangered"
-                                                   id="classdropconfirm"
+                                                   id="classdropconfirm<?= $course_id ?>"
                                                    href="dropClass.php?state=<?= $state ?>&course_id=<?= $course_id ?>&student_id=<?= $myID ?>">
                                                     Goodbye?</a>
                                             </div>

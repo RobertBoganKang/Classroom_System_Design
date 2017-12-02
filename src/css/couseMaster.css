@@ -407,6 +407,29 @@ input[type=time]:focus {
     content: 'Open';
 }
 
+/*button for close course*/
+.closeCourseButton {
+    padding: 15px;
+    cursor: pointer;
+    color: red;
+}
+
+.closeCourseButton:hover:after {
+    color: red;
+    content: 'Close';
+}
+
+/*button for close course*/
+.closeCourseButton0, .closeCourseButton0:visited {
+    padding: 15px;
+    cursor: pointer;
+    color: red;
+}
+
+.closeCourseButton0:hover {
+    color: rebeccapurple;
+}
+
 textarea {
     border: 2px white solid;
     outline: 0;

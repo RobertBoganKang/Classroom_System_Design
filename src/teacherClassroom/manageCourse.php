@@ -241,7 +241,79 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                 </form>
                 <hr>
                 <?php if (isset($_GET['menu']) && $_GET['menu'] == 1) {
-                    echo "hello1";
+                    $i = 0;
+                    while ($rowSemester = mysqli_fetch_assoc($seminfo)) {
+                        ?>
+                        <div>
+                            <!--select semester-->
+                            <form action="<?= $_SERVER['PHP_SELF'] ?>"
+                                  id="form<?= $i ?>"
+                                  method="get">
+                                <input type="hidden" name="menu" value="1">
+                                <input type="hidden" name="semester" value="<?= $rowSemester['id'] ?>">
+                                <h3 style="cursor: pointer; text-align: right"
+                                    <?php
+                                    /*when not selected, dim the title*/
+                                    if (isset($_GET['semester']) && $_GET['semester'] != $rowSemester['id']) { ?>
+                                        class="h3inactive"
+                                    <?php } ?>
+                                    onclick='document.cookie = "semester=<?= $rowSemester['id'] ?>; path=/;";document.getElementById("form<?= $i ?>").submit();'>
+                                    <?= $rowSemester['year'] . ' ' . $coursecls->semester2str($rowSemester['type']) ?>
+                                </h3>
+                            </form>
+
+                            <?php if (isset($_GET['semester']) && $_GET['semester'] == $rowSemester['id']) {
+                                $semester = $_GET['semester'];
+                                /*count the course*/
+                                $countCloseCourse = 0;
+                                while ($rowCourse = mysqli_fetch_assoc($myCourse)) {
+                                    $course_id = $rowCourse['id'];
+                                    $checkCloseStatusq = mysqli_query($db, "SELECT * FROM semcourse WHERE course_id=$course_id AND semester_id=$semester");
+                                    if (!$checkCloseStatusq) {
+                                        throw new Exception($db->error);
+                                    }
+                                    $checkCloseStatus = mysqli_num_rows($checkCloseStatusq);
+                                    /*if opened, show it here to close*/
+                                    if ($checkCloseStatus > 0) {
+                                        $countCloseCourse++; ?>
+                                        <div class="container-fluid searchrow">
+                                            <div class="row">
+                                                <div class="col-sm-7 csdetail">
+                                                    <span class="course"><?= $rowCourse['cname'] ?></span>
+                                                </div>
+                                                <!--close course button-->
+                                                <div class="col-sm-5" style="padding:15px">
+                                                    <span id="courseClose<?= $course_id ?>" class="closeCourseButton"
+                                                          onclick="document.getElementById('courseClose<?= $course_id ?>').style.display='none';
+                                                                  document.getElementById('courseClose<?= $course_id ?>').classList.remove('closeCourseButton');
+                                                                  document.getElementById('courseClose<?= $course_id ?>').classList.add('closeCourseButton0');
+                                                                  document.getElementById('courseCloseConfirm<?= $course_id ?>').style.display='inline';
+                                                                  setTimeout(function(){
+                                                                  document.getElementById('courseClose<?= $course_id ?>').style.display='inline';
+                                                                  document.getElementById('courseClose<?= $course_id ?>').classList.add('closeCourseButton');
+                                                                  document.getElementById('courseClose<?= $course_id ?>').classList.remove('closeCourseButton0');
+                                                                  document.getElementById('courseCloseConfirm<?= $course_id ?>').style.display='none';
+                                                                  }, 5000);
+                                                                  "> * </span>
+                                                    <a id="courseCloseConfirm<?= $course_id ?>"
+                                                       href="closeCourse.php?course=<?= $course_id ?>&semester=<?= $semester ?>"
+                                                       class="closeCourseButton0" style="display:none">* Confirm</a>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    <?php }
+                                }
+                                if ($countCloseCourse < 1) {
+                                    ?>
+                                    <span class="results noresult">No course has been opened for this semester...</span>
+                                    <?php
+                                }
+                            } ?>
+                        </div>
+                        <?php
+                        $i++;
+                    }
                 } ?>
             </div>
 

@@ -24,7 +24,7 @@ $refreshSQL1 = "CREATE TABLE addcourse AS
               ON course.id = semcourse.course_id) 
            JOIN teacher 
              ON course.teacher_id = teacher.id));";
-$refreshSQL2 = "ALTER TABLE `classroom`.`addcourse` 
+$refreshSQL2 = "ALTER TABLE `addcourse` 
   ADD COLUMN `id` INT NOT NULL AUTO_INCREMENT FIRST, 
   ADD PRIMARY KEY (`id`);";
 $refresh = mysqli_query($db, $refreshSQL0);

@@ -33,8 +33,12 @@ if (!isset($p)) {
 try {
     /*prepare semester*/
     $today = date("Y-m-d");
-//echo $today;
-    $semester = mysqli_fetch_assoc(mysqli_query($db, "SELECT id FROM semester WHERE end > '$today' AND start<'$today'"));
+    /*extent 10 days to enter system*/
+    $endSemesterControl = date('Y-m-d', strtotime("-10 days", strtotime($today)));
+    $semester = mysqli_fetch_assoc(mysqli_query($db, "SELECT id FROM semester WHERE end > '$endSemesterControl' AND start<'$today'"));
+    if (!$semester) {
+        throw new Exception($db->error);
+    }
     $semester = $semester['id'];
     /*find my class*/
     $myID = $pq['id'];
@@ -49,8 +53,7 @@ try {
             $row = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM addcourse WHERE course_id=$course_id AND semester_id=$semester"));
             if (!$row) {
                 throw new Exception($db->error);
-            }
-            ?>
+            } ?>
             <br>
             <div class="container-fluid">
                 <div class="row">
@@ -81,8 +84,7 @@ try {
                     </div>
                 </div>
             </div>
-            <?
-        }
+        <? }
     } else { ?>
         <!--no class chosed-->
         <span class="results noresult">No Course Available...</span>

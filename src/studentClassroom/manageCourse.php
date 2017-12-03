@@ -25,7 +25,7 @@
             <div>
                 <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="get" id="menu0">
                     <input type="hidden" value="0" name="menu">
-                    <h2 style="cursor: pointer" onclick="document.getElementById('menu0').submit()">Add Course</h2>
+                    <h2 style="cursor: pointer" onclick="document.getElementById('menu0').submit()">Add</h2>
                 </form>
                 <hr>
                 <?php
@@ -72,7 +72,7 @@
             <div id="dropCourseTab">
                 <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="get" id="menu1">
                     <input type="hidden" value="1" name="menu">
-                    <h2 style="cursor: pointer" onclick="document.getElementById('menu1').submit()">Drop Course</h2>
+                    <h2 style="cursor: pointer" onclick="document.getElementById('menu1').submit()">Drop</h2>
                 </form>
                 <hr>
                 <?php if (isset($_GET['menu']) && $_GET['menu'] == 1) {
@@ -193,10 +193,82 @@
                 <input type="hidden" value="2" name="menu">
                 <h2 style="cursor: pointer" onclick="document.getElementById('menu2').submit()">My Grade</h2>
             </form>
-            <?php if (isset($_GET['menu']) && $_GET['menu'] == 2) { ?>
-                <!--* write something here *-->
-                <?= "b" ?>
-            <?php } ?>
+            <?php if (isset($_GET['menu']) && $_GET['menu'] == 2) {
+                $myID = $pq['id'];
+                $findMyGrade = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$myID AND grade<>'O' AND grade<>'' ORDER BY semester_id");
+                if (!$findMyGrade) {
+                    throw new Exception($db->error);
+                }
+                if (mysqli_num_rows($findMyGrade) < 0) { ?>
+                    <span class="results noresult">No grade available...</span>
+                <?php } else {
+                    $myGPA = $numberOfCourse = 0;
+                    ?>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6 title">Course</div>
+                            <div class="col-sm-3 title">Semester</div>
+                            <div class="col-sm-3 title">Grade</div>
+                        </div>
+                        <hr>
+                        <?php while ($rowGrade = mysqli_fetch_assoc($findMyGrade)) {
+                            /*calculate GPA*/
+                            $courseGrade = $coursecls->gradStr2Num($rowGrade['grade']);
+                            if ($courseGrade > 0) {
+                                $myGPA += $courseGrade;
+                                $numberOfCourse++;
+                            }
+                            /*find information to print*/
+                            $myCourseID = $rowGrade['course_id'];
+                            $mySemesterID = $rowGrade['semester_id'];
+                            $findMyCourse = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM course WHERE id=$myCourseID"));
+                            if (!$findMyCourse) {
+                                throw new Exception($db->error);
+                            }
+                            $findMySemester = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM semester WHERE id=$mySemesterID"));
+                            if (!$findMySemester) {
+                                throw new Exception($db->error);
+                            }
+                            $courseName = $findMyCourse['cname'];
+                            $courseSemester = $findMySemester['year'] . " " . $coursecls->semester2str($findMySemester['type']);
+                            /*print information*/
+                            ?>
+                            <div class="row">
+                                <div class="col-sm-6"><?= $courseName ?></div>
+                                <div class="col-sm-3"><?= $courseSemester ?></div>
+                                <div class="col-sm-3"><?= $rowGrade['grade'] ?></div>
+                            </div>
+                            <hr>
+                            <?php
+                        } ?>
+                        <?php
+                        /*calculate GPA*/
+                        $myGPA /= $numberOfCourse;
+                        $myGPA = number_format((float)$myGPA, 2, '.', '');
+                        /*print GPA*/
+                        ?>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <span class="title" style="font-size:50px">My GPA:</span>
+                                </div>
+                                <div class="col-sm-3">
+                                        <span style="font-size:50px;font-weight:100;color:<?php if ($myGPA > 3.5) {
+                                            echo 'green';
+                                        } elseif ($myGPA > 3) {
+                                            echo 'darkorange';
+                                        } elseif ($myGPA < 1) {
+                                            echo 'lightgray';
+                                        } else {
+                                            echo 'red';
+                                        } ?>"><?= $myGPA ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            } ?>
         </div>
         <?php
 

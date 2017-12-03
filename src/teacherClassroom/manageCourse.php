@@ -130,7 +130,7 @@
 
                                                 ?>
                                                 <!--form of open course-->
-                                                <form action="openCourse.php" method="get" id="courseOpenForm"
+                                                <form action="openCourse.php" method="post" id="courseOpenForm"
                                                       onclick="ckbx2arr(['advWeek0', 'advWeek1', 'advWeek2', 'advWeek3', 'advWeek4', 'advWeek5', 'advWeek6'], 'advWeek');
 if(document.getElementById('advWeek').value!=='' && document.getElementById('advStart').value!=='' && document.getElementById('advEnd').value!==''&&document.getElementById('officeText').value!==''&&document.getElementById('advEnd').value>document.getElementById('advStart').value){
     document.getElementById('submitOpenCourse0').style.display='none'; document.getElementById('submitOpenCourse1').style.display='inline';
@@ -274,32 +274,47 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                                     if (!$checkCloseStatusq) {
                                         throw new Exception($db->error);
                                     }
-                                    $checkCloseStatus = mysqli_num_rows($checkCloseStatusq);
+                                    /*count how many student in class*/
+                                    $checkStudentInClass = mysqli_query($db, "SELECT * FROM stucourse WHERE course_id=$course_id AND semester_id=$semester");
+                                    if (!$checkStudentInClass) {
+                                        throw new Exception($db->error);
+                                    }
+                                    $checkStudentInClassCount = mysqli_num_rows($checkStudentInClass);
                                     /*if opened, show it here to close*/
-                                    if ($checkCloseStatus > 0) {
+                                    if (mysqli_num_rows($checkCloseStatusq) > 0) {
                                         $countCloseCourse++; ?>
                                         <div class="container-fluid searchrow">
                                             <div class="row">
                                                 <div class="col-sm-7 csdetail">
-                                                    <span class="course"><?= $rowCourse['cname'] ?></span>
+                                                    <span class="course"><?= $rowCourse['cname'] ?><?php if ($checkStudentInClassCount > 0) echo ' (' . $checkStudentInClassCount . ')' ?></span>
                                                 </div>
                                                 <!--close course button-->
                                                 <div class="col-sm-5" style="padding:15px">
-                                                    <span id="courseClose<?= $course_id ?>" class="closeCourseButton"
-                                                          onclick="document.getElementById('courseClose<?= $course_id ?>').style.display='none';
-                                                                  document.getElementById('courseClose<?= $course_id ?>').classList.remove('closeCourseButton');
-                                                                  document.getElementById('courseClose<?= $course_id ?>').classList.add('closeCourseButton0');
-                                                                  document.getElementById('courseCloseConfirm<?= $course_id ?>').style.display='inline';
-                                                                  setTimeout(function(){
-                                                                  document.getElementById('courseClose<?= $course_id ?>').style.display='inline';
-                                                                  document.getElementById('courseClose<?= $course_id ?>').classList.add('closeCourseButton');
-                                                                  document.getElementById('courseClose<?= $course_id ?>').classList.remove('closeCourseButton0');
-                                                                  document.getElementById('courseCloseConfirm<?= $course_id ?>').style.display='none';
-                                                                  }, 5000);
-                                                                  "> * </span>
-                                                    <a id="courseCloseConfirm<?= $course_id ?>"
-                                                       href="closeCourse.php?course=<?= $course_id ?>&semester=<?= $semester ?>"
-                                                       class="closeCourseButton0" style="display:none">* Confirm</a>
+                                                    <form action="closeCourse.php" method="post"
+                                                          id="courseCloseForm<?= $course_id ?>">
+                                                        <input type="hidden" name="course" value="<?= $course_id ?>">
+                                                        <input type="hidden" name="semester" value="<?= $semester ?>">
+                                                        <!--button close-->
+                                                        <span id="courseClose<?= $course_id ?>"
+                                                              class="closeCourseButton"
+                                                              onclick="document.getElementById('courseClose<?= $course_id ?>').style.display='none';
+                                                                      document.getElementById('courseClose<?= $course_id ?>').classList.remove('closeCourseButton');
+                                                                      document.getElementById('courseClose<?= $course_id ?>').classList.add('closeCourseButton0');
+                                                                      document.getElementById('courseCloseConfirm<?= $course_id ?>').style.display='inline';
+                                                                      setTimeout(function(){
+                                                                      document.getElementById('courseClose<?= $course_id ?>').style.display='inline';
+                                                                      document.getElementById('courseClose<?= $course_id ?>').classList.add('closeCourseButton');
+                                                                      document.getElementById('courseClose<?= $course_id ?>').classList.remove('closeCourseButton0');
+                                                                      document.getElementById('courseCloseConfirm<?= $course_id ?>').style.display='none';
+                                                                      }, 5000);
+                                                                      "> * </span>
+                                                        <!--button confirm-->
+                                                        <span id="courseCloseConfirm<?= $course_id ?>"
+                                                              class="closeCourseButton0"
+                                                              style="display:none"
+                                                              onclick="document.getElementById('courseCloseForm<?= $course_id ?>').submit()"
+                                                        >* Confirm</span>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <hr>
@@ -324,9 +339,56 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                 <input type="hidden" value="2" name="menu">
                 <h2 style="cursor: pointer" onclick="document.getElementById('menu2').submit()">Create</h2>
             </form>
-            <?php if (isset($_GET['menu']) && $_GET['menu'] == 2) {
-                echo "hello2";
-            } ?>
+            <?php if (isset($_GET['menu']) && $_GET['menu'] == 2) { ?>
+                <form action="createCourse.php" method="post"
+                      onkeyup="if(document.getElementById('CreateText0').value!==''&&document.getElementById('CreateText1').value!=='') {
+                          document.getElementById('submitCreate0').style.display='none';
+                          document.getElementById('submitCreate1').style.display='inline';
+                      }else{
+                          document.getElementById('submitCreate1').style.display='none';
+                          document.getElementById('submitCreate0').style.display='inline';
+                      }"
+                      onclick="if(document.getElementById('CreateText0').value!==''&&document.getElementById('CreateText1').value!=='') {
+                          document.getElementById('submitCreate0').style.display='none';
+                          document.getElementById('submitCreate1').style.display='inline';
+                      }else{
+                          document.getElementById('submitCreate1').style.display='none';
+                          document.getElementById('submitCreate0').style.display='inline';
+                      }">
+                    <div class="containter-fluid" style="max-width: 800px">
+                        <div class="row" style="padding: 3px;">
+                            <div class="col-sm-3 title">Name:</div>
+                            <div class="col-sm-9">
+                                <input type="text" id="CreateText0" placeholder="Type course name..."
+                                       class="createCourseName" name="cname">
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 3px;">
+                            <div class="col-sm-3 title">description:</div>
+                            <div class="col-sm-9">
+                                <textarea name="detail" placeholder="Type course description..."
+                                          id="CreateText1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 title">
+                                <?php if (isset($_SESSION['createCourseErr'])) { ?>
+                                    <span class="results noresult"><?= $_SESSION['createCourseErr'] ?></span>
+                                    <?php unset($_SESSION['createCourseErr']);
+                                } else { ?>
+                                    <span class="results noresult">Warning: course name cannot be modified once created...</span>
+                                    <?php
+                                } ?>
+                            </div>
+                            <div class="col-sm-9">
+                                <span id="submitCreate0" style="color:pink">...</span>
+                                <input type="submit" value="Create" class="submit" id="submitCreate1"
+                                       style="display:none">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            <?php } ?>
         </div>
         <?php
 

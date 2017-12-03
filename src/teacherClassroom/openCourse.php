@@ -8,14 +8,14 @@ try {
     $coursecls = new courseUtil();
 
     /*get values*/
-    $start = htmlspecialchars($_GET['advStart']);
-    $cstart = $_GET['advStart'] . ":00";
-    $end = htmlspecialchars($_GET['advEnd']);
-    $cend = $_GET['advEnd'] . ":00";
-    $course_id = $_GET['course'];
-    $semester_id = $_GET['semester'];
-    $room = $stringcls->trimText($_GET['office']);
-    $week = $_GET['advWeek'];
+    $start = htmlspecialchars($_POST['advStart']);
+    $cstart = $_POST['advStart'] . ":00";
+    $end = htmlspecialchars($_POST['advEnd']);
+    $cend = $_POST['advEnd'] . ":00";
+    $course_id = $_POST['course'];
+    $semester_id = $_POST['semester'];
+    $room = $stringcls->trimText($_POST['office']);
+    $week = $_POST['advWeek'];
 
     /*check time violence*/
     $myID = $pq['id'];

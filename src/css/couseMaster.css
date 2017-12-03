@@ -409,7 +409,6 @@ input[type=time]:focus {
 
 /*button for close course*/
 .closeCourseButton {
-    padding: 15px;
     cursor: pointer;
     color: red;
 }
@@ -420,8 +419,8 @@ input[type=time]:focus {
 }
 
 /*button for close course*/
-.closeCourseButton0, .closeCourseButton0:visited {
-    padding: 15px;
+.closeCourseButton0 {
+    background: white;
     cursor: pointer;
     color: red;
 }
@@ -448,12 +447,12 @@ textarea::placeholder {
 }
 
 textarea:hover {
-    border: 2px gray solid;
+    border: 2px lightgray solid;
 }
 
 textarea:focus {
     border: 2px mediumpurple solid;
-    color: rebeccapurple;
+    color: mediumpurple;
 }
 
 .openClassButton {
@@ -461,4 +460,51 @@ textarea:focus {
     color: green;
     background: lightgreen;
     width: 100%;
+}
+
+/*course name*/
+.createCourseName {
+    border: 2px white solid;
+    outline: 0;
+    width: 100%;
+    color: gray;
+    -webkit-transition: color 1s, border 2s;
+    -moz-transition: color 1s, border 2s;
+    -ms-transition: color 1s, border 2s;
+    -o-transition: color 1s, border 2s;
+    transition: color 1s, border 2s;
+}
+
+.createCourseName::placeholder {
+    color: lightgray;
+    font-style: italic;
+}
+
+.createCourseName:hover {
+    border: 2px lightgray solid;
+}
+
+.createCourseName:focus {
+    border: 2px darkolivegreen solid;
+    color: darkolivegreen;
+}
+
+/*submit button*/
+.submit {
+    text-align: center;
+    color: dimgray;
+    cursor: pointer;
+    border: 2px lightgray solid;
+    width: 100%;
+    background: white;
+}
+
+.submit:focus {
+    border: 2px darkgreen solid;
+    color: darkgreen;
+}
+
+.submit:hover {
+    border: 2px green solid;
+    color: green;
 }

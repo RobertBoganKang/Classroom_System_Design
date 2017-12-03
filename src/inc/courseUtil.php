@@ -262,4 +262,37 @@ class courseUtil
 </div>
 <script>remember=' . $remember . ';star_word(remember);star_rate(remember);</script>';
     }
+
+    /*grade conversion*/
+    public function gradStr2Num($str)
+    {
+        switch ($str) {
+            case "A+":
+                return 4;
+            case "A":
+                return 4;
+            case "A-":
+                return 3.6666666667;
+            case "B+":
+                return 3.3333333333;
+            case "B":
+                return 3;
+            case "B-":
+                return 2.6666666666;
+            case "C+":
+                return 2.3333333333;
+            case "C":
+                return 2;
+            case "C-":
+                return 1.6666666666;
+            case "F+":
+                return 1.3333333333;
+            case "F":
+                return 1;
+            case "W":
+                return 0;
+            default:
+                return 0;
+        }
+    }
 }

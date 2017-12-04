@@ -573,6 +573,18 @@ textarea:focus {
     margin-left: -10px;
 }
 
+/*add course*/
+.classroomSidebarAdd, .classroomSidebarAdd:visited {
+    padding: 10px;
+    font-style: normal
+}
+
+.classroomSidebarAdd:hover {
+    border-bottom: green solid 1px;
+    color: green;
+    margin-left: 10px;
+}
+
 /*content style*/
 .classContent {
     padding: 15px;

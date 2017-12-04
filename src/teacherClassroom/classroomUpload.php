@@ -1,8 +1,8 @@
-<?php include "studentHeaderClassroom.php";
+<?php include "teacherHeaderClassroom.php";
 include "../mdlib/Parsedown.php";
 $mdcls = new Parsedown();
-include "../inc/courseUtil.php";
-$coursecls = new courseUtil();
+//include "../inc/courseUtil.php";
+//$coursecls = new courseUtil();
 ?>
     <script src="../js/overall.js"></script>
     <script src="../js/starSystem.js"></script>
@@ -15,9 +15,6 @@ try {
     /*find Category*/
     $myID = $pq['id'];
     $course_id = $_GET['course_id'];
-
-    /*update reading time*/
-    $updateReadingTime = mysqli_query($db, "UPDATE stucourse SET read_time=now() WHERE student_id=$myID AND course_id=$course_id;");
 
     $sidebarList = mysqli_query($db, "SELECT DISTINCT category FROM t2s WHERE course_id=$course_id");
     if (!$sidebarList) {
@@ -51,18 +48,18 @@ try {
                 </form>
                 <?php
             } ?>
+            <!--add course without category-->
+            <form action="uploadFile.php" method="post" id="addCourseForm0">
+                <input type="hidden" value="<?= $category ?>" name="menu">
+                <div class="classroomSidebarList classroomSidebarAdd">
+                    <span style="color:green;cursor: pointer"
+                          onclick="document.getElementById('addCourseForm0').submit()">+ Add</span>
+                </div>
+            </form>
         </div>
     </div>
 <?php
 try {
-    /*check student has this course for safety*/
-    $checkCourse = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$myID AND course_id=$course_id");
-    if (!$checkCourse) {
-        throw new Exception($db->error);
-    }
-    if (mysqli_num_rows($checkCourse) < 0) {
-        throw new Exception("Please fix your url to the classroom");
-    }
     /*prepare course*/
     $this_course = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM course WHERE id=$course_id"));
     if (!$this_course) {
@@ -83,12 +80,23 @@ try {
     $cls->sendErrMsg($e->getMessage());
 } ?>
     <div class="panel">
-        <?php include "studentHeaderPartClassroom.php" ?>
+        <?php include "teacherHeaderPartClassroom.php" ?>
         <br>
         <div>
             <!--title-->
             <h1><?= $this_course['cname'] . " (Download)" ?></h1>
             <title><?= $this_course['cname'] ?></title>
+            <!--add content with category-->
+            <form action="uploadFile.php" method="post" id="addCourseForm1">
+                <input type="hidden" value="<?= $course_id ?>" name="course_id">
+                <input type="hidden" value="<?= $category ?>" name="menu">
+                <div>
+                    <span style="color:green;float:right;cursor: pointer;font-style: italic"
+                          onclick="document.getElementById('addCourseForm1').submit()">+ Add</span>
+                </div>
+            </form>
+            <hr>
+            <br>
             <!--content-->
             <div>
                 <?php if (isset($_GET['menu']) && mysqli_num_rows($contentList) > 0) {
@@ -134,11 +142,6 @@ try {
                     <!--Information-->
                     <h2>Announcement</h2>
                     <hr class="hr">
-                    <form action="rateCourse.php" method="post" id="rateForm">
-                        <input type="hidden" name="course_id" value="<?= $course_id ?>">
-                        <input type="hidden" name="course_name" value="<?= $this_course['cname'] ?>">
-                        <span onclick="document.getElementById('rateForm').submit()" class="advance2">Rate</span>
-                    </form>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                         of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -150,4 +153,4 @@ try {
             </div>
         </div>
     </div>
-<?php include "studentFooterClassroom.php"; ?>
+<?php include "teacherFooter.php"; ?>

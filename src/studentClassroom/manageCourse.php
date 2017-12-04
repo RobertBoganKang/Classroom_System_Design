@@ -191,7 +191,7 @@
             <!--check grades-->
             <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="get" id="menu2">
                 <input type="hidden" value="2" name="menu">
-                <h2 style="cursor: pointer" onclick="document.getElementById('menu2').submit()">My Grade</h2>
+                <h2 style="cursor: pointer" onclick="document.getElementById('menu2').submit()">Grade</h2>
             </form>
             <?php if (isset($_GET['menu']) && $_GET['menu'] == 2) {
                 $myID = $pq['id'];
@@ -243,7 +243,11 @@
                         } ?>
                         <?php
                         /*calculate GPA*/
-                        $myGPA /= $numberOfCourse;
+                        if ($numberOfCourse != 0) {
+                            $myGPA /= $numberOfCourse;
+                        } else {
+                            $myGPA = 0;
+                        }
                         $myGPA = number_format((float)$myGPA, 2, '.', '');
                         /*print GPA*/
                         ?>
@@ -255,13 +259,23 @@
                                 <div class="col-sm-3">
                                         <span style="font-size:50px;font-weight:100;color:<?php if ($myGPA > 3.5) {
                                             echo 'green';
-                                        } elseif ($myGPA > 3) {
+                                        } elseif ($myGPA > 3.5) {
                                             echo 'darkorange';
-                                        } elseif ($myGPA < 1) {
-                                            echo 'lightgray';
-                                        } else {
+                                        } elseif ($myGPA > 3) {
+                                            echo 'yellowgreen';
+                                        } elseif ($myGPA > 2.5) {
+                                            echo 'orange';
+                                        } elseif ($myGPA > 2) {
+                                            echo 'orangered';
+                                        } elseif ($myGPA > 1) {
                                             echo 'red';
-                                        } ?>"><?= $myGPA ?></span>
+                                        } else {
+                                            echo 'lightgray';
+                                        } ?>"><?php if ($myGPA < 1) {
+                                                echo 'N/A';
+                                            } else {
+                                                echo $myGPA;
+                                            } ?></span>
                                 </div>
                             </div>
                         </div>

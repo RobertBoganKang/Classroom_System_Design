@@ -33,8 +33,8 @@ if (!isset($p)) {
 try {
     /*prepare semester*/
     $today = date("Y-m-d");
-    /*extent 10 days to enter system*/
-    $endSemesterControl = date('Y-m-d', strtotime("-10 days", strtotime($today)));
+    /*extent 20 days to enter system*/
+    $endSemesterControl = date('Y-m-d', strtotime("-20 days", strtotime($today)));
     $semester = mysqli_fetch_assoc(mysqli_query($db, "SELECT id FROM semester WHERE end > '$endSemesterControl' AND start<'$today'"));
     if (!$semester) {
         throw new Exception($db->error);
@@ -78,7 +78,7 @@ try {
                                     echo $coursecls->str2week($row['week']) . "|";
                                     echo $coursecls->shortenTime($row['cstart']) . " ~ " . $coursecls->shortenTime($row['cend']) . "|";
                                     /*print office*/
-                                    echo $row['room'] . "|";
+                                    echo $row['room'];
                                     echo '<br>';
                                     ?>
                         </span>

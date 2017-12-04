@@ -59,7 +59,7 @@ try {
                 <div class="row">
                     <div class="col-sm-7 csdetail">
                         <a class="course"
-                           href="../errorPage/featureConstruction.php?scID=<?= $row['semcourse_id'] ?>&cID=<?= $row['course_id'] ?>">
+                           href="classroomDownload.php?course_id=<?= $row['course_id'] ?>">
                             <?php
                             /*print course name*/
                             echo $row['cname'];

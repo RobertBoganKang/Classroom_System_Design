@@ -508,3 +508,77 @@ textarea:focus {
     border: 2px green solid;
     color: green;
 }
+
+.classroomSidebar {
+    height: 100%;
+    width: 200px;
+    background: white;
+    margin-top: -20px;
+    padding: 0;
+    overflow: auto;
+    display: none;
+    min-width: 160px;
+    border-right: 2px lightgray solid;
+    z-index: 1;
+    position: fixed !important;
+}
+
+.classroomSidebar:hover {
+    border-right: 2px dimgray solid;
+}
+
+.classroomSidebarContent {
+    cursor: pointer;
+    width: 100%;
+    padding: 15px;
+}
+
+.classroomSidebarList {
+    padding: 10px;
+    color: lightgray;
+    font-style: italic;
+    border-bottom: #eee dashed 1px;
+    -webkit-transition: color 1s, border 4s, margin 1s;
+    -moz-transition: color 1s, border 4s, margin 1s;
+    -ms-transition: color 1s, border 4s, margin 1s;
+    -o-transition: color 1s, border 4s, margin 1s;
+    transition: color 1s, border 4s, margin 1s;
+}
+
+.classroomSidebarList1 {
+    padding: 10px;
+    font-style: italic;
+    border-bottom: #eee dashed 1px;
+    color: dimgray;
+    margin-left: 5px;
+}
+
+.classroomSidebarList:hover, .classroomSidebarList1:hover {
+    border-bottom: gray solid 1px;
+    color: dimgray;
+    margin-left: 5px;
+}
+
+.classroomSidebarClose {
+    padding: 10px;
+    color: pink;
+    margin-top: 20px;
+    border-bottom: pink dashed 1px;
+    font-style: normal
+}
+
+.classroomSidebarClose:hover {
+    border-bottom: red solid 1px;
+    color: red;
+    margin-left: -10px;
+}
+
+/*content style*/
+.classContent {
+    padding: 15px;
+    border: 1px lightgray solid;
+}
+
+.classContent:hover {
+    border: 1px gray solid;
+}

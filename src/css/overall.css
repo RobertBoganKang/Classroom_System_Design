@@ -70,6 +70,12 @@ h3:hover {
     display: inline-block;
 }
 
+/*navigation bar left*/
+.navl {
+    float: left;
+    display: inline-block;
+}
+
 p {
     line-height: 150%;
 }
@@ -97,4 +103,5 @@ textarea {
 
 .defaulthover {
     cursor: default;
+    color: orange;
 }

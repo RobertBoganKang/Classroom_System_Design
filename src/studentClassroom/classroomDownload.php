@@ -1,0 +1,143 @@
+<?php include "studentHeaderClassroom.php";
+include "../inc/Parsedown.php";
+$mdcls = new Parsedown(); ?>
+    <script src="../js/overall.js"></script>
+    <script src="../js/starSystem.js"></script>
+    <link rel="stylesheet" href="../css/couseMaster.css">
+    <link rel="stylesheet" href="../css/starSystems.css">
+<?php
+try {
+    /*find Category*/
+    $myID = $pq['id'];
+    $course_id = $_GET['course_id'];
+    $sidebarList = mysqli_query($db, "SELECT DISTINCT category FROM t2s WHERE course_id=$course_id");
+    if (!$sidebarList) {
+        throw new Exception($db->error);
+    }
+} catch (Exception $e) {
+    require_once "../errorPage/errorPageFunc.php";
+    $cls = new errorPageFunc();
+    $cls->sendErrMsg($e->getMessage());
+} ?>
+    <!--sidebar-->
+    <div class="classroomSidebar" id="classroomSidebar">
+        <div class="classroomSidebarContent">
+            <div class="classroomSidebarList classroomSidebarClose"
+                 onclick="document.getElementById('classroomSidebar').style.display = 'none';">[X] close
+            </div>
+            <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="get" id="informationForm">
+                <input type="hidden" name="course_id" value="<?= $course_id ?>">
+                <div onclick="document.getElementById('informationForm').submit()"
+                     class="classroomSidebarList<?php if (!isset($_GET['menu'])) echo "1" ?>">Information
+                </div>
+            </form>
+            <?php while ($rowSidebar = mysqli_fetch_assoc($sidebarList)) {
+                $category = $rowSidebar['category']; ?>
+                <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" id="<?= $rowSidebar['category'] ?>"
+                      method="get">
+                    <input type="hidden" name="menu" value="<?= $category ?>">
+                    <input type="hidden" name="course_id" value="<?= $course_id ?>">
+                    <div onclick="document.getElementById('<?= $category ?>').submit()"
+                         class="classroomSidebarList<?php if (isset($_GET['menu']) && $_GET['menu'] == $rowSidebar['category']) echo "1" ?>"><?= $rowSidebar['category'] ?></div>
+                </form>
+                <?php
+            } ?>
+        </div>
+    </div>
+<?php
+try {
+    /*check student has this course for safety*/
+    $checkCourse = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$myID AND course_id=$course_id");
+    if (!$checkCourse) {
+        throw new Exception($db->error);
+    }
+    if (mysqli_num_rows($checkCourse) < 0) {
+        throw new Exception("Please fix your url to the classroom");
+    }
+    /*prepare course*/
+    $this_course = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM course WHERE id=$course_id"));
+    if (!$this_course) {
+        throw new Exception($db->error);
+    }
+
+    /*prepare content*/
+    if (isset($_GET['menu'])) {
+        $category = $_GET['menu'];
+        $contentList = mysqli_query($db, "SELECT * FROM t2s WHERE course_id=$course_id AND category='$category'");
+        if (!$contentList) {
+            throw new Exception($db->error);
+        }
+    }
+} catch (Exception $e) {
+    require_once "../errorPage/errorPageFunc.php";
+    $cls = new errorPageFunc();
+    $cls->sendErrMsg($e->getMessage());
+} ?>
+    <div class="panel">
+        <div class="nav">
+            <a href="studentMain.php">Home</a>
+            / <a href="#">Upload</a>
+            / <a href="#">Download</a>
+            / <a href="../loginSystem/logout.php">Logout</a>
+        </div>
+        <div class="navl" id="navl">
+            <span style="color:dimgray;cursor: pointer"
+                  onclick="document.getElementById('classroomSidebar').style.display = 'block'">[+]</span>
+        </div>
+        <br>
+        <div>
+            <!--title-->
+            <h1><?= $this_course['cname'] . " (Download)" ?></h1>
+            <title><?= $this_course['cname'] ?></title>
+            <!--content-->
+            <div>
+                <?php if (isset($_GET['menu']) && mysqli_num_rows($contentList) > 0) {
+                    while ($rowContent = mysqli_fetch_assoc($contentList)) {
+                        $myFileDIR = '../files/' . $rowContent['id'] . '.' . $rowContent['format'];
+                        $myContent = file_get_contents($myFileDIR);
+                        ?>
+                        <br>
+                        <h3><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
+                        <hr>
+                        <?php if ($rowContent['format'] == 'md') { ?>
+                            <div class="classContent"><?= $mdcls->parse($myContent) ?></div>
+                            <?php
+                        } elseif ($rowContent['format'] == 'html') { ?>
+                            <div class="classContent">
+                                <iframe src="<?= $myFileDIR ?>"></iframe>
+                            </div>
+                        <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') { ?>
+                            <div class="classContent">
+                                <audio controls>
+                                    <source src="<?= $myFileDIR ?>" type="audio/ogg">
+                                    <source src="<?= $myFileDIR ?>" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        <?php } elseif ($rowContent['format'] == 'mp4') { ?>
+                            <div class="classContent">
+                                <video width="320" height="240" controls>
+                                    <source src="<?= $myFileDIR ?>" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        <?php } else { ?>
+                            <a href="<?= $myFileDIR ?>" target="_blank"
+                               download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">Download...</a>
+                        <?php } ?>
+                    <?php }
+                } ?>
+            </div>
+            <?php try {
+                /*load php functions*/
+                require_once "../inc/courseUtil.php";
+                $coursecls = new courseUtil();
+                /**write something here*/
+
+            } catch (Exception $e) {
+                require_once "../errorPage/errorPageFunc.php";
+                $cls = new errorPageFunc();
+                $cls->sendErrMsg($e->getMessage());
+            } ?>
+        </div>
+<?php include "studentFooter.php"; ?>

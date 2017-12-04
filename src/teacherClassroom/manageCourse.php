@@ -376,7 +376,7 @@ if(document.getElementById('advWeek').value!=='' && document.getElementById('adv
                                     <span class="results noresult"><?= $_SESSION['createCourseErr'] ?></span>
                                     <?php unset($_SESSION['createCourseErr']);
                                 } else { ?>
-                                    <span class="results noresult">Warning: course name cannot be modified once created...</span>
+                                    <span class="results noresult">Warning: course name cannot be modified once created</span>
                                     <?php
                                 } ?>
                             </div>

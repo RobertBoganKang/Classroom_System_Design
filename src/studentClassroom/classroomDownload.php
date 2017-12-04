@@ -93,48 +93,52 @@ try {
             <!--content-->
             <div>
                 <?php if (isset($_GET['menu']) && mysqli_num_rows($contentList) > 0) {
-                    while ($rowContent = mysqli_fetch_assoc($contentList)) {
-                        $myFileDIR = '../files/' . $rowContent['id'] . '.' . $rowContent['format'];
-                        $myContent = file_get_contents($myFileDIR);
-                        ?>
-                        <br>
-                        <h3><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
-                        <hr>
-                        <?php if ($rowContent['format'] == 'md') { ?>
-                            <div class="classContent"><?= $mdcls->parse($myContent) ?></div>
-                            <?php
-                        } elseif ($rowContent['format'] == 'html') { ?>
-                            <div class="classContent">
+                while ($rowContent = mysqli_fetch_assoc($contentList)) {
+                    $myFileDIR = '../files/' . $rowContent['id'] . '.' . $rowContent['format'];
+                    $myContent = file_get_contents($myFileDIR);
+                    ?>
+                <br>
+                    <h3><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
+                <hr>
+                    <div class="classContent">
+                        <div class="contentBig" id="content<?= $rowContent['id'] ?>">
+                            <?php if ($rowContent['format'] == 'md') { ?>
+                                <?= $mdcls->parse($myContent) ?>
+                                <?php
+                            } elseif ($rowContent['format'] == 'html') { ?>
                                 <iframe src="<?= $myFileDIR ?>"></iframe>
-                            </div>
-                        <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') { ?>
-                            <div class="classContent">
+                            <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') { ?>
                                 <audio controls>
                                     <source src="<?= $myFileDIR ?>" type="audio/ogg">
                                     <source src="<?= $myFileDIR ?>" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
-                            </div>
-                        <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png' || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif') { ?>
-                            <div class="classContent">
+                            <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png' || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif') { ?>
                                 <img src="<?= $myFileDIR ?>" alt="<?= $rowContent['filename'] ?>">
-                            </div>
-                        <?php } elseif ($rowContent['format'] == 'mp4') { ?>
-                            <div class="classContent">
+                            <?php } elseif ($rowContent['format'] == 'mp4') { ?>
                                 <video width="320" height="240" controls>
                                     <source src="<?= $myFileDIR ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            </div>
-                        <?php } else { ?>
-                            <a href="<?= $myFileDIR ?>" target="_blank"
-                               download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">Download...</a>
-                        <?php } ?>
-                    <?php }
+                            <?php } else { ?>
+                                <a href="<?= $myFileDIR ?>" target="_blank"
+                                   download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">Download...</a>
+                            <?php } ?>
+                        </div>
+                        <a href="#" id="contentLink<?= $rowContent['id'] ?>">Read more...</a>
+                    </div>
+                    <script>
+                        if ($('#content<?= $rowContent["id"] ?>').height() < 500) {
+                            document.getElementById('contentLink<?= $rowContent["id"] ?>').style.display = "none";
+                        } else {
+                            document.getElementById('content<?= $rowContent["id"] ?>').className = "contentSmall";
+                        }
+                    </script>
+                <?php }
                 } else { ?>
                     <!--Information-->
                     <h2>Announcement</h2>
-                    <hr class="hr">
+                <hr class="hr">
                     <form action="rateCourse.php" method="post" id="rateForm">
                         <input type="hidden" name="course_id" value="<?= $course_id ?>">
                         <input type="hidden" name="course_name" value="<?= $this_course['cname'] ?>">
@@ -151,4 +155,14 @@ try {
             </div>
         </div>
     </div>
+
+    <!--read more-->
+    <script>
+        $('.classContent').find('a[href="#"]').on('click', function (e) {
+            e.preventDefault();
+            this.expand = !this.expand;
+            $(this).text(this.expand ? "Read less..." : "Read more...");
+            $(this).closest('.classContent').find('.contentSmall, .contentBig').toggleClass('contentSmall contentBig');
+        });
+    </script>
 <?php include "studentFooterClassroom.php"; ?>

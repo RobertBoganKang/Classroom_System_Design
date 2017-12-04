@@ -594,3 +594,13 @@ textarea:focus {
 .classContent:hover {
     border: 1px gray solid;
 }
+
+/*read more*/
+.contentSmall {
+    height: 300px;
+    overflow: hidden;
+}
+
+.contentBig {
+    height: auto;
+}

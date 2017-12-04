@@ -180,9 +180,11 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="width" value="679" />
-    <option name="height" value="740" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="434" />
+    <option name="y" value="128" />
+    <option name="width" value="639" />
+    <option name="height" value="715" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -434,7 +436,7 @@
       <workItem from="1512331793931" duration="4034000" />
       <workItem from="1512350228689" duration="8615000" />
       <workItem from="1512358857603" duration="7328000" />
-      <workItem from="1512366245845" duration="361000" />
+      <workItem from="1512366245845" duration="417000" />
     </task>
     <servers />
   </component>
@@ -450,10 +452,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="360967000" />
+    <option name="totallyTimeSpent" value="361023000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="679" height="740" extended-state="4" />
+    <frame x="434" y="128" width="639" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24544074" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

@@ -60,7 +60,7 @@ try {
     if (!$checkCourse) {
         throw new Exception($db->error);
     }
-    if (mysqli_num_rows($checkCourse) < 0) {
+    if (mysqli_num_rows($checkCourse) < 1) {
         throw new Exception("Please fix your url to the classroom");
     }
     /*prepare course*/
@@ -102,10 +102,9 @@ try {
                 <hr>
                     <div class="classContent">
                         <div class="contentBig" id="content<?= $rowContent['id'] ?>">
-                            <?php if ($rowContent['format'] == 'md') { ?>
-                                <?= $mdcls->parse($myContent) ?>
-                                <?php
-                            } elseif ($rowContent['format'] == 'html') { ?>
+                            <?php if ($rowContent['format'] == 'md') {
+                                echo $mdcls->parse($myContent);
+                            } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') { ?>
                                 <iframe src="<?= $myFileDIR ?>"></iframe>
                             <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') { ?>
                                 <audio controls>
@@ -113,7 +112,9 @@ try {
                                     <source src="<?= $myFileDIR ?>" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
-                            <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png' || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif') { ?>
+                            <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png'
+                                || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif'
+                                || $rowContent['format'] == 'svg' || $rowContent['format'] == 'bmp') { ?>
                                 <img src="<?= $myFileDIR ?>" alt="<?= $rowContent['filename'] ?>">
                             <?php } elseif ($rowContent['format'] == 'mp4') { ?>
                                 <video width="320" height="240" controls>

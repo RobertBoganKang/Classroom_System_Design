@@ -60,6 +60,15 @@ try {
     </div>
 <?php
 try {
+    /*check teacher has this course for safety*/
+    $checkCourse = mysqli_query($db, "SELECT * FROM course WHERE teacher_id=$myID AND id=$course_id");
+    if (!$checkCourse) {
+        throw new Exception($db->error);
+    }
+    if (mysqli_num_rows($checkCourse) < 1) {
+        throw new Exception("Please fix your url to the classroom");
+    }
+
     /*prepare course*/
     $this_course = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM course WHERE id=$course_id"));
     if (!$this_course) {

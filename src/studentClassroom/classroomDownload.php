@@ -12,14 +12,34 @@ $coursecls = new courseUtil();
     <script src="../mdlib/prism.js"></script>
 <?php
 try {
-    /*find Category*/
+    /*prepare variables*/
     $myID = $pq['id'];
     $course_id = $_GET['course_id'];
 
     /*update reading time*/
-    $updateReadingTime = mysqli_query($db, "UPDATE stucourse SET read_time=now() WHERE student_id=$myID AND course_id=$course_id;");
+    /*check student has this course for safety*/
+    $checkCourse = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$myID AND course_id=$course_id");
+    if (!$checkCourse) {
+        throw new Exception($db->error);
+    }
+    if (mysqli_num_rows($checkCourse) < 1) {
+        throw new Exception("Please fix your url to the classroom");
+    }
+    /*get my reading time*/
+    $myCourseInfo = mysqli_fetch_assoc($checkCourse);
+    $lastReadingtime = $myCourseInfo['read_time'];
 
-    $sidebarList = mysqli_query($db, "SELECT DISTINCT category FROM t2s WHERE course_id=$course_id");
+    /*find Category*/
+    if (isset($_GET['update'])) {
+        $updateReadingTime = mysqli_query($db, "UPDATE stucourse SET read_time=now() WHERE student_id=$myID AND course_id=$course_id;");
+        if (!$updateReadingTime) {
+            throw new Exception($db->error);
+        }
+    }
+
+    /*category and unread messages*/
+    $sidebarList = mysqli_query($db, "SELECT t2.category AS category, t1.count AS count FROM (SELECT category, COUNT(*) AS count FROM t2s WHERE create_time>'$lastReadingtime' AND course_id='$course_id'GROUP BY category) AS t1
+RIGHT JOIN (SELECT DISTINCT category FROM t2s WHERE course_id='$course_id') AS t2 ON t1.category=t2.category;");
     if (!$sidebarList) {
         throw new Exception($db->error);
     }
@@ -47,22 +67,27 @@ try {
                     <input type="hidden" name="menu" value="<?= $category ?>">
                     <input type="hidden" name="course_id" value="<?= $course_id ?>">
                     <div onclick="document.getElementById('<?= $category ?>').submit()"
-                         class="classroomSidebarList<?php if (isset($_GET['menu']) && $_GET['menu'] == $rowSidebar['category']) echo "1" ?>"><?= $rowSidebar['category'] ?></div>
+                         class="classroomSidebarList<?php if (isset($_GET['menu']) && $_GET['menu'] == $rowSidebar['category']) echo "1" ?>">
+                        <span><?= $rowSidebar['category'] ?></span>
+                        <?php if ($rowSidebar['count'] > 0) { ?>
+                            <span style="color:red;font-size: 10px">(<?= $rowSidebar['count'] ?>)</span><?php
+                        } ?>
+                    </div>
                 </form>
-                <?php
-            } ?>
+            <?php } ?>
+            <!--Refresh Notification-->
+            <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="get" id="updateReadingForm">
+                <input type="hidden" name="update" value="1">
+                <input type="hidden" name="course_id" value="<?= $course_id ?>">
+                <div class="classroomSidebarList classroomSidebarAdd">
+                    <span style="color:green;cursor: pointer"
+                          onclick="document.getElementById('updateReadingForm').submit()">Read all...</span>
+                </div>
+            </form>
         </div>
     </div>
 <?php
 try {
-    /*check student has this course for safety*/
-    $checkCourse = mysqli_query($db, "SELECT * FROM stucourse WHERE student_id=$myID AND course_id=$course_id");
-    if (!$checkCourse) {
-        throw new Exception($db->error);
-    }
-    if (mysqli_num_rows($checkCourse) < 1) {
-        throw new Exception("Please fix your url to the classroom");
-    }
     /*prepare course*/
     $this_course = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM course WHERE id=$course_id"));
     if (!$this_course) {
@@ -99,6 +124,7 @@ try {
                     ?>
                 <br>
                     <h3><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
+                    <span class="tinyDate<?php if ($lastReadingtime < $rowContent['create_time']) echo '1' ?>"><?= $rowContent['create_time'] ?></span>
                 <hr>
                     <div class="classContent">
                         <div class="contentBig" id="content<?= $rowContent['id'] ?>">

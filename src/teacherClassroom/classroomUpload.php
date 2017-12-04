@@ -46,8 +46,7 @@ try {
                     <div onclick="document.getElementById('<?= $category ?>').submit()"
                          class="classroomSidebarList<?php if (isset($_GET['menu']) && $_GET['menu'] == $rowSidebar['category']) echo "1" ?>"><?= $rowSidebar['category'] ?></div>
                 </form>
-                <?php
-            } ?>
+            <?php } ?>
             <!--add course without category-->
             <form action="uploadFile.php" method="post" id="addCourseForm0">
                 <input type="hidden" value="<?= $course_id ?>" name="course_id">
@@ -106,8 +105,6 @@ try {
                           onclick="document.getElementById('addCourseForm1').submit()">+ Add</span>
                     </div>
                 </form>
-                <hr>
-                <br>
             <?php } ?>
             <!--content-->
             <div>
@@ -122,9 +119,18 @@ try {
                         ondblclick="document.getElementById('filemaster<?= $rowID ?>').style.display='block';
                                 setTimeout(function(){document.getElementById('filemaster<?= $rowID ?>').style.display='none'},3000)"
                         style="cursor:pointer"><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
+                    <span class="tinyDate"><?= $rowContent['create_time'] ?></span>
                     <span id="filemaster<?= $rowID ?>"
-                          style="cursor:pointer;text-align: right;display: none">
-                        <span style="color:red;">[Delete]</span> &
+                          style="cursor:pointer;text-align: right;display: none;font-style: italic;">
+                        <form action="deleteFileHelper.php" method="post" id="delete<?= $rowID ?>"
+                              style="display:inline">
+                            <input type="hidden" name="file_id" value="<?= $rowID ?>">
+                            <input type="hidden" name="file_ext" value="<?= $rowContent['format'] ?>">
+                            <input type="hidden" name="course_id" value="<?= $course_id ?>">
+                            <input type="hidden" name="category" value="<?= $category ?>">
+                            <span style="color:red;"
+                                  onclick="document.getElementById('delete<?= $rowID ?>').submit()">[Delete]</span>
+                        </form> &
                         <span style="color:royalblue">[Update]</span>
                     </span>
                 <hr>

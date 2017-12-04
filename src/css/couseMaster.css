@@ -604,3 +604,21 @@ textarea:focus {
 .contentBig {
     height: auto;
 }
+
+.tinyDate {
+    font-size: 9px;
+    font-style: italic;
+    text-align: right;
+    line-height: 100%;
+    display: block;
+    color: lightgray;
+}
+
+.tinyDate1 {
+    font-size: 9px;
+    font-style: italic;
+    text-align: right;
+    line-height: 100%;
+    display: block;
+    color: red;
+}

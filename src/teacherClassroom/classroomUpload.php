@@ -96,62 +96,78 @@ try {
             <!--title-->
             <h1><?= $this_course['cname'] . " (Upload)" ?></h1>
             <title><?= $this_course['cname'] ?></title>
-            <!--add content with category-->
-            <form action="uploadFile.php" method="post" id="addCourseForm1">
-                <input type="hidden" value="<?= $course_id ?>" name="course_id">
-                <input type="hidden" value="<?= $category ?>" name="menu">
-                <div>
+            <?php if (isset($_GET['menu'])) { ?>
+                <!--add content with category-->
+                <form action="uploadFile.php" method="post" id="addCourseForm1">
+                    <input type="hidden" value="<?= $course_id ?>" name="course_id">
+                    <input type="hidden" value="<?= $category ?>" name="menu">
+                    <div>
                     <span style="color:green;float:right;cursor: pointer;font-style: italic"
                           onclick="document.getElementById('addCourseForm1').submit()">+ Add</span>
-                </div>
-            </form>
-            <hr>
-            <br>
+                    </div>
+                </form>
+                <hr>
+                <br>
+            <?php } ?>
             <!--content-->
             <div>
                 <?php if (isset($_GET['menu']) && mysqli_num_rows($contentList) > 0) {
-                    while ($rowContent = mysqli_fetch_assoc($contentList)) {
-                        $myFileDIR = '../files/' . $rowContent['id'] . '.' . $rowContent['format'];
-                        $myContent = file_get_contents($myFileDIR);
-                        ?>
-                        <br>
-                        <h3><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
-                        <hr>
-                        <?php if ($rowContent['format'] == 'md') { ?>
-                            <div class="classContent"><?= $mdcls->parse($myContent) ?></div>
-                            <?php
-                        } elseif ($rowContent['format'] == 'html') { ?>
-                            <div class="classContent">
+                while ($rowContent = mysqli_fetch_assoc($contentList)) {
+                    $myFileDIR = '../files/' . $rowContent['id'] . '.' . $rowContent['format'];
+                    $myContent = file_get_contents($myFileDIR);
+                    $rowID = $rowContent["id"];
+                    ?>
+                <br>
+                    <h3 class="noselect"
+                        ondblclick="document.getElementById('filemaster<?= $rowID ?>').style.display='block';
+                                setTimeout(function(){document.getElementById('filemaster<?= $rowID ?>').style.display='none'},3000)"
+                        style="cursor:pointer"><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
+                    <span id="filemaster<?= $rowID ?>"
+                          style="cursor:pointer;text-align: right;display: none">
+                        <span style="color:red;">[Delete]</span> &
+                        <span style="color:royalblue">[Update]</span>
+                    </span>
+                <hr>
+                    <div class="classContent">
+                        <div class="contentBig" id="content<?= $rowContent['id'] ?>">
+                            <?php if ($rowContent['format'] == 'md') {
+                                echo $mdcls->parse($myContent);
+                            } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') { ?>
                                 <iframe src="<?= $myFileDIR ?>"></iframe>
-                            </div>
-                        <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') { ?>
-                            <div class="classContent">
+                            <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') { ?>
                                 <audio controls>
                                     <source src="<?= $myFileDIR ?>" type="audio/ogg">
                                     <source src="<?= $myFileDIR ?>" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
-                            </div>
-                        <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png' || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif') { ?>
-                            <div class="classContent">
+                            <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png'
+                                || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif'
+                                || $rowContent['format'] == 'svg' || $rowContent['format'] == 'bmp') { ?>
                                 <img src="<?= $myFileDIR ?>" alt="<?= $rowContent['filename'] ?>">
-                            </div>
-                        <?php } elseif ($rowContent['format'] == 'mp4') { ?>
-                            <div class="classContent">
+                            <?php } elseif ($rowContent['format'] == 'mp4') { ?>
                                 <video width="320" height="240" controls>
                                     <source src="<?= $myFileDIR ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            </div>
-                        <?php } else { ?>
-                            <a href="<?= $myFileDIR ?>" target="_blank"
-                               download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">Download...</a>
-                        <?php } ?>
-                    <?php }
+                            <?php } ?>
+                        </div>
+                        <a href="<?= $myFileDIR ?>" target="_blank"
+                           download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
+                        <br>
+                        <a href="#" id="contentLink<?= $rowContent['id'] ?>">Read more...</a>
+                    </div>
+                    <script>
+                        if ($('#content<?= $rowContent["id"] ?>').height() < 500) {
+                            document.getElementById('contentLink<?= $rowContent["id"] ?>').style.display = "none";
+                        } else {
+                            document.getElementById('content<?= $rowContent["id"] ?>').className = "contentSmall";
+                        }
+                    </script>
+                <?php }
                 } else { ?>
                     <!--Information-->
                     <h2>Announcement</h2>
-                    <hr class="hr">
+                <hr class="hr">
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
                         the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                         of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -163,4 +179,13 @@ try {
             </div>
         </div>
     </div>
-<?php include "teacherFooter.php"; ?>
+    <!--read more-->
+    <script>
+        $('.classContent').find('a[href="#"]').on('click', function (e) {
+            e.preventDefault();
+            this.expand = !this.expand;
+            $(this).text(this.expand ? "Read less..." : "Read more...");
+            $(this).closest('.classContent').find('.contentSmall, .contentBig').toggleClass('contentSmall contentBig');
+        });
+    </script>
+<?php include "teacherFooterClassroom.php"; ?>

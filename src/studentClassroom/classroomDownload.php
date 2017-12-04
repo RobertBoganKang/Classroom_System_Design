@@ -121,11 +121,11 @@ try {
                                     <source src="<?= $myFileDIR ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            <?php } else { ?>
-                                <a href="<?= $myFileDIR ?>" target="_blank"
-                                   download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">Download...</a>
                             <?php } ?>
                         </div>
+                        <a href="<?= $myFileDIR ?>" target="_blank"
+                           download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
+                        <br>
                         <a href="#" id="contentLink<?= $rowContent['id'] ?>">Read more...</a>
                     </div>
                     <script>

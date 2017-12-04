@@ -9,7 +9,13 @@ try {
 
     /*delete course and go back*/
     $deleteCourse = mysqli_query($db, "DELETE FROM semcourse WHERE course_id=$course_id AND semester_id=$semester_id");
+    if (!$deleteCourse) {
+        throw new Exception($db->error);
+    }
     $deleteMyStudent =mysqli_query($db, "DELETE FROM stucourse WHERE course_id=$course_id AND semester_id=$semester_id");
+    if (!$deleteMyStudent) {
+        throw new Exception($db->error);
+    }
     /*refresh addcourse*/
     require "refreshAddcourse.php";
     header("Location: " . "manageCourse.php?menu=1&&semester=$semester_id");

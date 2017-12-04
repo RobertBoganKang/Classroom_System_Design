@@ -182,7 +182,7 @@
             /*limit comment numbers*/
             /**not implemented*/
             $limit = 300;
-            $comments = mysqli_query($db, "SELECT * FROM stucourse WHERE course_id=$cID ORDER BY id DESC LIMIT $limit");
+            $comments = mysqli_query($db, "SELECT * FROM stucourse WHERE course_id=$cID AND rating<>0 ORDER BY id DESC LIMIT $limit");
             if (!$comments) {
                 throw new Exception($db->error);
             }

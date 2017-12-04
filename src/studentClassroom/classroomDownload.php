@@ -1,15 +1,24 @@
 <?php include "studentHeaderClassroom.php";
-include "../inc/Parsedown.php";
-$mdcls = new Parsedown(); ?>
+include "../mdlib/Parsedown.php";
+$mdcls = new Parsedown();
+include "../inc/courseUtil.php";
+$coursecls = new courseUtil();
+?>
     <script src="../js/overall.js"></script>
     <script src="../js/starSystem.js"></script>
     <link rel="stylesheet" href="../css/couseMaster.css">
     <link rel="stylesheet" href="../css/starSystems.css">
+    <link rel="stylesheet" href="../mdlib/prism.css">
+    <script src="../mdlib/prism.js"></script>
 <?php
 try {
     /*find Category*/
     $myID = $pq['id'];
     $course_id = $_GET['course_id'];
+
+    /*update reading time*/
+    $updateReadingTime = mysqli_query($db, "UPDATE stucourse SET read_time=now() WHERE student_id=$myID AND course_id=$course_id;");
+
     $sidebarList = mysqli_query($db, "SELECT DISTINCT category FROM t2s WHERE course_id=$course_id");
     if (!$sidebarList) {
         throw new Exception($db->error);
@@ -74,16 +83,7 @@ try {
     $cls->sendErrMsg($e->getMessage());
 } ?>
     <div class="panel">
-        <div class="nav">
-            <a href="studentMain.php">Home</a>
-            / <a href="#">Upload</a>
-            / <a href="#">Download</a>
-            / <a href="../loginSystem/logout.php">Logout</a>
-        </div>
-        <div class="navl" id="navl">
-            <span style="color:dimgray;cursor: pointer"
-                  onclick="document.getElementById('classroomSidebar').style.display = 'block'">[+]</span>
-        </div>
+        <?php include "studentHeaderPartClassroom.php" ?>
         <br>
         <div>
             <!--title-->
@@ -114,6 +114,10 @@ try {
                                     Your browser does not support the audio element.
                                 </audio>
                             </div>
+                        <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png' || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif') { ?>
+                            <div class="classContent">
+                                <img src="<?= $myFileDIR ?>" alt="<?= $rowContent['filename'] ?>">
+                            </div>
                         <?php } elseif ($rowContent['format'] == 'mp4') { ?>
                             <div class="classContent">
                                 <video width="320" height="240" controls>
@@ -126,18 +130,24 @@ try {
                                download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">Download...</a>
                         <?php } ?>
                     <?php }
-                } ?>
+                } else { ?>
+                    <!--Information-->
+                    <h2>Announcement</h2>
+                    <hr class="hr">
+                    <form action="rateCourse.php" method="post" id="rateForm">
+                        <input type="hidden" name="course_id" value="<?= $course_id ?>">
+                        <input type="hidden" name="course_name" value="<?= $this_course['cname'] ?>">
+                        <span onclick="document.getElementById('rateForm').submit()" class="advance2">Rate</span>
+                    </form>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including versions of
+                        Lorem Ipsum.</p>
+                <?php } ?>
             </div>
-            <?php try {
-                /*load php functions*/
-                require_once "../inc/courseUtil.php";
-                $coursecls = new courseUtil();
-                /**write something here*/
-
-            } catch (Exception $e) {
-                require_once "../errorPage/errorPageFunc.php";
-                $cls = new errorPageFunc();
-                $cls->sendErrMsg($e->getMessage());
-            } ?>
         </div>
+    </div>
 <?php include "studentFooter.php"; ?>

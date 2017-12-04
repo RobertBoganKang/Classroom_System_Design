@@ -79,8 +79,19 @@ try {
                                     ?>
                         </span>
                     </div>
+                    <?php
+                    /*check reading status*/
+                    $LastReadTime = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM stucourse WHERE course_id=$course_id AND student_id=$myID"));
+                    $myLastReadTime = $LastReadTime['read_time'];
+                    $readingCount = mysqli_query($db, "SELECT * FROM t2s WHERE course_id=$course_id AND create_time>'$myLastReadTime'");
+                    $count = mysqli_num_rows($readingCount);
+                    ?>
                     <div class="col-sm-5">
-                        <span>N/A</span>
+                        <?php if ($count > 0) {
+                            ?><span style="color:red;padding:20px">* (<?= $count ?>)</span><?php
+                        } else {
+                            ?><span style="color:gray;padding:20px">*</span><?php
+                        } ?>
                     </div>
                 </div>
             </div>

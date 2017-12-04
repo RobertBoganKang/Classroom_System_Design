@@ -50,7 +50,7 @@ CREATE TABLE `addcourse` (
 
 LOCK TABLES `addcourse` WRITE;
 /*!40000 ALTER TABLE `addcourse` DISABLE KEYS */;
-INSERT INTO `addcourse` VALUES (1,1,1,1,'Arabic','Arabin fun to learn',1,'Tao','Yan','My house','13','18:00:00','20:00:00',4,1),(2,4,4,1,'Writing','Writing can sharp your skills',1,'Tao','Yan','My house','14','15:00:00','17:00:00',4.5,22),(3,5,5,1,'Statistics','Good for management of your finantial',1,'Tao','Yan','My house','5','08:00:00','09:00:00',2.2,13),(4,6,6,1,'Math','Calculating probability statistics',1,'Tao','Yan','My house','06','06:00:00','08:00:00',5,4),(5,4,10,2,'Writing','Writing can sharp your skills',1,'Tao','Yan','My house','24','12:00:00','14:00:00',4.5,22),(6,5,14,2,'Statistics','Good for management of your finantial',1,'Tao','Yan','My house','2','09:00:00','11:00:00',2.2,13),(7,8,8,1,'Element Software Engineering','Software engineering is the application of engineering to the development of software in a systematic method.',2,'SheikhIqbal','Ahamed','Cadahy 401','1','18:30:00','21:10:00',4.9,40),(8,2,2,1,'English','English great tools',3,'Zuheng','Kang','My house','24','02:00:00','04:00:00',2.4,15),(9,3,3,1,'Chinese','Hardest language',3,'Zuheng','Kang','My house','3','12:00:00','13:00:00',3.2,32),(10,7,7,1,'French','Most Romantic language',3,'Zuheng','Kang','My house','0','04:00:00','05:00:00',0,0),(11,3,9,2,'Chinese','Hardest language',3,'Zuheng','Kang','My house','13','04:00:00','06:00:00',3.2,32),(12,7,11,2,'French','Most Romantic language',3,'Zuheng','Kang','My house','5','13:00:00','15:00:00',0,0),(13,2,12,2,'English','English great tools',3,'Zuheng','Kang','My house','04','05:00:00','08:00:00',2.4,15),(14,9,13,2,'Music','Music is human spirit',3,'Zuheng','Kang','My house','14','06:00:00','10:00:00',5,10),(15,9,16,3,'Music','Music is human spirit',3,'Zuheng','Kang','My house','123','00:00:00','05:00:00',5,10);
+INSERT INTO `addcourse` VALUES (1,1,1,1,'Arabic','Arabin fun to learn',1,'Tao','Yan','My house','13','18:00:00','20:00:00',3,2),(2,4,4,1,'Writing','Writing can sharp your skills',1,'Tao','Yan','My house','14','15:00:00','17:00:00',3,2),(3,5,5,1,'Statistics','Good for management of your finantial',1,'Tao','Yan','My house','5','08:00:00','09:00:00',3,2),(4,6,6,1,'Math','Calculating probability statistics',1,'Tao','Yan','My house','06','06:00:00','08:00:00',3,2),(5,4,10,2,'Writing','Writing can sharp your skills',1,'Tao','Yan','My house','24','12:00:00','14:00:00',3,2),(6,5,14,2,'Statistics','Good for management of your finantial',1,'Tao','Yan','My house','2','09:00:00','11:00:00',3,2),(7,8,8,1,'Element Software Engineering','Software engineering is the application of engineering to the development of software in a systematic method.',2,'SheikhIqbal','Ahamed','Cadahy 401','1','18:30:00','21:10:00',4,2),(8,2,2,1,'English','English great tools',3,'Zuheng','Kang','My house','24','02:00:00','04:00:00',3,2),(9,3,3,1,'Chinese','Hardest language',3,'Zuheng','Kang','My house','3','12:00:00','13:00:00',3,2),(10,7,7,1,'French','Most Romantic language',3,'Zuheng','Kang','My house','0','04:00:00','05:00:00',3,2),(11,3,9,2,'Chinese','Hardest language',3,'Zuheng','Kang','My house','13','04:00:00','06:00:00',3,2),(12,7,11,2,'French','Most Romantic language',3,'Zuheng','Kang','My house','5','13:00:00','15:00:00',3,2),(13,2,12,2,'English','English great tools',3,'Zuheng','Kang','My house','04','05:00:00','08:00:00',3,2),(14,9,13,2,'Music','Music is human spirit',3,'Zuheng','Kang','My house','14','06:00:00','10:00:00',3,2),(15,9,16,3,'Music','Music is human spirit',3,'Zuheng','Kang','My house','123','00:00:00','05:00:00',3,2);
 /*!40000 ALTER TABLE `addcourse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,7 +78,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'Arabic','Arabin fun to learn','1',4,1),(2,'English','English great tools','3',2.4,15),(3,'Chinese','Hardest language','3',3.2,32),(4,'Writing','Writing can sharp your skills','1',4.5,22),(5,'Statistics','Good for management of your finantial','1',2.2,13),(6,'Math','Calculating probability statistics','1',5,4),(7,'French','Most Romantic language','3',0,0),(8,'Element Software Engineering','Software engineering is the application of engineering to the development of software in a systematic method.','2',4.9,40),(9,'Music','Music is human spirit','3',5,10);
+INSERT INTO `course` VALUES (1,'Arabic','Arabin fun to learn','1',3,2),(2,'English','English great tools','3',3,2),(3,'Chinese','Hardest language','3',3,2),(4,'Writing','Writing can sharp your skills','1',3,2),(5,'Statistics','Good for management of your finantial','1',3,2),(6,'Math','Calculating probability statistics','1',3,2),(7,'French','Most Romantic language','3',3,2),(8,'Element Software Engineering','Software engineering is the application of engineering to the development of software in a systematic method.','2',4,2),(9,'Music','Music is human spirit','3',3,2);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,11 +151,11 @@ CREATE TABLE `stucourse` (
   `course_id` int(11) NOT NULL,
   `semester_id` int(11) NOT NULL,
   `grade` varchar(2) NOT NULL,
-  `rating` int(11) DEFAULT NULL,
+  `rating` int(11) NOT NULL,
   `comment` varchar(1024) DEFAULT NULL,
-  `read_time` date NOT NULL,
+  `read_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +164,7 @@ CREATE TABLE `stucourse` (
 
 LOCK TABLES `stucourse` WRITE;
 /*!40000 ALTER TABLE `stucourse` DISABLE KEYS */;
-INSERT INTO `stucourse` VALUES (2,2,1,1,'A',5,'If you want to know the art of language, Arabic will be your choice.','1970-01-01'),(3,3,1,1,'B+',4,'Arabic is fun to learn, I love Arabic.','1970-01-01'),(7,1,8,1,'A+',NULL,NULL,'1970-01-01');
+INSERT INTO `stucourse` VALUES (2,2,1,1,'A',5,'If you want to know the art of language, Arabic will be your choice.','1970-01-01 06:00:00'),(3,3,1,1,'B+',4,'Arabic is fun to learn, I love Arabic.','1970-01-01 06:00:00'),(7,1,8,1,'A+',5,'Software Engineering is great!','2017-11-04 08:18:22'),(8,2,8,1,'B',3,NULL,'2017-12-04 07:51:08');
 /*!40000 ALTER TABLE `stucourse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,7 +214,7 @@ CREATE TABLE `t2s` (
   `category` varchar(45) NOT NULL,
   `create_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +223,7 @@ CREATE TABLE `t2s` (
 
 LOCK TABLES `t2s` WRITE;
 /*!40000 ALTER TABLE `t2s` DISABLE KEYS */;
-INSERT INTO `t2s` VALUES (1,8,'Test MD text','md','Lecture 1','2017-12-02 00:00:00'),(2,8,'Test MD text 2','md','Lecture 2','2017-12-02 00:00:00'),(3,8,'Test HTML text 3','html','Lecture 1','2017-12-02 00:00:00'),(4,8,'Test audio','mp3','Lecture 1','2017-12-03 00:00:00'),(5,8,'Test pdf','pdf','Lecture 1','2017-12-03 00:00:00'),(6,8,'Test mp4','mp4','Lecture 1','2017-12-03 00:00:00');
+INSERT INTO `t2s` VALUES (1,8,'Test MD text','md','Lecture 1','2017-12-02 00:00:00'),(2,8,'Test MD text 2','md','Lecture 2','2017-12-02 00:00:00'),(3,8,'Test HTML text 3','html','Lecture 1','2017-12-02 00:00:00'),(4,8,'Test audio','mp3','Lecture 1','2017-12-03 00:00:00'),(5,8,'Test pdf','pdf','Lecture 1','2017-12-03 00:00:00'),(6,8,'Test mp4','mp4','Lecture 1','2017-12-03 00:00:00'),(7,8,'Test image','png','Lecture 1','2017-12-03 00:00:00'),(8,8,'Test code','md','Lecture 1','2017-12-03 00:00:00');
 /*!40000 ALTER TABLE `t2s` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,4 +268,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-03 23:50:56
+-- Dump completed on 2017-12-04  3:20:12

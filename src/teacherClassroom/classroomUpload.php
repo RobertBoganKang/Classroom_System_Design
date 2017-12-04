@@ -50,7 +50,7 @@ try {
             } ?>
             <!--add course without category-->
             <form action="uploadFile.php" method="post" id="addCourseForm0">
-                <input type="hidden" value="<?= $category ?>" name="menu">
+                <input type="hidden" value="<?= $course_id ?>" name="course_id">
                 <div class="classroomSidebarList classroomSidebarAdd">
                     <span style="color:green;cursor: pointer"
                           onclick="document.getElementById('addCourseForm0').submit()">+ Add</span>
@@ -79,12 +79,13 @@ try {
     $cls = new errorPageFunc();
     $cls->sendErrMsg($e->getMessage());
 } ?>
-    <div class="panel">
+    <div class="panel"
+         onclick="if(document.getElementById('classroomSidebar').style.display==='block'){document.getElementById('classroomSidebar').style.display = 'none';}">
         <?php include "teacherHeaderPartClassroom.php" ?>
         <br>
         <div>
             <!--title-->
-            <h1><?= $this_course['cname'] . " (Download)" ?></h1>
+            <h1><?= $this_course['cname'] . " (Upload)" ?></h1>
             <title><?= $this_course['cname'] ?></title>
             <!--add content with category-->
             <form action="uploadFile.php" method="post" id="addCourseForm1">

@@ -6,5 +6,5 @@
 </div>
 <div class="navl" id="navl">
             <span style="color:dimgray;cursor: pointer"
-                  onclick="document.getElementById('classroomSidebar').style.display = 'block'">[+]</span>
+                  onclick="setTimeout(function(){document.getElementById('classroomSidebar').style.display = 'block'},10)">[+]</span>
 </div>

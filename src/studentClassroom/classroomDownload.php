@@ -82,7 +82,8 @@ try {
     $cls = new errorPageFunc();
     $cls->sendErrMsg($e->getMessage());
 } ?>
-    <div class="panel">
+    <div class="panel"
+         onclick="if(document.getElementById('classroomSidebar').style.display==='block'){document.getElementById('classroomSidebar').style.display = 'none';}">
         <?php include "studentHeaderPartClassroom.php" ?>
         <br>
         <div>

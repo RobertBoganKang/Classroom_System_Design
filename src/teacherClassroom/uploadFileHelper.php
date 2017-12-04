@@ -22,15 +22,19 @@ try {
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
             /*check file exist*/
             $existCheck = mysqli_query($db, "SELECT * FROM t2s WHERE filename='$withoutExt' AND course_id='$course_id'");
+            if (!$existCheck) {
+                throw new Exception($db->error);
+            }
             if (mysqli_num_rows($existCheck) > 0) {
                 $_SESSION['uploadErr'] .= "File [" . $fileName . "] exist; ";
             } /*Check file size*/
             elseif ($uploads['size'][$i] > 5242880) {
                 $_SESSION['uploadErr'] .= "File [" . $fileName . "] is larger than 5 MB; ";
             }
-            /*Check if $uploadOk is set to 0 by an error*/
+
+            /*check can I upload*/
             if ($_SESSION['uploadErr'] != '') {
-                echo "Your file [" . $fileName . "] was not uploaded; ";
+                $_SESSION['uploadErr'] .= "Your file [" . $fileName . "] was not uploaded; ";
             } else {
                 $insertSQL = mysqli_query($db, "INSERT INTO t2s (id, course_id, filename, format, category, create_time) VALUES (null, '$course_id','$withoutExt', '$ext', '$category', NOW());");
                 if (!$insertSQL) {

@@ -131,7 +131,13 @@ try {
                             <span style="color:red;"
                                   onclick="document.getElementById('delete<?= $rowID ?>').submit()">[Delete]</span>
                         </form> &
-                        <span style="color:royalblue">[Update]</span>
+                        <form action="updateFile.php" method="post" id="update<?= $rowID ?>" style="display:inline">
+                            <input type="hidden" name="file_id" value="<?= $rowID ?>">
+                            <input type="hidden" value="<?= $course_id ?>" name="course_id">
+                            <input type="hidden" value="<?= $category ?>" name="menu">
+                            <span style="color:royalblue"
+                                  onclick="document.getElementById('update<?= $rowID ?>').submit()">[Update]</span>
+                        </form>
                     </span>
                 <hr>
                     <div class="classContent">

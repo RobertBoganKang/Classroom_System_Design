@@ -39,11 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="classroomUpload.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="classroomUpload.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/teacherClassroom/classroomUpload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-77">
-              <caret line="130" column="33" lean-forward="true" selection-start-line="130" selection-start-column="33" selection-end-line="130" selection-end-column="33" />
+            <state relative-caret-position="3190">
+              <caret line="145" column="43" lean-forward="false" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
               <folding>
                 <element signature="e#4718#4784#0#HTML" expanded="true" />
                 <element signature="e#5987#6061#0#HTML" expanded="true" />
@@ -57,6 +57,16 @@
                 <marker date="1512419321253" expanded="true" signature="3342:3372" ph="SELECT * FRO... course" />
                 <marker date="1512419321253" expanded="true" signature="3593:3662" ph="SELECT * FRO... t2s" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="teacherHeaderPartClassroom.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/teacherClassroom/teacherHeaderPartClassroom.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -151,7 +161,6 @@
         <option value="$PROJECT_DIR$/src/studentClassroom/studentFotterClassroom.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/rateCourse.php" />
         <option value="$PROJECT_DIR$/src/studentClassroom/studentHeaderPartClassroom.php" />
-        <option value="$PROJECT_DIR$/src/teacherClassroom/teacherHeaderPartClassroom.php" />
         <option value="$PROJECT_DIR$/src/teacherClassroom/closeCourse.php" />
         <option value="$PROJECT_DIR$/src/teacherClassroom/teacherFooterClassroom.php" />
         <option value="$PROJECT_DIR$/src/css/overall.css" />
@@ -163,6 +172,7 @@
         <option value="$PROJECT_DIR$/src/teacherClassroom/uploadFileHelper.php" />
         <option value="$PROJECT_DIR$/src/teacherClassroom/updateFile.php" />
         <option value="$PROJECT_DIR$/src/teacherClassroom/updateFileHelper.php" />
+        <option value="$PROJECT_DIR$/src/teacherClassroom/teacherHeaderPartClassroom.php" />
       </list>
     </option>
   </component>
@@ -177,10 +187,9 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="8" />
-    <option name="width" value="629" />
-    <option name="height" value="710" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="width" value="679" />
+    <option name="height" value="740" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -433,7 +442,7 @@
       <workItem from="1512350228689" duration="8615000" />
       <workItem from="1512358857603" duration="7328000" />
       <workItem from="1512366245845" duration="19502000" />
-      <workItem from="1512387639766" duration="26889000" />
+      <workItem from="1512387639766" duration="27240000" />
     </task>
     <servers />
   </component>
@@ -449,13 +458,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="406997000" />
+    <option name="totallyTimeSpent" value="407348000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1360" height="741" extended-state="6" />
+    <frame x="0" y="0" width="679" height="740" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37952757" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.78582674" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -782,14 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/teacherClassroom/teacherHeaderPartClassroom.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/studentClassroom/studentHeaderPartClassroom.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -951,8 +952,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/teacherClassroom/classroomUpload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-77">
-          <caret line="130" column="33" lean-forward="true" selection-start-line="130" selection-start-column="33" selection-end-line="130" selection-end-column="33" />
+        <state relative-caret-position="3190">
+          <caret line="145" column="43" lean-forward="false" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
           <folding>
             <element signature="e#4718#4784#0#HTML" expanded="true" />
             <element signature="e#5987#6061#0#HTML" expanded="true" />
@@ -966,6 +967,14 @@
             <marker date="1512419321253" expanded="true" signature="3342:3372" ph="SELECT * FRO... course" />
             <marker date="1512419321253" expanded="true" signature="3593:3662" ph="SELECT * FRO... t2s" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/teacherClassroom/teacherHeaderPartClassroom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

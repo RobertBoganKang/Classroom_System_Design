@@ -203,10 +203,11 @@ try {
                                 /*check file is url*/
                                 $url = $stringcls->trimText($myContent);
                                 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { ?>
+                                    <a href="<?= $url ?>" target="_blank" style="text-align: right;display:block"><?= $myContent ?></a>
+                                    <hr>
                                     <iframe width="100%" height="700px" src="<?= $url ?>">
                                         Your browser does not support iframes.
                                     </iframe>
-                                    <a href="<?= $url ?>" target="_blank"><?= $myContent ?></a>
                                 <?php } else { ?>
                                     <div>
                                         <pre id="txt<?= $rowID ?>"><?= $myContent ?></pre>

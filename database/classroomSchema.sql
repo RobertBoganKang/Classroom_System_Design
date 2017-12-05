@@ -155,7 +155,7 @@ CREATE TABLE `stucourse` (
   `comment` varchar(1024) DEFAULT NULL,
   `read_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,7 +214,7 @@ CREATE TABLE `t2s` (
   `category` varchar(45) NOT NULL,
   `create_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +223,7 @@ CREATE TABLE `t2s` (
 
 LOCK TABLES `t2s` WRITE;
 /*!40000 ALTER TABLE `t2s` DISABLE KEYS */;
-INSERT INTO `t2s` VALUES (1,8,'Test MD text','md','Lecture 1','2017-12-02 00:00:00'),(2,8,'Test MD text 2','md','Lecture 2','2017-12-02 00:00:00'),(3,8,'Test HTML text 3','html','Lecture 1','2017-12-02 00:00:00'),(4,8,'Test audio','mp3','Lecture 3','2017-12-03 00:00:00'),(5,8,'Test pdf','pdf','Lecture 1','2017-12-03 00:00:00'),(6,8,'Test mp4','mp4','Lecture 3','2017-12-03 00:00:00'),(7,8,'Test image','png','Lecture 3','2017-12-03 00:00:00'),(8,8,'Test code','md','Lecture 1','2017-12-03 00:00:00');
+INSERT INTO `t2s` VALUES (1,8,'Test MD text','md','Lecture 1','2017-12-02 00:00:00'),(2,8,'Test MD text 2','md','Lecture 2','2017-12-02 00:00:00'),(3,8,'Test HTML text 3','html','Lecture 1','2017-12-02 00:00:00'),(4,8,'Test audio','mp3','Lecture 3','2017-12-03 00:00:00'),(5,8,'Test pdf','pdf','Lecture 1','2017-12-03 00:00:00'),(6,8,'Test mp4','mp4','Lecture 3','2017-12-03 00:00:00'),(7,8,'Test image','png','Lecture 3','2017-12-03 00:00:00'),(8,8,'Test code','md','Lecture 1','2017-12-03 00:00:00'),(9,8,'Test url','txt','Lecture 1','2017-12-05 03:51:57'),(10,8,'Test text','txt','Lecture 1','2017-12-05 03:51:58');
 /*!40000 ALTER TABLE `t2s` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,4 +268,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-04 14:47:23
+-- Dump completed on 2017-12-05  5:27:51

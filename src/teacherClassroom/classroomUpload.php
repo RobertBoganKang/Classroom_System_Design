@@ -1,9 +1,6 @@
 <?php include "teacherHeaderClassroom.php";
 include "../mdlib/Parsedown.php";
-$mdcls = new Parsedown();
-//include "../inc/courseUtil.php";
-//$coursecls = new courseUtil();
-?>
+$mdcls = new Parsedown(); ?>
     <script src="../js/overall.js"></script>
     <script src="../js/starSystem.js"></script>
     <link rel="stylesheet" href="../css/couseMaster.css">
@@ -59,6 +56,8 @@ try {
     </div>
 <?php
 try {
+    include_once "../inc/stringUtils.php";
+    $stringcls = new stringUtils();
     /*check teacher has this course for safety*/
     $checkCourse = mysqli_query($db, "SELECT * FROM course WHERE teacher_id=$myID AND id=$course_id");
     if (!$checkCourse) {
@@ -101,10 +100,11 @@ try {
                     <input type="hidden" value="<?= $course_id ?>" name="course_id">
                     <input type="hidden" value="<?= $category ?>" name="menu">
                     <div>
-                    <span style="color:green;float:right;cursor: pointer;font-style: italic"
+                    <span style="color:green;float:right;cursor: pointer;font-style: italic;font-size: 22px"
                           onclick="document.getElementById('addCourseForm1').submit()">+ Add</span>
                     </div>
                 </form>
+                <br>
             <?php } ?>
             <!--content-->
             <div>
@@ -128,6 +128,14 @@ try {
                                download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
                             &
                         </span>
+                        <!--update file-->
+                        <form action="updateFile.php" method="post" id="update<?= $rowID ?>" style="display:inline">
+                            <input type="hidden" name="file_id" value="<?= $rowID ?>">
+                            <input type="hidden" value="<?= $course_id ?>" name="course_id">
+                            <input type="hidden" value="<?= $category ?>" name="menu">
+                            <span style="color:royalblue"
+                                  onclick="document.getElementById('update<?= $rowID ?>').submit()">[Update]</span>
+                        </form> &
                         <!--delete file-->
                         <form action="deleteFileHelper.php" method="post" id="delete<?= $rowID ?>"
                               style="display:inline">
@@ -144,14 +152,6 @@ try {
                                           },3000)">[Delete]</span>
                             <span style="color:red;display: none" id="deletebutton1<?= $rowID ?>"
                                   onclick="document.getElementById('delete<?= $rowID ?>').submit()">[Confirm]</span>
-                        </form> &
-                        <!--update file-->
-                        <form action="updateFile.php" method="post" id="update<?= $rowID ?>" style="display:inline">
-                            <input type="hidden" name="file_id" value="<?= $rowID ?>">
-                            <input type="hidden" value="<?= $course_id ?>" name="course_id">
-                            <input type="hidden" value="<?= $category ?>" name="menu">
-                            <span style="color:royalblue"
-                                  onclick="document.getElementById('update<?= $rowID ?>').submit()">[Update]</span>
                         </form>
                     </span>
                 <hr>
@@ -161,11 +161,25 @@ try {
                             /*track whether supported format for web application*/
                             $support = 0;
                             if ($rowContent['format'] == 'md') {
-                                $support = 1;
-                                echo $mdcls->parse($myContent);
-                            } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') {
                                 $support = 1; ?>
-                                <iframe src="<?= $myFileDIR ?>"></iframe>
+                                <div id="md0<?= $rowID ?>" style="display: block;">
+                                    <?= $mdcls->parse($myContent); ?>
+                                </div>
+                                <pre id="md1<?= $rowID ?>"
+                                     style="display:none;font-family: monospace;"><?= $myContent ?></pre>
+                                <span onclick="if(document.getElementById('md0<?= $rowID ?>').style.display==='none'){
+                                        document.getElementById('md0<?= $rowID ?>').style.display='block';
+                                        document.getElementById('md1<?= $rowID ?>').style.display='none';
+                                        }else{
+                                        document.getElementById('md1<?= $rowID ?>').style.display='block';
+                                        document.getElementById('md0<?= $rowID ?>').style.display='none';
+                                        }" class="switch">[<>]</span>
+                            <?php } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') {
+                                $support = 1; ?>
+                                <iframe src="<?= $myFileDIR ?>" width="100%">
+                                    Your browser does not support iframes.
+                                </iframe>
+                                <a href="<?= $myFileDIR ?>" target="_blank">[Open]</a>
                             <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') {
                                 $support = 1; ?>
                                 <audio controls>
@@ -184,7 +198,27 @@ try {
                                     <source src="<?= $myFileDIR ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            <?php } ?>
+                            <?php } elseif ($rowContent['format'] == 'txt') {
+                                $support = 1;
+                                /*check file is url*/
+                                $url = $stringcls->trimText($myContent);
+                                if (!filter_var($url, FILTER_VALIDATE_URL) === false) { ?>
+                                    <iframe width="100%" height="700px" src="<?= $url ?>">
+                                        Your browser does not support iframes.
+                                    </iframe>
+                                    <a href="<?= $url ?>" target="_blank"><?= $myContent ?></a>
+                                <?php } else { ?>
+                                    <div>
+                                        <pre id="txt<?= $rowID ?>"><?= $myContent ?></pre>
+                                        <span class="switch"
+                                              onclick="if(document.getElementById('txt<?= $rowID ?>').style.fontFamily!=='monospace'){
+                                                      document.getElementById('txt<?= $rowID ?>').style.fontFamily='monospace';
+                                                      }else{
+                                                      document.getElementById('txt<?= $rowID ?>').style.removeProperty('font-family');
+                                                      }">[<>]</span>
+                                    </div>
+                                <?php }
+                            } ?>
                         </div>
                         <?php if ($support == 0) { ?>
                             <a href="<?= $myFileDIR ?>" target="_blank"

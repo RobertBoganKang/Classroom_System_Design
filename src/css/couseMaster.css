@@ -622,3 +622,8 @@ textarea:focus {
     display: block;
     color: red;
 }
+
+.switch {
+    cursor: pointer;
+    color: darkolivegreen
+}

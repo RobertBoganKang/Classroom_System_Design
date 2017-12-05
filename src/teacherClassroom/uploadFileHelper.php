@@ -21,7 +21,7 @@ try {
             $withoutExt = preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName);
             $ext = pathinfo($fileName, PATHINFO_EXTENSION);
             /*check file exist*/
-            $existCheck = mysqli_query($db, "SELECT * FROM t2s WHERE filename='$withoutExt' AND course_id='$course_id'");
+            $existCheck = mysqli_query($db, "SELECT * FROM t2s WHERE filename='$withoutExt' AND format='$ext' AND course_id='$course_id'");
             if (!$existCheck) {
                 throw new Exception($db->error);
             }

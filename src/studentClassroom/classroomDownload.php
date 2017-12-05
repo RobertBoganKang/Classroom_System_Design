@@ -133,24 +133,27 @@ try {
                             $support = 0;
                             if ($rowContent['format'] == 'md') {
                                 $support = 1; ?>
-                                <div id="md0<?= $rowID ?>" style="display: block;">
-                                    <?= $mdcls->parse($myContent); ?>
-                                </div>
-                                <pre id="md1<?= $rowID ?>"
-                                     style="display:none;font-family: monospace;"><?= $myContent ?></pre>
-                                <span onclick="if(document.getElementById('md0<?= $rowID ?>').style.display==='none'){
+                                <div ondblclick="if(event.ctrlKey){
+                                        if(document.getElementById('md0<?= $rowID ?>').style.display==='none'&&event.ctrlKey){
                                         document.getElementById('md0<?= $rowID ?>').style.display='block';
                                         document.getElementById('md1<?= $rowID ?>').style.display='none';
                                         }else{
                                         document.getElementById('md1<?= $rowID ?>').style.display='block';
                                         document.getElementById('md0<?= $rowID ?>').style.display='none';
-                                        }" class="switch">[<>]</span>
+                                        }
+                                        }">
+                                    <div id="md0<?= $rowID ?>" style="display: block;">
+                                        <?= $mdcls->parse($myContent); ?>
+                                    </div>
+                                    <pre id="md1<?= $rowID ?>"
+                                         style="display:none;font-family: monospace;"><?= $myContent ?></pre>
+                                </div>
                             <?php } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') {
                                 $support = 1; ?>
-                                <iframe src="<?= $myFileDIR ?>" width="100%">
+                                <iframe src="<?= $myFileDIR ?>" width="100%"
+                                        onclick="$(document).ready(function(){$('#html<?= $rowID ?>').click();});">
                                     Your browser does not support iframes.
                                 </iframe>
-                                <a href="<?= $myFileDIR ?>" target="_blank">[Open]</a>
                             <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') {
                                 $support = 1; ?>
                                 <audio controls>
@@ -181,14 +184,14 @@ try {
                                         Your browser does not support iframes.
                                     </iframe>
                                 <?php } else { ?>
-                                    <div>
+                                    <div ondblclick="if(event.ctrlKey){
+                                            if(document.getElementById('txt<?= $rowID ?>').style.fontFamily!=='monospace'){
+                                            document.getElementById('txt<?= $rowID ?>').style.fontFamily='monospace';
+                                            }else{
+                                            document.getElementById('txt<?= $rowID ?>').style.removeProperty('font-family');
+                                            }
+                                            }">
                                         <pre id="txt<?= $rowID ?>"><?= $myContent ?></pre>
-                                        <span class="switch"
-                                              onclick="if(document.getElementById('txt<?= $rowID ?>').style.fontFamily!=='monospace'){
-                                                      document.getElementById('txt<?= $rowID ?>').style.fontFamily='monospace';
-                                                      }else{
-                                                      document.getElementById('txt<?= $rowID ?>').style.removeProperty('font-family');
-                                                      }">[<>]</span>
                                     </div>
                                 <?php }
                             } ?>

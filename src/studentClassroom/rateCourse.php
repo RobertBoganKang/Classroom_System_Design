@@ -37,7 +37,11 @@ try {
         <h2>My Rating</h2>
         <hr class="hr">
         <form action="studentRatingHelper.php" id="ratingForm" method="post"
-              onclick='document.getElementById("submitRating").style.display="inline"'
+              onclick='if(remember>0){
+                  document.getElementById("submitRating").style.display="inline";
+              }else{
+                   document.getElementById("submitRating").style.display="none";
+              }'
               onsubmit="document.getElementById('rating').value=remember">
             <input type="submit" id="submitRating" class="hiddenSubmit" value="submit">
             <div><?= $coursecls->starManualRating($myRating); ?></div>

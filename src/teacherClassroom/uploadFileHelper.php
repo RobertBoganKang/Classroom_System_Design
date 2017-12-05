@@ -60,7 +60,7 @@ try {
         $_SESSION['uploadErr'] = "Warning: " . $_SESSION['uploadErr'];
         header("Location:" . "uploadFile.php");
         $_SESSION['course_id'] = $course_id;
-        if ($_SESSION['menu'] != '') {
+        if ($category != '') {
             $_SESSION['menu'] = $category;
         }
     } else {

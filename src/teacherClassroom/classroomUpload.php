@@ -122,15 +122,30 @@ try {
                     <span class="tinyDate"><?= $rowContent['create_time'] ?></span>
                     <span id="filemaster<?= $rowID ?>"
                           style="cursor:pointer;text-align: right;display: none;font-style: italic;">
+                        <!--download file goes here if supported-->
+                        <span id="support<?= $rowID ?>" style="display: none">
+                            <a href="<?= $myFileDIR ?>" target="_blank" style="color:goldenrod"
+                               download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
+                            &
+                        </span>
+                        <!--delete file-->
                         <form action="deleteFileHelper.php" method="post" id="delete<?= $rowID ?>"
                               style="display:inline">
                             <input type="hidden" name="file_id" value="<?= $rowID ?>">
                             <input type="hidden" name="file_ext" value="<?= $rowContent['format'] ?>">
                             <input type="hidden" name="course_id" value="<?= $course_id ?>">
                             <input type="hidden" name="category" value="<?= $category ?>">
-                            <span style="color:red;"
-                                  onclick="document.getElementById('delete<?= $rowID ?>').submit()">[Delete]</span>
+                            <span style="color:red;cursor: pointer;" id="deletebutton0<?= $rowID ?>"
+                                  onclick="document.getElementById('deletebutton1<?= $rowID ?>').style.display='inline';
+                                          document.getElementById('deletebutton0<?= $rowID ?>').style.display='none';
+                                          setTimeout(function() {
+                                          document.getElementById('deletebutton0<?= $rowID ?>').style.display='inline';
+                                          document.getElementById('deletebutton1<?= $rowID ?>').style.display='none';
+                                          },3000)">[Delete]</span>
+                            <span style="color:red;display: none" id="deletebutton1<?= $rowID ?>"
+                                  onclick="document.getElementById('delete<?= $rowID ?>').submit()">[Confirm]</span>
                         </form> &
+                        <!--update file-->
                         <form action="updateFile.php" method="post" id="update<?= $rowID ?>" style="display:inline">
                             <input type="hidden" name="file_id" value="<?= $rowID ?>">
                             <input type="hidden" value="<?= $course_id ?>" name="course_id">
@@ -142,11 +157,17 @@ try {
                 <hr>
                     <div class="classContent">
                         <div class="contentBig" id="content<?= $rowContent['id'] ?>">
-                            <?php if ($rowContent['format'] == 'md') {
+                            <?php
+                            /*track whether supported format for web application*/
+                            $support = 0;
+                            if ($rowContent['format'] == 'md') {
+                                $support = 1;
                                 echo $mdcls->parse($myContent);
-                            } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') { ?>
+                            } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') {
+                                $support = 1; ?>
                                 <iframe src="<?= $myFileDIR ?>"></iframe>
-                            <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') { ?>
+                            <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') {
+                                $support = 1; ?>
                                 <audio controls>
                                     <source src="<?= $myFileDIR ?>" type="audio/ogg">
                                     <source src="<?= $myFileDIR ?>" type="audio/mpeg">
@@ -154,17 +175,25 @@ try {
                                 </audio>
                             <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png'
                                 || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif'
-                                || $rowContent['format'] == 'svg' || $rowContent['format'] == 'bmp') { ?>
+                                || $rowContent['format'] == 'svg' || $rowContent['format'] == 'bmp') {
+                                $support = 1; ?>
                                 <img src="<?= $myFileDIR ?>" alt="<?= $rowContent['filename'] ?>">
-                            <?php } elseif ($rowContent['format'] == 'mp4') { ?>
+                            <?php } elseif ($rowContent['format'] == 'mp4') {
+                                $support = 1; ?>
                                 <video width="320" height="240" controls>
                                     <source src="<?= $myFileDIR ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             <?php } ?>
                         </div>
-                        <a href="<?= $myFileDIR ?>" target="_blank"
-                           download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
+                        <?php if ($support == 0) { ?>
+                            <a href="<?= $myFileDIR ?>" target="_blank"
+                               download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
+                        <?php } else { ?>
+                            <script>
+                                document.getElementById('support<?= $rowID ?>').style.display = 'inline';
+                            </script>
+                        <?php } ?>
                         <br>
                         <a href="#" id="contentLink<?= $rowContent['id'] ?>">Read more...</a>
                     </div>

@@ -571,6 +571,8 @@ textarea:focus {
     border-bottom: red solid 1px;
     color: red;
     margin-left: -10px;
+    -webkit-transition-delay: .4s; /* Safari */
+    transition-delay: .4s;
 }
 
 /*add course*/
@@ -612,18 +614,24 @@ textarea:focus {
     line-height: 100%;
     display: block;
     color: lightgray;
+    cursor: default;
+    -webkit-transition: color 2s;
+    -moz-transition: color 2s;
+    -ms-transition: color 2s;
+    -o-transition: color 2s;
+    transition: color 2s;
+}
+
+.tinyDate:hover {
+    color: dimgray;
 }
 
 .tinyDate1 {
     font-size: 9px;
+    cursor: default;
     font-style: italic;
     text-align: right;
     line-height: 100%;
     display: block;
     color: red;
-}
-
-.switch {
-    cursor: pointer;
-    color: darkolivegreen
 }

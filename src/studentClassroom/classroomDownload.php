@@ -121,18 +121,38 @@ try {
                 while ($rowContent = mysqli_fetch_assoc($contentList)) {
                     $myFileDIR = '../files/' . $rowContent['id'] . '.' . $rowContent['format'];
                     $myContent = file_get_contents($myFileDIR);
-                    ?>
+                    $rowID = $rowContent["id"]; ?>
                 <br>
                     <h3><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
                     <span class="tinyDate<?php if ($lastReadingtime < $rowContent['create_time']) echo '1' ?>"><?= $rowContent['create_time'] ?></span>
                 <hr>
                     <div class="classContent">
                         <div class="contentBig" id="content<?= $rowContent['id'] ?>">
-                            <?php if ($rowContent['format'] == 'md') {
-                                echo $mdcls->parse($myContent);
-                            } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') { ?>
-                                <iframe src="<?= $myFileDIR ?>"></iframe>
-                            <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') { ?>
+                            <?php
+                            /*track whether supported format for web application*/
+                            $support = 0;
+                            if ($rowContent['format'] == 'md') {
+                                $support = 1; ?>
+                                <div id="md0<?= $rowID ?>" style="display: block;">
+                                    <?= $mdcls->parse($myContent); ?>
+                                </div>
+                                <pre id="md1<?= $rowID ?>"
+                                     style="display:none;font-family: monospace;"><?= $myContent ?></pre>
+                                <span onclick="if(document.getElementById('md0<?= $rowID ?>').style.display==='none'){
+                                        document.getElementById('md0<?= $rowID ?>').style.display='block';
+                                        document.getElementById('md1<?= $rowID ?>').style.display='none';
+                                        }else{
+                                        document.getElementById('md1<?= $rowID ?>').style.display='block';
+                                        document.getElementById('md0<?= $rowID ?>').style.display='none';
+                                        }" class="switch">[<>]</span>
+                            <?php } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') {
+                                $support = 1; ?>
+                                <iframe src="<?= $myFileDIR ?>" width="100%">
+                                    Your browser does not support iframes.
+                                </iframe>
+                                <a href="<?= $myFileDIR ?>" target="_blank">[Open]</a>
+                            <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') {
+                                $support = 1; ?>
                                 <audio controls>
                                     <source src="<?= $myFileDIR ?>" type="audio/ogg">
                                     <source src="<?= $myFileDIR ?>" type="audio/mpeg">
@@ -140,17 +160,47 @@ try {
                                 </audio>
                             <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png'
                                 || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif'
-                                || $rowContent['format'] == 'svg' || $rowContent['format'] == 'bmp') { ?>
+                                || $rowContent['format'] == 'svg' || $rowContent['format'] == 'bmp') {
+                                $support = 1; ?>
                                 <img src="<?= $myFileDIR ?>" alt="<?= $rowContent['filename'] ?>">
-                            <?php } elseif ($rowContent['format'] == 'mp4') { ?>
+                            <?php } elseif ($rowContent['format'] == 'mp4') {
+                                $support = 1; ?>
                                 <video width="320" height="240" controls>
                                     <source src="<?= $myFileDIR ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            <?php } ?>
+                            <?php } elseif ($rowContent['format'] == 'txt') {
+                                $support = 1;
+                                /*check file is url*/
+                                $url = $stringcls->trimText($myContent);
+                                if (!filter_var($url, FILTER_VALIDATE_URL) === false) { ?>
+                                    <a href="<?= $url ?>" target="_blank"
+                                       style="text-align: right;display:block"><?= $myContent ?></a>
+                                    <hr>
+                                    <iframe width="100%" height="700px" src="<?= $url ?>">
+                                        Your browser does not support iframes.
+                                    </iframe>
+                                <?php } else { ?>
+                                    <div>
+                                        <pre id="txt<?= $rowID ?>"><?= $myContent ?></pre>
+                                        <span class="switch"
+                                              onclick="if(document.getElementById('txt<?= $rowID ?>').style.fontFamily!=='monospace'){
+                                                      document.getElementById('txt<?= $rowID ?>').style.fontFamily='monospace';
+                                                      }else{
+                                                      document.getElementById('txt<?= $rowID ?>').style.removeProperty('font-family');
+                                                      }">[<>]</span>
+                                    </div>
+                                <?php }
+                            } ?>
                         </div>
-                        <a href="<?= $myFileDIR ?>" target="_blank"
-                           download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
+                        <?php if ($support == 0) { ?>
+                            <a href="<?= $myFileDIR ?>" target="_blank"
+                               download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
+                        <?php } else { ?>
+                            <script>
+                                document.getElementById('support<?= $rowID ?>').style.display = 'inline';
+                            </script>
+                        <?php } ?>
                         <br>
                         <a href="#" id="contentLink<?= $rowContent['id'] ?>">Read more...</a>
                     </div>

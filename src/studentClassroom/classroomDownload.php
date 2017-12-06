@@ -88,6 +88,9 @@ RIGHT JOIN (SELECT DISTINCT category FROM t2s WHERE course_id='$course_id') AS t
     </div>
 <?php
 try {
+    /*need string utils*/
+    include_once "../inc/stringUtils.php";
+    $stringcls = new stringUtils();
     /*prepare course*/
     $this_course = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM course WHERE id=$course_id"));
     if (!$this_course) {
@@ -123,8 +126,25 @@ try {
                     $myContent = file_get_contents($myFileDIR);
                     $rowID = $rowContent["id"]; ?>
                 <br>
-                    <h3><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
+                    <h3 class="noselect"
+                        ondblclick="document.getElementById('filemaster<?= $rowID ?>').style.display='block';
+                                setTimeout(function(){document.getElementById('filemaster<?= $rowID ?>').style.display='none'},3000)"
+                        style="cursor:pointer"><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
                     <span class="tinyDate<?php if ($lastReadingtime < $rowContent['create_time']) echo '1' ?>"><?= $rowContent['create_time'] ?></span>
+                    <span id="filemaster<?= $rowID ?>"
+                          style="cursor:pointer;text-align: right;display: none;font-style: italic;">
+                        <?php
+                        /*html has open link*/
+                        if ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') { ?>
+                            <a href="<?= $myFileDIR ?>" id="html<?= $rowID ?>" style="color:green" target="_blank">[Open]</a> &
+                            <?php
+                        } ?>
+                        <!--download file goes here if supported-->
+                        <span id="support<?= $rowID ?>" style="display: none">
+                            <a href="<?= $myFileDIR ?>" target="_blank" style="color:goldenrod"
+                               download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
+                        </span>
+                    </span>
                 <hr>
                     <div class="classContent">
                         <div class="contentBig" id="content<?= $rowContent['id'] ?>">

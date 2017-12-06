@@ -56,6 +56,7 @@ try {
     </div>
 <?php
 try {
+    /*need string utils*/
     include_once "../inc/stringUtils.php";
     $stringcls = new stringUtils();
     /*check teacher has this course for safety*/

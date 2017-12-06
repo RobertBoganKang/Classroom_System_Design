@@ -39,33 +39,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="classroomUpload.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/teacherClassroom/classroomUpload.php">
+      <file leaf-file-name="couseMaster.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/css/couseMaster.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="162" column="20" lean-forward="true" selection-start-line="162" selection-start-column="20" selection-end-line="242" selection-end-column="26" />
-              <folding>
-                <element signature="e#5753#5775#0#HTML" expanded="true" />
-                <element signature="e#6015#6089#0#HTML" expanded="true" />
-                <element signature="e#6347#6366#0#HTML" expanded="true" />
-                <element signature="e#9110#14815#0#HTML" expanded="false" />
-                <marker date="1512488106318" expanded="true" signature="549:599" ph="SELECT DISTI... t2s" />
-                <marker date="1512488106318" expanded="true" signature="3015:3053" ph="SELECT * FRO... course" />
-                <marker date="1512488106318" expanded="true" signature="3015:3058" ph="SELECT * FRO... course" />
-                <marker date="1512488106318" expanded="true" signature="3015:3066" ph="SELECT * FRO... course" />
-                <marker date="1512488106318" expanded="true" signature="3353:3383" ph="SELECT * FRO... course" />
-                <marker date="1512488106318" expanded="true" signature="3604:3673" ph="SELECT * FRO... t2s" />
-              </folding>
+            <state relative-caret-position="12628">
+              <caret line="574" column="26" lean-forward="false" selection-start-line="574" selection-start-column="26" selection-end-line="574" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="couseMaster.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/couseMaster.css">
+      <file leaf-file-name="classroomUpload.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/teacherClassroom/classroomUpload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="574" column="26" lean-forward="true" selection-start-line="574" selection-start-column="26" selection-end-line="574" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="158">
+              <caret line="58" column="4" lean-forward="true" selection-start-line="58" selection-start-column="4" selection-end-line="60" selection-end-column="35" />
+              <folding>
+                <marker date="1512522029214" expanded="true" signature="549:599" ph="SELECT DISTI... t2s" />
+                <marker date="1512522029214" expanded="true" signature="3041:3079" ph="SELECT * FRO... course" />
+                <marker date="1512522029214" expanded="true" signature="3041:3084" ph="SELECT * FRO... course" />
+                <marker date="1512522029214" expanded="true" signature="3041:3092" ph="SELECT * FRO... course" />
+                <marker date="1512522029214" expanded="true" signature="3379:3409" ph="SELECT * FRO... course" />
+                <marker date="1512522029214" expanded="true" signature="3630:3699" ph="SELECT * FRO... t2s" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,17 +69,16 @@
       <file leaf-file-name="classroomDownload.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/studentClassroom/classroomDownload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="208" column="26" lean-forward="false" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
+            <state relative-caret-position="203">
+              <caret line="92" column="35" lean-forward="false" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="35" />
               <folding>
-                <element signature="e#6148#11853#0#HTML" expanded="false" />
-                <marker date="1512488652860" expanded="true" signature="694:755" ph="SELECT * FRO... stucourse" />
-                <marker date="1512488652860" expanded="true" signature="1199:1273" ph="UPDATE stucourse... " />
-                <marker date="1512488652860" expanded="true" signature="1460:1756" ph="SELECT t2.ca... category" />
-                <marker date="1512488652860" expanded="true" signature="1516:1640" ph="SELECT categ... t2s" />
-                <marker date="1512488652860" expanded="true" signature="1660:1722" ph="SELECT DISTI... t2s" />
-                <marker date="1512488652860" expanded="true" signature="4437:4467" ph="SELECT * FRO... course" />
-                <marker date="1512488652860" expanded="true" signature="4688:4757" ph="SELECT * FRO... t2s" />
+                <marker date="1512522029374" expanded="true" signature="694:755" ph="SELECT * FRO... stucourse" />
+                <marker date="1512522029374" expanded="true" signature="1199:1273" ph="UPDATE stucourse... " />
+                <marker date="1512522029374" expanded="true" signature="1460:1756" ph="SELECT t2.ca... category" />
+                <marker date="1512522029374" expanded="true" signature="1516:1640" ph="SELECT categ... t2s" />
+                <marker date="1512522029374" expanded="true" signature="1660:1722" ph="SELECT DISTI... t2s" />
+                <marker date="1512522029374" expanded="true" signature="4542:4572" ph="SELECT * FRO... course" />
+                <marker date="1512522029374" expanded="true" signature="4793:4862" ph="SELECT * FRO... t2s" />
               </folding>
             </state>
           </provider>
@@ -102,7 +97,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>readmore</find>
       <find>download...</find>
       <find>tinyDate</find>
       <find>classContent</find>
@@ -132,6 +126,7 @@
       <find>Open</find>
       <find>window</find>
       <find>close</find>
+      <find>stringcls</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -460,7 +455,8 @@
       <workItem from="1512463465647" duration="2192000" />
       <workItem from="1512466286661" duration="6960000" />
       <workItem from="1512473503097" duration="152000" />
-      <workItem from="1512483604527" duration="5051000" />
+      <workItem from="1512483604527" duration="5154000" />
+      <workItem from="1512521657795" duration="364000" />
     </task>
     <servers />
   </component>
@@ -476,10 +472,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="423060000" />
+    <option name="totallyTimeSpent" value="423527000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1360" height="741" extended-state="6" />
+    <frame x="16" y="0" width="1360" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23556231" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -827,7 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="106" column="1" lean-forward="false" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,11 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
-          <folding>
-            <marker date="1512467362084" expanded="true" signature="758:849" ph="SELECT * FRO... t2s" />
-            <marker date="1512467362084" expanded="true" signature="1519:1661" ph="INSERT INTO t2s... " />
-            <marker date="1512467362084" expanded="true" signature="2188:2213" ph="DELETE FROM t2s... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,50 +837,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/couseMaster.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="574" column="26" lean-forward="true" selection-start-line="574" selection-start-column="26" selection-end-line="574" selection-end-column="26" />
+        <state relative-caret-position="12628">
+          <caret line="574" column="26" lean-forward="false" selection-start-line="574" selection-start-column="26" selection-end-line="574" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/teacherClassroom/classroomUpload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="162" column="20" lean-forward="true" selection-start-line="162" selection-start-column="20" selection-end-line="242" selection-end-column="26" />
+        <state relative-caret-position="158">
+          <caret line="58" column="4" lean-forward="true" selection-start-line="58" selection-start-column="4" selection-end-line="60" selection-end-column="35" />
           <folding>
-            <element signature="e#5753#5775#0#HTML" expanded="true" />
-            <element signature="e#6015#6089#0#HTML" expanded="true" />
-            <element signature="e#6347#6366#0#HTML" expanded="true" />
-            <element signature="e#9110#14815#0#HTML" expanded="false" />
-            <marker date="1512488106318" expanded="true" signature="549:599" ph="SELECT DISTI... t2s" />
-            <marker date="1512488106318" expanded="true" signature="3015:3053" ph="SELECT * FRO... course" />
-            <marker date="1512488106318" expanded="true" signature="3015:3058" ph="SELECT * FRO... course" />
-            <marker date="1512488106318" expanded="true" signature="3015:3066" ph="SELECT * FRO... course" />
-            <marker date="1512488106318" expanded="true" signature="3353:3383" ph="SELECT * FRO... course" />
-            <marker date="1512488106318" expanded="true" signature="3604:3673" ph="SELECT * FRO... t2s" />
+            <marker date="1512522029214" expanded="true" signature="549:599" ph="SELECT DISTI... t2s" />
+            <marker date="1512522029214" expanded="true" signature="3041:3079" ph="SELECT * FRO... course" />
+            <marker date="1512522029214" expanded="true" signature="3041:3084" ph="SELECT * FRO... course" />
+            <marker date="1512522029214" expanded="true" signature="3041:3092" ph="SELECT * FRO... course" />
+            <marker date="1512522029214" expanded="true" signature="3379:3409" ph="SELECT * FRO... course" />
+            <marker date="1512522029214" expanded="true" signature="3630:3699" ph="SELECT * FRO... t2s" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/studentClassroom/classroomDownload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="208" column="26" lean-forward="false" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
+        <state relative-caret-position="203">
+          <caret line="92" column="35" lean-forward="false" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="35" />
           <folding>
-            <element signature="e#6148#11853#0#HTML" expanded="false" />
-            <marker date="1512488652860" expanded="true" signature="694:755" ph="SELECT * FRO... stucourse" />
-            <marker date="1512488652860" expanded="true" signature="1199:1273" ph="UPDATE stucourse... " />
-            <marker date="1512488652860" expanded="true" signature="1460:1756" ph="SELECT t2.ca... category" />
-            <marker date="1512488652860" expanded="true" signature="1516:1640" ph="SELECT categ... t2s" />
-            <marker date="1512488652860" expanded="true" signature="1660:1722" ph="SELECT DISTI... t2s" />
-            <marker date="1512488652860" expanded="true" signature="4437:4467" ph="SELECT * FRO... course" />
-            <marker date="1512488652860" expanded="true" signature="4688:4757" ph="SELECT * FRO... t2s" />
+            <marker date="1512522029374" expanded="true" signature="694:755" ph="SELECT * FRO... stucourse" />
+            <marker date="1512522029374" expanded="true" signature="1199:1273" ph="UPDATE stucourse... " />
+            <marker date="1512522029374" expanded="true" signature="1460:1756" ph="SELECT t2.ca... category" />
+            <marker date="1512522029374" expanded="true" signature="1516:1640" ph="SELECT categ... t2s" />
+            <marker date="1512522029374" expanded="true" signature="1660:1722" ph="SELECT DISTI... t2s" />
+            <marker date="1512522029374" expanded="true" signature="4542:4572" ph="SELECT * FRO... course" />
+            <marker date="1512522029374" expanded="true" signature="4793:4862" ph="SELECT * FRO... t2s" />
           </folding>
         </state>
       </provider>

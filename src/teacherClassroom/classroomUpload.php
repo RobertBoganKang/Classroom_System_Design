@@ -112,11 +112,16 @@ try {
                 <?php if (isset($_GET['menu']) && mysqli_num_rows($contentList) > 0) {
                 while ($rowContent = mysqli_fetch_assoc($contentList)) {
                     $myFileDIR = '../files/' . $rowContent['id'] . '.' . $rowContent['format'];
-                    $myContent = file_get_contents($myFileDIR);
+                    if (in_array($rowContent['format'], array("html", "htm", "md", "txt"))) {
+                        $myContent = file_get_contents($myFileDIR);
+                        $myContentRaw = str_replace(array("<", ">"), array("&lt", "&gt"), $myContent);
+                    }
                     $rowID = $rowContent["id"]; ?>
                 <br>
-                    <h3 class="noselect"
-                        ondblclick="document.getElementById('filemaster<?= $rowID ?>').style.display='block';
+                    <h3 class="noselect" draggable="true"
+                        ondblclick="document.getElementById('filemasterA<?= $rowID ?>').style.display='block';
+                                setTimeout(function(){document.getElementById('filemasterA<?= $rowID ?>').style.display='none'},3000)"
+                        onclick="document.getElementById('filemaster<?= $rowID ?>').style.display='block';
                                 setTimeout(function(){document.getElementById('filemaster<?= $rowID ?>').style.display='none'},3000)"
                         style="cursor:pointer"><?= $rowContent['filename'] . ' (.' . $rowContent['format'] . ")" ?></h3>
                     <span class="tinyDate"><?= $rowContent['create_time'] ?></span>
@@ -124,16 +129,25 @@ try {
                           style="cursor:pointer;text-align: right;display: none;font-style: italic;">
                         <?php
                         /*html has open link*/
-                        if ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') { ?>
+                        if (in_array($rowContent['format'], array("html", "htm"))) { ?>
                             <a href="<?= $myFileDIR ?>" id="html<?= $rowID ?>" style="color:green" target="_blank">[Open]</a> &
-                        <?php
-                        } ?>
+                        <?php } ?>
                         <!--download file goes here if supported-->
                         <span id="support<?= $rowID ?>" style="display: none">
                             <a href="<?= $myFileDIR ?>" target="_blank" style="color:goldenrod"
                                download="<?= $rowContent['filename'] . '.' . $rowContent['format'] ?>">[Download]</a>
-                            &
                         </span>
+                    </span>
+                    <span id="filemasterA<?= $rowID ?>"
+                          style="cursor:pointer;text-align: right;display: none;font-style: italic;">
+                        <!--move folder-->
+                        <form action="updateFile.php" method="post" id="update<?= $rowID ?>" style="display:inline">
+                            <input type="hidden" name="file_id" value="<?= $rowID ?>">
+                            <input type="hidden" value="<?= $course_id ?>" name="course_id">
+                            <input type="hidden" value="<?= $category ?>" name="menu">
+                            <span style="color:purple"
+                                  onclick="document.getElementById('update<?= $rowID ?>').submit()">[Move]</span>
+                        </form> &
                         <!--update file-->
                         <form action="updateFile.php" method="post" id="update<?= $rowID ?>" style="display:inline">
                             <input type="hidden" name="file_id" value="<?= $rowID ?>">
@@ -169,7 +183,7 @@ try {
                             if ($rowContent['format'] == 'md') {
                                 $support = 1; ?>
                                 <div ondblclick="if(event.ctrlKey){
-                                        if(document.getElementById('md0<?= $rowID ?>').style.display==='none'&&event.ctrlKey){
+                                        if(document.getElementById('md0<?= $rowID ?>').style.display==='none'){
                                         document.getElementById('md0<?= $rowID ?>').style.display='block';
                                         document.getElementById('md1<?= $rowID ?>').style.display='none';
                                         }else{
@@ -181,24 +195,21 @@ try {
                                         <?= $mdcls->parse($myContent); ?>
                                     </div>
                                     <pre id="md1<?= $rowID ?>"
-                                         style="display:none;font-family: monospace;"><?= $myContent ?></pre>
+                                         style="display:none;font-family: monospace;"><?= $myContentRaw ?></pre>
                                 </div>
-                            <?php } elseif ($rowContent['format'] == 'html' || $rowContent['format'] == 'htm') {
+                            <?php } elseif (in_array($rowContent['format'], array("html", "htm"))) {
                                 $support = 1; ?>
-                                <iframe src="<?= $myFileDIR ?>" width="100%"
-                                        onclick="$(document).ready(function(){$('#html<?= $rowID ?>').click();});">
+                                <iframe src="<?= $myFileDIR ?>" width="100%" id="htmlcontent<?= $rowID ?>">
                                     Your browser does not support iframes.
                                 </iframe>
-                            <?php } elseif ($rowContent['format'] == 'mp3' || $rowContent['format'] == 'ogg') {
+                            <?php } elseif (in_array($rowContent['format'], array("mp3", "ogg"))) {
                                 $support = 1; ?>
                                 <audio controls>
                                     <source src="<?= $myFileDIR ?>" type="audio/ogg">
                                     <source src="<?= $myFileDIR ?>" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
-                            <?php } elseif ($rowContent['format'] == 'jpg' || $rowContent['format'] == 'png'
-                                || $rowContent['format'] == 'jpeg' || $rowContent['format'] == 'gif'
-                                || $rowContent['format'] == 'svg' || $rowContent['format'] == 'bmp') {
+                            <?php } elseif (in_array($rowContent['format'], array("jpg", "jpeg", "png", "svg", "gif", "bmp"))) {
                                 $support = 1; ?>
                                 <img src="<?= $myFileDIR ?>" alt="<?= $rowContent['filename'] ?>">
                             <?php } elseif ($rowContent['format'] == 'mp4') {
@@ -219,15 +230,14 @@ try {
                                         Your browser does not support iframes.
                                     </iframe>
                                 <?php } else { ?>
-                                    <div ondblclick="if(event.ctrlKey){
-                                            if(document.getElementById('txt<?= $rowID ?>').style.fontFamily!=='monospace'){
-                                            document.getElementById('txt<?= $rowID ?>').style.fontFamily='monospace';
-                                            }else{
-                                            document.getElementById('txt<?= $rowID ?>').style.removeProperty('font-family');
-                                            }
-                                            }">
-                                        <pre id="txt<?= $rowID ?>"><?= $myContent ?></pre>
-                                    </div>
+                                    <pre id="txt<?= $rowID ?>"
+                                         ondblclick="if(event.ctrlKey){
+                                                 if(document.getElementById('txt<?= $rowID ?>').style.fontFamily!=='monospace'){
+                                                 document.getElementById('txt<?= $rowID ?>').style.fontFamily='monospace';
+                                                 }else{
+                                                 document.getElementById('txt<?= $rowID ?>').style.removeProperty('font-family');
+                                                 }
+                                                 }"><?= $myContent ?></pre>
                                 <?php }
                             } ?>
                         </div>
